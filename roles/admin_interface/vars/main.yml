@@ -1,0 +1,7 @@
+---
+packages:
+  - cockpit
+  - cockpit-machines
+sockets:
+  - cockpit.socket
+cockpit_port: 9090
