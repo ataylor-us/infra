@@ -10,3 +10,7 @@
     proto: tcp
     port: 22
     comment: SSH
+- name: Disable ufw logging (spams dmesg)
+  become: true
+  community.general.ufw:
+    logging: "off"
