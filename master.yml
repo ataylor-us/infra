@@ -9,3 +9,4 @@
       become: true
     - role: system
     - role: firewall
+    - role: artis3n.tailscale.device
