@@ -11,3 +11,4 @@
     - role: firewall
     - role: artis3n.tailscale.device
     - role: disks
+    - role: notifications

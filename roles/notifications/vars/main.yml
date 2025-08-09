@@ -1,0 +1,11 @@
+---
+packages:
+  - podman
+  - slirp4netns
+  - msmtp
+  - s-nail
+services:
+  - mailrise-container.service
+mailrise_domain: mailrise
+mailrise_version: latest
+mailrise_port: 8025
