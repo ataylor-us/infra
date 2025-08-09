@@ -8,6 +8,7 @@
     - role: geerlingguy.repo-epel
       become: true
     - role: system
+    - role: hardware
     - role: firewall
     - role: artis3n.tailscale.device
     - role: disks
