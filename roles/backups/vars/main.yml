@@ -1,0 +1,6 @@
+---
+packages:
+  - borgbackup
+  - lz4
+pip_packages:
+  - borgmatic=={{ borgmatic_version }}
