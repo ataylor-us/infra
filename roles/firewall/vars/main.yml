@@ -1,0 +1,7 @@
+---
+packages:
+  - ufw
+removed_packages:
+  - firewalld
+enabled_services:
+  - ufw.service
