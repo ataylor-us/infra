@@ -13,3 +13,4 @@
     - role: disks
     - role: notifications
     - role: backups
+    - role: virtualization
