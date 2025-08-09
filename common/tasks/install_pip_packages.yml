@@ -1,0 +1,17 @@
+---
+- name: Install packages
+  ansible.builtin.import_tasks: common/tasks/install_packages.yml
+  vars:
+    packages:
+      - pipx
+    pip_packages:
+      - pipx
+- name: Install package using pipx
+  become: true
+  community.general.pipx:
+    name: "{{ item }}"
+    global: true
+    state: install
+  loop: "{{ pip_packages }}"
+  # TODO: find a better solution for this
+  changed_when: false
