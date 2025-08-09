@@ -1,0 +1,12 @@
+---
+- name: Enable ufw
+  become: true
+  community.general.ufw:
+    state: enabled
+- name: Allow SSH
+  become: true
+  community.general.ufw:
+    rule: allow
+    proto: tcp
+    port: 22
+    comment: SSH

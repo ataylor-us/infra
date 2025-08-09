@@ -1,0 +1,11 @@
+---
+- name: Configure system
+  hosts: nuc
+  vars_files:
+    - vars/public.yml
+    - vars/vault.yml
+  roles:
+    - role: geerlingguy.repo-epel
+      become: true
+    - role: system
+    - role: firewall

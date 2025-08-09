@@ -1,0 +1,7 @@
+---
+- name: Remove packages using dnf
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ removed_packages }}"
