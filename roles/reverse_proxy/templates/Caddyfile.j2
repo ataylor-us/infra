@@ -1,0 +1,12 @@
+
+(cloudflare) {
+  tls {
+    dns cloudflare {{ cloudflare_token }}
+  }
+}
+http://{{ domain_name }} {
+  redir https://{{ domain_name }}{uri}
+}
+https://{{ domain_name }} {
+  import cloudflare
+}
