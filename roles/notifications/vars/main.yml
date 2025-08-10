@@ -4,7 +4,7 @@ packages:
   - slirp4netns
   - msmtp
   - s-nail
-services:
+enabled_services:
   - mailrise-container.service
 mailrise_domain: mailrise
 mailrise_version: latest

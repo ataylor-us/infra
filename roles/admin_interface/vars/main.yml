@@ -2,6 +2,6 @@
 packages:
   - cockpit
   - cockpit-machines
-sockets:
+enabled_sockets:
   - cockpit.socket
 cockpit_port: 9090
