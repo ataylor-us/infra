@@ -1,0 +1,20 @@
+source_directories:
+  - /mnt/podman/immich*
+repositories:
+    - path: '{{ remote_borg_repo_path }}'
+      label: "remote"
+compression: lz4
+encryption_passphrase: '{{ borg_passphrase }}'
+archive_name_format: 'immich-{hostname}-{now:%Y-%m-%d-%H%M%S}'
+read_special: true
+retries: 5
+retry_wait: 5
+keep_within: 10d
+keep_daily: 5
+keep_weekly: 4
+keep_monthly: 3
+keep_yearly: 2
+postgresql_databases:
+  - name: all
+    username: postgres
+    pg_dump_command: podman exec immich-postgres pg_dumpall

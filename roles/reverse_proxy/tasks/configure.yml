@@ -7,6 +7,14 @@
     owner: 1000
     path: /etc/caddy
     state: directory
+- name: Create caddy sites-enabled directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: /etc/caddy/sites-enabled
+    state: directory
 - name: Generate Caddyfile
   become: true
   ansible.builtin.template:
@@ -43,7 +51,7 @@
     user: 1000:1000
     network: host
     volumes:
-      - /etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /etc/caddy:/etc/caddy:ro
       - /var/opt/caddy/config:/config:rw
       - /var/opt/caddy/data:/data:rw
     quadlet_options:

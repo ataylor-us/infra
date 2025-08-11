@@ -18,3 +18,4 @@
     - role: containers
     - role: reverse_proxy
     - role: admin_interface
+    - role: photos
