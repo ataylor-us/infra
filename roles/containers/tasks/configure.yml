@@ -1,0 +1,19 @@
+---
+# The default podman (podman0) network does not resolve hostnames by default
+- name: Ensure podman1 network is created
+  become: true
+  containers.podman.podman_network:
+    name: podman1
+    state: present
+- name: Allow all traffic on podman1
+  become: true
+  community.general.ufw:
+    rule: allow
+    interface_in: podman1
+- name: Allow forwarding to podman1
+  become: true
+  community.general.ufw:
+    rule: allow
+    route: true
+    interface_in: podman1
+    interface_out: "{{ ansible_default_ipv4.interface }}"

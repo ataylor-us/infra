@@ -15,5 +15,6 @@
     - role: notifications
     - role: backups
     - role: virtualization
+    - role: containers
     - role: reverse_proxy
     - role: admin_interface

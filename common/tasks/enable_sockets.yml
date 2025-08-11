@@ -3,6 +3,5 @@
   ansible.builtin.systemd:
     enabled: true
     name: "{{ item }}"
-    state: started
   become: true
   loop: "{{ enabled_sockets }}"
