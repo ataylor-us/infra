@@ -1,0 +1,9 @@
+# cockpit
+server.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ cockpit_port }} {
+    transport http {
+      tls_insecure_skip_verify
+    }
+  }
+}

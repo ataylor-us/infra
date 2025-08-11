@@ -1,7 +1,9 @@
 ---
+cockpit_port: 9090
 packages:
   - cockpit
   - cockpit-machines
+enabled_services:
+  - caddy-container.service
 enabled_sockets:
   - cockpit.socket
-cockpit_port: 9090

@@ -27,5 +27,16 @@
   notify:
     - Reload systemd for cockpit
     - Restart cockpit
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/cockpit.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for immich
+    - Restart immich
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers

@@ -1,0 +1,5 @@
+# immich
+photos.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ immich_port }}
+}
