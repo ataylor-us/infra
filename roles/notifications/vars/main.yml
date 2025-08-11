@@ -1,7 +1,5 @@
 ---
 packages:
-  - podman
-  - slirp4netns
   - msmtp
   - s-nail
 enabled_services:
