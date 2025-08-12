@@ -1,0 +1,49 @@
+---
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: freshrss
+    image: lscr.io/linuxserver/freshrss:{{ freshrss_version }}
+    state: quadlet
+    quadlet_filename: freshrss-container
+    network: podman1
+    ports:
+      - 127.0.0.1:{{ freshrss_port }}:80
+    volumes:
+      - /mnt/podman/freshrss:/config:rw
+    env:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/New_York
+    quadlet_options:
+      - AutoUpdate=registry
+      - Pull=always
+      - |
+        [Unit]
+        After=network-online.target nss-lookup.target
+        [Install]
+        WantedBy=default.target
+  notify:
+    - Reload systemd for freshrss
+    - Restart freshrss
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/freshrss.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for freshrss
+    - Restart freshrss
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/freshrss.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
