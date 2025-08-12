@@ -19,3 +19,5 @@
     - role: reverse_proxy
     - role: admin_interface
     - role: photos
+    - role: file_sync
+    - role: feed_reader

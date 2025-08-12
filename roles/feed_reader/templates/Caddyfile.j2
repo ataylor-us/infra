@@ -1,0 +1,5 @@
+# freshrss
+rss.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ freshrss_port }}
+}

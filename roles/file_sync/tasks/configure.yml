@@ -1,0 +1,71 @@
+---
+- name: Allow Syncthing TCP
+  become: true
+  community.general.ufw:
+    rule: allow
+    comment: "Syncthing TCP Port"
+    proto: tcp
+    port: 22000
+- name: Allow Syncthing UDP
+  become: true
+  community.general.ufw:
+    rule: allow
+    comment: "Syncthing UDP Port"
+    proto: udp
+    port: 22000
+- name: Allow Syncthing UDP
+  become: true
+  community.general.ufw:
+    rule: allow
+    comment: "Syncthing UDP Port"
+    proto: udp
+    port: 21027
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: syncthing
+    hostname: "{{ inventory_hostname }}"
+    image: lscr.io/linuxserver/syncthing:{{ syncthing_version }}
+    state: quadlet
+    quadlet_filename: syncthing-container
+    network: host
+    volumes:
+      - /mnt/podman/syncthing:/config:rw
+    env:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/New_York
+    quadlet_options:
+      - AutoUpdate=registry
+      - Pull=always
+      - |
+        [Unit]
+        After=network-online.target nss-lookup.target
+        [Service]
+        Restart=always
+        [Install]
+        WantedBy=default.target
+  notify:
+    - Reload systemd for syncthing
+    - Restart syncthing
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/syncthing.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for syncthing
+    - Restart syncthing
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/syncthing.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

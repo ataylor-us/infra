@@ -2,5 +2,6 @@
 packages:
   - borgbackup
   - lz4
+  - sqlite
 pip_packages:
   - borgmatic=={{ borgmatic_version }}
