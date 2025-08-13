@@ -21,3 +21,8 @@
     - role: photos
     - role: file_sync
     - role: feed_reader
+    - role: bookmarks
+    - role: ebooks
+    - role: audiobooks
+    - role: version_control
+    - role: ai_client

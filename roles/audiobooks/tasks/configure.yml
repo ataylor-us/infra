@@ -1,0 +1,53 @@
+---
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: audiobookshelf
+    image: ghcr.io/advplyr/audiobookshelf:{{ audiobookshelf_version }}
+    state: quadlet
+    quadlet_filename: audiobookshelf-container
+    network: podman1
+    ports:
+      - 127.0.0.1:{{ audiobookshelf_port }}:80
+    volumes:
+      - /mnt/podman/audiobookshelf/config:/config:rw
+      - /mnt/podman/audiobookshelf/metadata:/metadata:rw
+      - /mnt/Audiobooks:/mnt/Audiobooks:ro
+    env:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/New_York
+    quadlet_options:
+      - AutoUpdate=registry
+      - Pull=always
+      - |
+        [Unit]
+        After=network-online.target nss-lookup.target
+        [Service]
+        Restart=always
+        [Install]
+        WantedBy=default.target
+  notify:
+    - Reload systemd for audiobookshelf
+    - Restart audiobooks
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/audiobookshelf.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for audiobookshelf
+    - Restart audiobookshelf
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/audiobookshelf.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

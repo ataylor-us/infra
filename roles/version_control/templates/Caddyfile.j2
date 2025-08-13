@@ -1,0 +1,5 @@
+# forgejo
+git.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ forgejo_port }}
+}
