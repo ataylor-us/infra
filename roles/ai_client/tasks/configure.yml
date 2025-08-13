@@ -1,0 +1,52 @@
+---
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: open-webui
+    image: ghcr.io/open-webui/open-webui:{{ open_webui_version }}
+    state: quadlet
+    env:
+      WEBUI_URL: https://chat.{{ domain_name }}
+      WEBUI_SECRET_KEY: "{{ open_webui_secret_key }}"
+      ENABLE_SIGNUP: false
+      ENABLE_OLLAMA_API: false
+    quadlet_filename: open-webui-container
+    network: podman1
+    ports:
+      - 127.0.0.1:{{ open_webui_port }}:8080
+    volumes:
+      - /mnt/podman/open-webui:/app/backend/data:rw
+    quadlet_options:
+      - AutoUpdate=registry
+      - Pull=always
+      - |
+        [Unit]
+        After=network-online.target nss-lookup.target
+        [Service]
+        Restart=always
+        [Install]
+        WantedBy=default.target
+  notify:
+    - Reload systemd for open-webui
+    - Restart open-webui
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/open_webui.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for open-webui
+    - Restart open-webui
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/open_webui.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

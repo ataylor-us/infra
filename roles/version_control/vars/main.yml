@@ -1,0 +1,6 @@
+---
+forgejo_version: 11
+forgejo_port: 13000
+enabled_services:
+  - forgejo-container.service
+  - caddy-container.service

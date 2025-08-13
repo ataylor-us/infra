@@ -1,0 +1,5 @@
+# karakeep
+bookmarks.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ karakeep_port }}
+}

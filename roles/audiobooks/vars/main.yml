@@ -1,0 +1,6 @@
+---
+audiobookshelf_version: 2.28.0
+audiobookshelf_port: 12080
+enabled_services:
+  - audiobookshelf-container.service
+  - caddy-container.service
