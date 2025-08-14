@@ -1,4 +1,6 @@
 ---
+# this is the same version in debian 13
+borgmatic_version: 1.9.14
 packages:
   - borgbackup
   - lz4
