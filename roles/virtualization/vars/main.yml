@@ -4,3 +4,8 @@ packages:
   - virtiofsd
 enabled_sockets:
   - libvirtd.socket
+qemu_machine: "q35"
+qemu_binary: "/usr/libexec/qemu-kvm"
+recipe_vps_name: "recipe_vps"
+recipe_vps_memory: "2097152"
+recipe_vps_vcpu: "2"

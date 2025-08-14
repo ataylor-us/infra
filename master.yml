@@ -1,9 +1,8 @@
 ---
-- name: Configure system
+- name: Configure hypervisor
   hosts: nuc
   vars_files:
-    - vars/public.yml
-    - vars/vault.yml
+    - vars/nuc_vault.yml
   roles:
     - role: geerlingguy.repo-epel
       become: true
