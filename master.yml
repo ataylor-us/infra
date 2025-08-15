@@ -25,3 +25,9 @@
     - role: audiobooks
     - role: version_control
     - role: ai_client
+- name: Configure recipe_vps
+  hosts: recipe_vps
+  vars_files:
+    - vars/recipe_vps_vault.yml
+  roles:
+    - role: system
