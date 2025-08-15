@@ -24,6 +24,23 @@
     mode: "0644"
     owner: 1000
   notify: Restart caddy
+- name: Create caddy opt config directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: /var/opt/caddy/config
+    state: directory
+    recurse: true
+- name: Create caddy opt data directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: /var/opt/caddy/data
+    state: directory
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
@@ -35,8 +52,8 @@
     network: host
     volumes:
       - /etc/caddy:/etc/caddy:ro
-      - /config
-      - /data
+      - /var/opt/caddy/config:/config:rw
+      - /var/opt/caddy/data:/data:rw
     quadlet_options:
       - AutoUpdate=registry
       - Pull=always
