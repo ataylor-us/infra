@@ -1,0 +1,6 @@
+---
+packages:
+  - htop
+  - cronie
+enabled_services:
+  - crond

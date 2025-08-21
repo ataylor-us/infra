@@ -1,51 +1,8 @@
 ---
-- name: Create a Quadlet file
-  become: true
-  containers.podman.podman_container:
-    name: forgejo
-    image: codeberg.org/forgejo/forgejo:{{ forgejo_version }}
-    state: quadlet
-    quadlet_filename: forgejo-container
-    network: podman1
-    env:
-      USE_UID: 1000
-      USE_GID: 1000
-    ports:
-      - 127.0.0.1:{{ forgejo_port }}:3000
-    volumes:
-      - /mnt/podman/forgejo:/data:rw
-      - /etc/localtime:/etc/localtime:ro
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
-  notify:
-    - Reload systemd for forgejo
-    - Restart forgejo
-- name: Generate Caddyfile
-  become: true
+- name: Configure Git user settings
   ansible.builtin.template:
-    src: Caddyfile.j2
-    dest: /etc/caddy/sites-enabled/forgejo.Caddyfile
-    group: 1000
+    src: gitconfig.j2
+    dest: "~/.gitconfig"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
     mode: "0644"
-    owner: 1000
-  notify:
-    - Reload systemd for forgejo
-    - Restart forgejo
-- name: Copy borgmatic config
-  become: true
-  ansible.builtin.template:
-    dest: /etc/borgmatic.d/forgejo.yaml
-    group: root
-    mode: "0600"
-    owner: root
-    src: config.yaml.j2
-- name: Flush handlers
-  ansible.builtin.meta: flush_handlers
