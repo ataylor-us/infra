@@ -9,7 +9,7 @@
     - role: system
     - role: hardware
     - role: firewall
-    - role: artis3n.tailscale.device
+    - role: artis3n.tailscale.machine
     - role: disks
     - role: notifications
     - role: backups
@@ -23,11 +23,26 @@
     - role: bookmarks
     - role: ebooks
     - role: audiobooks
-    - role: version_control
+    - role: version_control_server
     - role: ai_client
-- name: Configure recipe_vps
-  hosts: recipe_vps
+#- name: Configure recipe_vps
+#  hosts: recipe_vps
+#  vars_files:
+#    - vars/recipe_vps_vault.yml
+#  roles:
+#   - role: system
+- name: Configure client
+  hosts: client
   vars_files:
-    - vars/recipe_vps_vault.yml
+    - vars/client_vault.yml
   roles:
     - role: system
+    - role: artis3n.tailscale.machine
+    - role: backups
+    - role: journal
+    - role: credentials
+    - role: terminal
+    - role: automation
+    - role: version_control
+    - role: file_manager
+    - role: feed_client

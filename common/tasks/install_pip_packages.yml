@@ -4,8 +4,6 @@
   vars:
     packages:
       - pipx
-    pip_packages:
-      - pipx
 - name: Install package using pipx
   become: true
   community.general.pipx:

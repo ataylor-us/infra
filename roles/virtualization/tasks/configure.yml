@@ -17,14 +17,14 @@
     command: list_vms
   register: vm_list
   changed_when: false
-- name: Define vps
+- name: Define recipe vps
   become: true
   community.libvirt.virt:
     name: "{{ recipe_vps_name }}"
     command: define
     xml: "{{ lookup('template', 'recipe_vps.xml.j2') }}"
   when: recipe_vps_name not in (vm_list.list_vms | default([]))
-- name: Ensure vm is running
+- name: Ensure recipe vm is running
   become: true
   community.libvirt.virt:
     name: "{{ recipe_vps_name }}"
