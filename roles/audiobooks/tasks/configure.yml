@@ -12,7 +12,7 @@
     volumes:
       - /mnt/podman/audiobookshelf/config:/config:rw
       - /mnt/podman/audiobookshelf/metadata:/metadata:rw
-      - /mnt/Audiobooks:/mnt/Audiobooks:ro
+      - /mnt/podman/audiobookshelf/audiobooks:/audiobooks:ro
     env:
       PUID: 1000
       PGID: 1000
@@ -29,7 +29,7 @@
         WantedBy=default.target
   notify:
     - Reload systemd for audiobookshelf
-    - Restart audiobooks
+    - Restart audiobookshelf
 - name: Generate Caddyfile
   become: true
   ansible.builtin.template:
