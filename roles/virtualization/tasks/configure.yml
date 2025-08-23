@@ -30,3 +30,16 @@
     name: "{{ recipe_vps_name }}"
     state: running
     autostart: true
+- name: Define client vps
+  become: true
+  community.libvirt.virt:
+    name: "{{ client_vps_name }}"
+    command: define
+    xml: "{{ lookup('template', 'client_vps.xml.j2') }}"
+  when: client_vps_name not in (vm_list.list_vms | default([]))
+- name: Ensure vm is running
+  become: true
+  community.libvirt.virt:
+    name: "{{ client_vps_name }}"
+    state: running
+    autostart: true
