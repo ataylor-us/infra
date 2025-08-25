@@ -7,6 +7,7 @@
     - role: geerlingguy.repo-epel
       become: true
     - role: system
+    - role: editor
     - role: hardware
     - role: firewall
     - role: artis3n.tailscale.machine
@@ -37,6 +38,7 @@
     - vars/client_vault.yml
   roles:
     - role: system
+    - role: editor
     - role: artis3n.tailscale.machine
     - role: backups
     - role: journal
