@@ -1,0 +1,8 @@
+---
+- name: Ensure Neovim is the default editor
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    regexp: "^export EDITOR="
+    line: 'export EDITOR="nvim"'
+    create: true
+    state: present
