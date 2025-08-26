@@ -1,4 +1,4 @@
 ---
-caddy_version: 2.10.0-alpine
+caddy_version: 2.10.2-alpine
 enabled_services:
   - caddy-container.service
