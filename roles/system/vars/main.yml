@@ -3,5 +3,6 @@ packages:
   - htop
   - cronie
   - rsync
+  - tar
 enabled_services:
   - crond
