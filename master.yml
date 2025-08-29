@@ -8,14 +8,14 @@
       become: true
     - role: system
     - role: editor
+    - role: backups
+    - role: containers
     - role: hardware
     - role: firewall
     - role: artis3n.tailscale.machine
     - role: disks
     - role: notifications
-    - role: backups
     - role: virtualization
-    - role: containers
     - role: reverse_proxy
     - role: admin_interface
     - role: photos
@@ -26,12 +26,23 @@
     - role: audiobooks
     - role: version_control_server
     - role: ai_client
-#- name: Configure recipe_vps
-#  hosts: recipe_vps
-#  vars_files:
-#    - vars/recipe_vps_vault.yml
-#  roles:
-#   - role: system
+- name: Configure recipe_vps
+  hosts: recipe_vps
+  vars_files:
+    - vars/recipe_vps_vault.yml
+  roles:
+    - role: geerlingguy.repo-epel
+      become: true
+    - role: system
+    - role: editor
+    - role: backups
+    - role: firewall
+    - role: containers
+    - role: notifications
+    - role: artis3n.tailscale.machine
+    - role: reverse_proxy
+    - role: ai_client
+    - role: recipes
 - name: Configure client
   hosts: client
   vars_files:
