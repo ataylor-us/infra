@@ -1,0 +1,63 @@
+---
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: mealie
+    image: ghcr.io/mealie-recipes/mealie:{{ mealie_version }}
+    state: quadlet
+    quadlet_filename: mealie-container
+    network: podman1
+    env:
+      ALLOW_SIGNUP: "false"
+      PUID: 1000
+      PGID: 1000
+      TZ: America/New_York
+      BASE_URL: https://recipes.{{ domain_name }}
+      OPENAI_API_KEY: "{{ mealie_openai_key }}"
+      API_DOCS: "false"
+      OPENAI_SEND_DATABASE_DATA: "false"
+      SMTP_HOST: "{{ mealie_smtp_host }}"
+      SMTP_PORT: "{{ mealie_smtp_port }}"
+      SMTP_FROM_NAME: Mealie
+      SMTP_AUTH_STRATEGY: TLS
+      SMTP_FROM_EMAIL: mealie@{{ domain_name }}
+      SMTP_USER: mealie@{{ domain_name }}
+      SMTP_PASSWORD: "{{ mealie_smtp_password }}"
+    ports:
+      - 127.0.0.1:{{ mealie_port }}:9000
+    volumes:
+      - /mnt/podman/mealie:/app/data:rw
+    quadlet_options:
+      - AutoUpdate=registry
+      - Pull=always
+      - |
+        [Unit]
+        After=network-online.target nss-lookup.target
+        [Service]
+        Restart=always
+        [Install]
+        WantedBy=default.target
+  notify:
+    - Reload systemd for mealie
+    - Restart mealie
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/mealie.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for mealie
+    - Restart mealie
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/mealie.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2

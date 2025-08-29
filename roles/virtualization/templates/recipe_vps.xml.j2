@@ -1,9 +1,9 @@
 <domain type='kvm'>
   <name>{{ recipe_vps_name }}</name>
   <uuid>{{ recipe_vps_uuid }}</uuid>
-  <metadata>
-    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
-      <libosinfo:os id="http://ubuntu.com/ubuntu/24.04"/>
+  <metadata xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0" xmlns:cockpit_machines="https://github.com/cockpit-project/cockpit-machines">
+    <libosinfo:libosinfo>
+      <libosinfo:os id="http://oracle.com/ol/10.0"/>
     </libosinfo:libosinfo>
   </metadata>
   <memory unit='KiB'>{{ recipe_vps_memory }}</memory>
@@ -16,11 +16,8 @@
   <features>
     <acpi/>
     <apic/>
-    <vmport state='off'/>
   </features>
-  <cpu mode='host-passthrough' check='none' migratable='on'>
-    <topology sockets='{{ recipe_vps_vcpu }}' dies='1' clusters='1' cores='1' threads='1'/>
-  </cpu>
+  <cpu mode='host-passthrough' check='none' migratable='on'/>
   <clock offset='utc'>
     <timer name='rtc' tickpolicy='catchup'/>
     <timer name='pit' tickpolicy='delay'/>
@@ -122,7 +119,7 @@
       <address type='pci' domain='0x0000' bus='0x03' slot='0x00' function='0x0'/>
     </controller>
     <interface type='network'>
-      <mac address='{{ recipe_vps_mac }}'/>
+    <mac address='{{ recipe_vps_mac }}'/>
       <source network='default'/>
       <model type='virtio'/>
       <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
@@ -147,6 +144,7 @@
     <graphics type='vnc' port='-1' autoport='yes' listen='127.0.0.1'>
       <listen type='address' address='127.0.0.1'/>
     </graphics>
+    <audio id='1' type='none'/>
     <video>
       <model type='virtio' heads='1' primary='yes'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
@@ -161,3 +159,4 @@
     </rng>
   </devices>
 </domain>
+

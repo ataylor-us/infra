@@ -1,0 +1,9 @@
+# mealie
+https://recipes.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ mealie_port }}
+}
+https://recipe.{{ domain_name }} {
+  import cloudflare
+  redir https://recipes.{{ domain_name }}
+}
