@@ -13,6 +13,7 @@
     - role: hardware
     - role: firewall
     - role: artis3n.tailscale.machine
+      tailscale_args: "--advertise-exit-node"
     - role: disks
     - role: notifications
     - role: virtualization
