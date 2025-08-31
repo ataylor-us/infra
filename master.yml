@@ -1,62 +1,47 @@
 ---
-- name: Configure hypervisor
+- name: Base
+  hosts: all
+  roles:
+    - system
+    - editor
+    - backups
+    - artis3n.tailscale.machine
+- name: Server base
+  hosts: servers
+  roles:
+    - role: geerlingguy.repo-epel
+      become: true
+    - firewall
+    - containers
+    - notifications
+    - reverse_proxy
+- name: Client base
+  hosts: clients
+  roles:
+    - journal
+    - credentials
+    - terminal
+    - automation
+    - version_control
+    - file_manager
+    - feed_client
+- name: Nuc specific roles
   hosts: nuc
-  vars_files:
-    - vars/nuc_vault.yml
   roles:
-    - role: geerlingguy.repo-epel
-      become: true
-    - role: system
-    - role: editor
-    - role: backups
-    - role: containers
-    - role: hardware
-    - role: firewall
-    - role: artis3n.tailscale.machine
-      tailscale_args: "--advertise-exit-node"
-    - role: disks
-    - role: notifications
-    - role: virtualization
-    - role: reverse_proxy
-    - role: admin_interface
-    - role: photos
-    - role: file_sync
-    - role: feed_reader
-    - role: bookmarks
-    - role: ebooks
-    - role: audiobooks
-    - role: version_control_server
-    - role: ai_client
-- name: Configure recipe_vps
+    - hardware
+    - disks
+    - virtualization
+    - admin_interface
+    - photos
+    - file_sync
+    - feed_reader
+    - bookmarks
+    - ebooks
+    - audiobooks
+    - version_control_server
+    - ai_client
+- name: Recipe_vps specific roles
   hosts: recipe_vps
-  vars_files:
-    - vars/recipe_vps_vault.yml
   roles:
-    - role: geerlingguy.repo-epel
-      become: true
-    - role: system
-    - role: editor
-    - role: backups
-    - role: firewall
-    - role: containers
-    - role: notifications
-    - role: artis3n.tailscale.machine
-    - role: reverse_proxy
-    - role: ai_client
-    - role: recipes
-- name: Configure client
-  hosts: client
-  vars_files:
-    - vars/client_vault.yml
-  roles:
-    - role: system
-    - role: editor
-    - role: artis3n.tailscale.machine
-    - role: backups
-    - role: journal
-    - role: credentials
-    - role: terminal
-    - role: automation
-    - role: version_control
-    - role: file_manager
-    - role: feed_client
+    - recipes
+    - ai_client
