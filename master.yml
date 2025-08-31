@@ -2,36 +2,52 @@
 - name: Base
   hosts: all
   roles:
+    - role: geerlingguy.repo-epel
+      become: true
+      when:
+        - ansible_os_family == "RedHat"
+        - ansible_distribution != "Fedora"
     - system
     - editor
     - backups
+    - containers
+    - terminal
     - artis3n.tailscale.machine
 - name: Server base
   hosts: servers
   roles:
-    - role: geerlingguy.repo-epel
-      become: true
     - firewall
-    - containers
     - notifications
     - reverse_proxy
 - name: Client base
   hosts: clients
   roles:
-    - journal
     - credentials
-    - terminal
     - automation
     - version_control
     - file_manager
     - feed_client
-- name: Nuc specific roles
-  hosts: nuc
+- name: Client base
+  hosts: clients
+  roles:
+    - credentials
+    - automation
+    - version_control
+    - file_manager
+    - feed_client
+- name: Physical box specific roles
+  hosts: boxes
   roles:
     - hardware
     - disks
+- name: Hypervisor specific roles
+  hosts: hypervisors
+  roles:
     - virtualization
     - admin_interface
+- name: Nuc specific roles
+  hosts: nuc
+  roles:
     - photos
     - file_sync
     - feed_reader
@@ -45,3 +61,7 @@
   roles:
     - recipes
     - ai_client
+- name: Client_vps specific roles
+  hosts: client_vps
+  roles:
+    - journal

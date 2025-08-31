@@ -1,16 +1,19 @@
 ---
 # The default podman (podman0) network does not resolve hostnames by default
 - name: Ensure podman1 network is created
+  when: "'container_hosts' in group_names"
   become: true
   containers.podman.podman_network:
     name: podman1
     state: present
 - name: Allow all traffic on podman1
+  when: "'container_hosts' in group_names"
   become: true
   community.general.ufw:
     rule: allow
     interface_in: podman1
 - name: Allow forwarding to podman1
+  when: "'container_hosts' in group_names"
   become: true
   community.general.ufw:
     rule: allow
