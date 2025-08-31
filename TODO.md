@@ -1,1 +1,6 @@
 - [ ] Make virtualization vms take list of yaml keys
+- [ ] Use virtiofs to add homedir to vms
+- [ ] Re-do mini pc as client
+    - [ ] Export homedir to mini
+- [ ] Rethink group/host names
+    - [ ] Rename client to client_vps
