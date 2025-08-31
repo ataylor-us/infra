@@ -4,5 +4,6 @@
     path: "{{ ansible_env.HOME }}/.bashrc"
     regexp: "^export EDITOR="
     line: 'export EDITOR="nvim"'
+    mode: "0664"
     create: true
     state: present
