@@ -4,5 +4,6 @@ packages:
   - cronie
   - rsync
   - tar
+  - wget
 enabled_services:
   - crond
