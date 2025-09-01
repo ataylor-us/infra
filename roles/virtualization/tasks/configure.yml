@@ -17,29 +17,18 @@
     command: list_vms
   register: vm_list
   changed_when: false
-- name: Define recipe vps
+- name: Define vms
   become: true
   community.libvirt.virt:
-    name: "{{ recipe_vps_name }}"
+    name: "{{ item }}"
     command: define
-    xml: "{{ lookup('template', 'recipe_vps.xml.j2') }}"
-  when: recipe_vps_name not in (vm_list.list_vms | default([]))
-- name: Ensure recipe vm is running
+    xml: "{{ lookup('template', item ~ '.xml.j2') }}"
+  loop: "{{ defined_vms }}"
+  when: item not in (vm_list.list_vms | default([]))
+- name: Autostart vms
   become: true
   community.libvirt.virt:
-    name: "{{ recipe_vps_name }}"
+    name: "{{ item }}"
     state: running
     autostart: true
-- name: Define client vps
-  become: true
-  community.libvirt.virt:
-    name: "{{ client_vps_name }}"
-    command: define
-    xml: "{{ lookup('template', 'client_vps.xml.j2') }}"
-  when: client_vps_name not in (vm_list.list_vms | default([]))
-- name: Ensure vm is running
-  become: true
-  community.libvirt.virt:
-    name: "{{ client_vps_name }}"
-    state: running
-    autostart: true
+  loop: "{{ defined_vms }}"
