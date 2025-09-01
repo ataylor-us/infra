@@ -1,3 +1,3 @@
-- [ ] Use virtiofs to add homedir to vms
 - [ ] Re-do mini pc as client
     - [ ] Export homedir to mini
+- [ ] Improve update playbook
