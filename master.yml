@@ -19,6 +19,10 @@
     - firewall
     - notifications
     - reverse_proxy
+- name: Guest base
+  hosts: guests
+  roles:
+    - homedirs
 - name: Client base
   hosts: clients
   roles:

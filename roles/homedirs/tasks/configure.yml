@@ -1,0 +1,11 @@
+---
+- name: Mount homedir
+  become: true
+  when: "'hypervisors' not in group_names"
+  ansible.posix.mount:
+    path: /home/{{ ansible_env.USER }}
+    src: home-{{ ansible_env.USER }}
+    fstype: virtiofs
+    opts: nofail
+    # this might break a running ansible run, just add to fstab
+    state: present
