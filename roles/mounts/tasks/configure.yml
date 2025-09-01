@@ -1,0 +1,18 @@
+---
+- name: Create homedir mount directory
+  become: true
+  ansible.builtin.file:
+    group: root
+    mode: "0755"
+    owner: root
+    path: /media/{{ ansible_env.USER }}
+    state: directory
+- name: Mount homedir
+  become: true
+  when: "'hypervisors' not in group_names"
+  ansible.posix.mount:
+    path: /media/{{ ansible_env.USER }}
+    src: home-{{ ansible_env.USER }}
+    fstype: virtiofs
+    opts: nofail
+    state: mounted

@@ -22,7 +22,7 @@
 - name: Guest base
   hosts: guests
   roles:
-    - homedirs
+    - mounts
 - name: Client base
   hosts: clients
   roles:
