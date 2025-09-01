@@ -1,0 +1,12 @@
+---
+- name: Clean all machines
+  hosts: all
+  become: true
+  tasks:
+    - name: Autoremove unneeded packages installed as dependencies
+      ansible.builtin.dnf:
+        autoremove: true
+    - name: Prune podman images
+      ansible.builtin.command: podman image prune -af
+    - name: Prune podman volumes
+      ansible.builtin.command: podman volume prune -f
