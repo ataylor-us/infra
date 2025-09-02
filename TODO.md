@@ -1,4 +1,3 @@
-- [ ] hostname idempotency on workstation
 - [ ] Improve update playbook
 - [ ] Add defaults
     - [ ] Make sure that they're sane
