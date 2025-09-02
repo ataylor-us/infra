@@ -33,7 +33,7 @@ ansible-galaxy install -r requirements.yml
 
 ### Run playbook
 ```bash
-ansible-playbook playbooks/master.yml
+ansible-playbook master.yml
 ```
 
 ## Secrets
