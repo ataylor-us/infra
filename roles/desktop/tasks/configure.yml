@@ -1,0 +1,6 @@
+---
+- name: Prevent system sleep
+  become: true
+  ansible.builtin.systemd:
+    name: sleep.target
+    masked: true

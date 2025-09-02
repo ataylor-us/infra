@@ -44,6 +44,10 @@
   roles:
     - hardware
     - disks
+- name: Interactive box specific roles
+  hosts: interactive_boxes
+  roles:
+    - desktop
 - name: Hypervisor specific roles
   hosts: hypervisors
   roles:
