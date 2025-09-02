@@ -1,0 +1,15 @@
+---
+# TODO Make this email or log updates.
+# You should never use this as-is.
+- name: Update all machines & containers
+  hosts: all
+  tasks:
+    - name: Update all packages
+      become: true
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+    - name: Update all podman images
+      become: true
+      ansible.builtin.command: podman auto-update
