@@ -1,6 +1,5 @@
 - [ ] hostname idempotency on workstation
 - [ ] Improve update playbook
-- [ ] Pin ansible-galaxy requirement versions
 - [ ] Add defaults
     - [ ] Make sure that they're sane
         - [ ] And documented
