@@ -10,7 +10,7 @@ My services are shared using Tailscale.
 
 Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
-A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.  This goes into an encrypted fault in the `host_vars/{{ hostname }}/vault.yml` file.
+A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.  This goes into an encrypted vault in the `host_vars/{{ hostname }}/vault.yml` file.
 
 For notifications (mailrise), a [Pushover application key](https://pushover.net/) needs to be set for the host.  It should be set as `pushover_application_key` in the appropriate vault.
 
