@@ -13,11 +13,11 @@
     - containers
     - terminal
     - artis3n.tailscale.machine
+    - firewall
+    - notifications
 - name: Server base
   hosts: servers
   roles:
-    - firewall
-    - notifications
     - reverse_proxy
 - name: Guest base
   hosts: guests
