@@ -1,3 +1,5 @@
 ---
 packages:
   - git
+full_name: "{{ ansible_env.USER }}"
+email: "{{ ansible_env.USER }}@localhost"
