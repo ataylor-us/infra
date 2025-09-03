@@ -31,14 +31,6 @@
     - version_control
     - file_manager
     - feed_client
-- name: Client base
-  hosts: clients
-  roles:
-    - credentials
-    - automation
-    - version_control
-    - file_manager
-    - feed_client
 - name: Physical box specific roles
   hosts: boxes
   roles:
