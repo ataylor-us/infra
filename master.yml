@@ -25,6 +25,12 @@
     - mounts
 - name: Client base
   hosts: clients
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_tasks: common/tasks/install_packages.yml
+      vars:
+        packages:
+          - bash-color-prompt
   roles:
     - credentials
     - automation
