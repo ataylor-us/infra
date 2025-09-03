@@ -10,9 +10,13 @@ My services are shared using Tailscale.
 
 Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
+## Secrets
+
+Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
+
 ### Tailscale
 
-A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.  This goes into an encrypted vault in the `host_vars/{{ hostname }}/vault.yml` file.
+A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.
 
 ### Mail
 For notifications (mailrise), a [Pushover application key](https://pushover.net/) needs to be set for the host.  It should be set as `pushover_application_key` in the appropriate vault.
@@ -45,8 +49,3 @@ ansible-galaxy install -r requirements.yml
 ```bash
 ansible-playbook master.yml
 ```
-
-## Secrets
-
-+ Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
-
