@@ -29,8 +29,7 @@ Initializing the borg repo also needs to be done automatically.  After that, pop
 
 ## Usage
 
-### Ensure ssh is enabled:
-
+Ensure ssh is enabled:
 ```bash
 # systemctl enable --now sshd
 ```
