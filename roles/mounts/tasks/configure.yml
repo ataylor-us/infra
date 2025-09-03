@@ -2,9 +2,9 @@
 - name: Create homedir mount directory
   become: true
   ansible.builtin.file:
-    group: root
+    group: "{{ ansible_env.USER }}"
     mode: "0755"
-    owner: root
+    owner: "{{ ansible_env.USER }}"
     path: /media/{{ ansible_env.USER }}
     state: directory
 - name: Mount homedir
