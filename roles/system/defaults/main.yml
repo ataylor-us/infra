@@ -5,5 +5,6 @@ packages:
   - rsync
   - tar
   - wget
+  - bash-completion
 enabled_services:
   - crond
