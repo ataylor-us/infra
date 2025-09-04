@@ -16,3 +16,7 @@
       ansible.builtin.command: podman image prune -af
     - name: Prune podman volumes (User)
       ansible.builtin.command: podman volume prune -f
+    - name: Prune unused flatpak packages
+      when: "'interactive_boxes' in group_names"
+      become: true
+      ansible.builtin.command: flatpak remove --unused  -y
