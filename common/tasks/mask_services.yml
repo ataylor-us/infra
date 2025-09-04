@@ -1,0 +1,9 @@
+---
+- name: Mask services
+  ansible.builtin.systemd:
+    enabled: false
+    name: "{{ item }}"
+    state: stopped
+    masked: true
+  become: true
+  loop: "{{ masked_services }}"
