@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/forgejo*
+  - "{{ podman_data_dir }}/forgejo*"
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"
@@ -16,4 +16,4 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
   - name: gitea
-    path: /mnt/podman/forgejo/gitea/gitea.db
+    path: "{{ podman_data_dir }}/forgejo/gitea/gitea.db"

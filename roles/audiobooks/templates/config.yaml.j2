@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/audiobookshelf*
+  - "{{ podman_data_dir }}/audiobookshelf*"
   - /mnt/Audiobooks
 repositories:
     - path: '{{ remote_borg_repo_path }}'
@@ -17,4 +17,4 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
   - name: audiobookshelf
-    path: /mnt/podman/audiobookshelf/config/absdatabase.sqlite
+    path: "{{ podman_data_dir }}/audiobookshelf/config/absdatabase.sqlite"

@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/open-webui*
+  - "{{ podman_data_dir }}/open-webui*"
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"
@@ -16,6 +16,6 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
     - name: open-webui
-      path: /mnt/podman/open-webui/webui.db
+      path: "{{ podman_data_dir }}/open-webui/webui.db"
     - name: open-webui-chroma
-      path: /mnt/podman/open-webui/vector_db/chroma.sqlite3
+      path: "{{ podman_data_dir }}/open-webui/vector_db/chroma.sqlite3"

@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/mealie*
+  - "{{ podman_data_dir }}/mealie*"
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"
@@ -16,4 +16,4 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
     - name: mealie
-      path: /mnt/podman/mealie/mealie.db
+      path: "{{ podman_data_dir }}/mealie/mealie.db"

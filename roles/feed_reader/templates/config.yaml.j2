@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/freshrss*
+  - "{{ podman_data_dir }}/freshrss*"
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"
@@ -16,6 +16,6 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
   - name: freshrss-alex
-    path: /mnt/podman/freshrss/www/freshrss/data/users/alex/db.sqlite
+    path: "{{ podman_data_dir }}/freshrss/www/freshrss/data/users/alex/db.sqlite"
   - name: freshrss-_
-    path: /mnt/podman/freshrss/www/freshrss/data/users/_/db.sqlite
+    path: "{{ podman_data_dir }}/freshrss/www/freshrss/data/users/_/db.sqlite"

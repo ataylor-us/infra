@@ -1,5 +1,5 @@
 source_directories:
-  - /mnt/podman/calibre*
+  - "{{ podman_data_dir }}/calibre*"
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"
@@ -16,12 +16,12 @@ keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
   - name: calibre-metadata
-    path: "/mnt/podman/calibre/Calibre Library/metadata.db"
+    path: "{{ podman_data_dir }}/calibre/Calibre Library/metadata.db"
   - name: calibre-calnotes
-    path: "/mnt/podman/calibre/Calibre Library/.calnotes/notes.db"
+    path: "{{ podman_data_dir }}/calibre/Calibre Library/.calnotes/notes.db"
   - name: calibre-web-app
-    path: /mnt/podman/calibre-web/config/app.db
+    path: "{{ podman_data_dir }}/calibre-web/config/app.db"
   - name: calibre-web-gdrive
-    path: /mnt/podman/calibre-web/config/gdrive.db
+    path: "{{ podman_data_dir }}/calibre-web/config/gdrive.db"
   - name: calibre-web-cwa
-    path: /mnt/podman/calibre-web/config/cwa.db
+    path: "{{ podman_data_dir }}/calibre-web/config/cwa.db"
