@@ -8,7 +8,7 @@
     quadlet_filename: immich-redis-container
     network: podman1
     volumes:
-      - /mnt/podman/immich-redis:/data:rw
+      - "{{ podman_data_dir }}/immich-redis:/data:rw"
     quadlet_options:
       - AutoUpdate=registry
       - Pull=always
@@ -31,7 +31,7 @@
     quadlet_filename: immich-postgres-container
     network: podman1
     volumes:
-      - /mnt/podman/immich-postgres:/var/lib/postgresql/data:rw
+      - "{{ podman_data_dir }}/immich-postgres:/var/lib/postgresql/data:rw"
     env:
       POSTGRES_PASSWORD: "{{ immich_database_password }}"
       POSTGRES_USER: postgres
@@ -62,7 +62,7 @@
     network: podman1
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/podman/immich-server:/usr/src/app/upload:rw
+      - "{{ podman_data_dir }}/immich-server:/usr/src/app/upload:rw"
     env:
       TZ: America/New_York
       DB_PASSWORD: "{{ immich_database_password }}"
@@ -93,7 +93,7 @@
     quadlet_filename: immich-machine-learning-container
     network: podman1
     volumes:
-      - /mnt/podman/immich-machine-learning:/cache:rw
+      - "{{ podman_data_dir }}/immich-machine-learning:/cache:rw"
     quadlet_options:
       - AutoUpdate=registry
       - Pull=always

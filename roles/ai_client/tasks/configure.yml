@@ -15,7 +15,7 @@
     ports:
       - 127.0.0.1:{{ open_webui_port }}:8080
     volumes:
-      - /mnt/podman/open-webui:/app/backend/data:rw
+      - "{{ podman_data_dir }}/open-webui:/app/backend/data:rw"
     quadlet_options:
       - AutoUpdate=registry
       - Pull=always

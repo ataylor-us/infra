@@ -30,7 +30,7 @@
     quadlet_filename: syncthing-container
     network: host
     volumes:
-      - /mnt/podman/syncthing:/config:rw
+      - "{{ podman_data_dir }}/syncthing:/config:rw"
     env:
       PUID: 1000
       PGID: 1000
