@@ -1,4 +1,12 @@
 ---
+- name: Create config directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/freshrss"
+    state: directory
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
