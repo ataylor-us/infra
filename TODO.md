@@ -1,6 +1,5 @@
 - [ ] Test that sleep/suspend settings on workstation work allow monitor to dim & auto logout works
 - [ ] Ensure variables are used for podman containers as much as possible
-- [ ] Create directory script that takes list of values
 - [ ] Improve update playbook
 - [ ] Add defaults
     - [ ] Make sure that they're sane
