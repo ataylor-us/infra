@@ -10,9 +10,9 @@
     ports:
       - 127.0.0.1:{{ audiobookshelf_port }}:80
     volumes:
-      - /mnt/podman/audiobookshelf/config:/config:rw
-      - /mnt/podman/audiobookshelf/metadata:/metadata:rw
-      - /mnt/podman/audiobookshelf/audiobooks:/audiobooks:ro
+      - "{{ podman_data_dir }}/audiobookshelf/config:/config:rw"
+      - "{{ podman_data_dir }}/audiobookshelf/metadata:/metadata:rw"
+      - "{{ podman_data_dir }}/audiobookshelf/audiobooks:/audiobooks:ro"
     env:
       PUID: 1000
       PGID: 1000

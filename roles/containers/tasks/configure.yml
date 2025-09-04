@@ -1,4 +1,12 @@
 ---
+- name: Create podman data directory
+  become: true
+  ansible.builtin.file:
+    group: root
+    mode: "0755"
+    owner: root
+    path: "{{ podman_data_dir }}"
+    state: directory
 # The default podman (podman0) network does not resolve hostnames by default
 - name: Ensure podman1 network is created
   when: "'container_hosts' in group_names"

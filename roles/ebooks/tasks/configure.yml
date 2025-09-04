@@ -15,9 +15,9 @@
     quadlet_filename: calibre-web-container
     network: host
     volumes:
-      - /mnt/podman/calibre-web/config:/config:rw
-      - /mnt/podman/calibre-web/data:/cwa-book-ingest:rw
-      - /mnt/podman/calibre/Calibre Library:/calibre-library:rw
+      - "{{ podman_data_dir }}/calibre-web/config:/config:rw"
+      - "{{ podman_data_dir }}/calibre-web/data:/cwa-book-ingest:rw"
+      - "{{ podman_data_dir }}/calibre/Calibre Library:/calibre-library:rw"
     env:
       PUID: 1000
       PGID: 1000

@@ -13,7 +13,7 @@
     ports:
       - 127.0.0.1:{{ forgejo_port }}:3000
     volumes:
-      - /mnt/podman/forgejo:/data:rw
+      - "{{ podman_data_dir }}/forgejo:/data:rw"
       - /etc/localtime:/etc/localtime:ro
     quadlet_options:
       - AutoUpdate=registry
