@@ -15,6 +15,14 @@
     owner: 1000
     path: /etc/caddy/sites-enabled
     state: directory
+- name: Create caddy directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/caddy"
+    state: directory
 - name: Create caddy config directory
   become: true
   ansible.builtin.file:
@@ -23,7 +31,6 @@
     owner: 1000
     path: "{{ podman_data_dir }}/caddy/config"
     state: directory
-    recurse: true
 - name: Create caddy data directory
   become: true
   ansible.builtin.file:
