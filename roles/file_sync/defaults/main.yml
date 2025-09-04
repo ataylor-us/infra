@@ -3,4 +3,5 @@ syncthing_port: 8384
 syncthing_version: 1.30.0
 enabled_services:
   - syncthing-container.service
-  - caddy-container.service
+# TODO: Caddy should only be restarted if this it's a container_host
+# - caddy-container.service

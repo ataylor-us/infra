@@ -1,4 +1,12 @@
 ---
+- name: Create syncthing config directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/syncthing"
+    state: directory
 - name: Allow Syncthing TCP
   become: true
   community.general.ufw:
@@ -49,6 +57,7 @@
     - Reload systemd for syncthing
     - Restart syncthing
 - name: Generate Caddyfile
+  when: "'container_hosts' in group_names"
   become: true
   ansible.builtin.template:
     src: Caddyfile.j2
