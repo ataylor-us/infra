@@ -1,3 +1,6 @@
+- [ ] Ensure variables are used for podman containers as much as possible
+- [ ] Create directory script that takes list of values
+- [ ] Add syncthing container to workstation without using reverse_proxy
 - [ ] Improve update playbook
 - [ ] Add defaults
     - [ ] Make sure that they're sane
