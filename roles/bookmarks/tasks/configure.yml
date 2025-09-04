@@ -1,4 +1,15 @@
 ---
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/{{ item }}"
+    state: directory
+  loop:
+    - karakeep-meilisearch
+    - karakeep-server
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:

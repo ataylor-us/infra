@@ -1,4 +1,33 @@
 ---
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/{{ item }}"
+    state: directory
+  loop:
+    - immich-server
+    - immich-machine-learning
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    # The container enforces this mode and gid
+    mode: "0700"
+    owner: 999
+    path: "{{ podman_data_dir }}/immich-postgres"
+    state: directory
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    # The container enforces this gid
+    owner: 999
+    path: "{{ podman_data_dir }}/immich-redis"
+    state: directory
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
