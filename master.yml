@@ -45,7 +45,6 @@
 - name: Interactive box specific roles
   hosts: interactive_boxes
   roles:
-    - desktop
     - file_sync
   tasks:
     - name: Install packages

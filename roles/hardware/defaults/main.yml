@@ -1,5 +1,8 @@
 ---
 packages:
   - thermald
+masked_services:
+  - sleep.target
+  - suspend.target
 enabled_services:
   - thermald.service
