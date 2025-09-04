@@ -46,6 +46,7 @@
   hosts: interactive_boxes
   roles:
     - desktop
+    - file_sync
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml

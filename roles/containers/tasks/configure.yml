@@ -9,6 +9,7 @@
     state: directory
 # The default podman (podman0) network does not resolve hostnames by default
 - name: Ensure podman1 network is created
+  # You don't need to make firewall rules if podman is only being used for testing/dev purposes
   when: "'container_hosts' in group_names"
   become: true
   containers.podman.podman_network:
