@@ -60,6 +60,7 @@
           - com.visualstudio.code
           - com.parsecgaming.parsec
           - net.ankiweb.Anki
+          - me.kozec.syncthingtk
 - name: Hypervisor specific roles
   hosts: hypervisors
   roles:
