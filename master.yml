@@ -46,6 +46,20 @@
   hosts: interactive_boxes
   roles:
     - desktop
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_tasks: common/tasks/install_packages.yml
+      vars:
+        packages:
+          - firefox
+    - name: Install flatpak packages
+      ansible.builtin.import_tasks: common/tasks/install_flatpak_packages.yml
+      vars:
+        flatpaks:
+          - md.obsidian.Obsidian
+          - com.visualstudio.code
+          - com.parsecgaming.parsec
+          - net.ankiweb.Anki
 - name: Hypervisor specific roles
   hosts: hypervisors
   roles:

@@ -1,0 +1,19 @@
+---
+- name: Install packages
+  ansible.builtin.import_tasks: common/tasks/install_packages.yml
+  vars:
+    packages:
+      - flatpak
+- name: Ensure Flathub remote is added
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+- name: Install packages using flatpak
+  become: true
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+    # Unless things have changed in the past couple years, *most* flatpaks just come from flathub
+    remote: flathub
+  loop: "{{ flatpaks }}"
