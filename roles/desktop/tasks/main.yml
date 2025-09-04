@@ -1,3 +1,0 @@
----
-- name: Mask services
-  ansible.builtin.import_tasks: common/tasks/mask_services.yml
