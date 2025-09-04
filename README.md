@@ -44,7 +44,12 @@ ssh-copy-id `#hostname or ip`
 ansible-galaxy install -r requirements.yml 
 ```
 
-### Run playbook
+### Run full playbook
 ```bash
 ansible-playbook master.yml
+```
+
+It's also possible to run against a particular group, which can help speed things up if testing small changes
+```bash
+ansible-playbook master.yml --limit interactive_boxes
 ```
