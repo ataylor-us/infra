@@ -92,6 +92,14 @@
     - audiobooks
     - version_control_server
     - ai_client
+- name: Workstation specific roles
+  hosts: workstation
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_tasks: common/tasks/install_packages.yml
+      vars:
+        packages:
+          - intel-media-driver
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
