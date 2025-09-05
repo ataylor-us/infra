@@ -7,6 +7,10 @@
       when:
         - ansible_os_family == "RedHat"
         - ansible_distribution != "Fedora"
+    - role: buluma.rpmfusion
+      become: true
+      when:
+        - ansible_distribution == "Fedora"
     - system
     - editor
     - backups
