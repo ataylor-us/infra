@@ -1,9 +1,9 @@
 ---
 - name: Create config directories
   ansible.builtin.file:
-    group: 1000
+    group: "{{ ansible_env.USER }}"
     mode: "0755"
-    owner: 1000
+    owner: "{{ ansible_env.USER }}"
     path: "~/.config/{{ item }}"
     state: directory
   loop:
@@ -11,9 +11,9 @@
     - msmtp
 - name: Create cache directory
   ansible.builtin.file:
-    group: 1000
+    group: "{{ ansible_env.USER }}"
     mode: "0755"
-    owner: 1000
+    owner: "{{ ansible_env.USER }}"
     path: "~/.cache/mutt"
     state: directory
 - name: Configure neomutt settings
@@ -41,9 +41,9 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: ~/.config/mutt/
-    group: 1000
+    group: "{{ ansible_env.USER }}"
     mode: "0644"
-    owner: 1000
+    owner: "{{ ansible_env.USER }}"
   loop:
     - vimrc
     - mailcap
