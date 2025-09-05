@@ -1,0 +1,49 @@
+---
+- name: Create config directories
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "~/.config/{{ item }}"
+    state: directory
+  loop:
+    - mutt
+    - msmtp
+- name: Create cache directory
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "~/.cache/mutt"
+    state: directory
+- name: Configure neomutt settings
+  ansible.builtin.template:
+    src: muttrc.j2
+    dest: "~/.config/mutt/muttrc"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Configure neomutt settings
+  ansible.builtin.template:
+    src: signature.j2
+    dest: "~/.config/mutt/signature"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Configure neomutt settings
+  ansible.builtin.template:
+    src: msmtprc.j2
+    dest: "~/.config/msmtp/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Copy neomutt files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: ~/.config/mutt/
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  loop:
+    - vimrc
+    - mailcap
