@@ -26,7 +26,7 @@ Backups use borgmatic (typically hosted on [borgbase](https://www.borgbase.com/)
 Initializing the borg repo also needs to be done automatically.  After that, populate the `{{ remote_borg_repo_path }}` and `{{ borg_passphrase }}` variables.
 
 ### CalDAV/CardDAV
-Vdirsyncer setup (`yes | vdirsyncer discover') and syncing (`vdirsyncer sync;vdirsyncer metasync`) are handled manually.  Conflicts can happen, and I don't want events to be merged without my oversight.
+Vdirsyncer setup (`yes | vdirsyncer discover`) and syncing (`vdirsyncer sync;vdirsyncer metasync`) are handled manually.  Conflicts can happen, and I don't want events to be merged without my oversight.
 
 ## Usage
 
