@@ -2,3 +2,4 @@
 test.yml
 roles/private
 .ansible
+.vscode
