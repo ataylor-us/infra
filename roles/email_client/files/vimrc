@@ -1,0 +1,6 @@
+set spell
+syntax on
+" set full width emails
+autocmd VimEnter,Colorscheme * :set wrap
+autocmd VimEnter,Colorscheme * :set linebreak
+autocmd VimEnter,Colorscheme * :set textwidth=0

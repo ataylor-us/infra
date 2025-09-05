@@ -38,6 +38,7 @@
     - file_manager
     - feed_client
     - pim_client
+    - email_client
 - name: Physical box specific roles
   hosts: boxes
   roles:

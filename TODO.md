@@ -1,3 +1,4 @@
+- [ ] Clean up & comment muttrc
 - [ ] Test that sleep/suspend settings on workstation work allow monitor to dim & auto logout works
 - [ ] Ensure variables are used for podman containers as much as possible
 - [ ] Improve update playbook
