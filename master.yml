@@ -37,6 +37,7 @@
     - version_control
     - file_manager
     - feed_client
+    - pim_client
 - name: Physical box specific roles
   hosts: boxes
   roles:

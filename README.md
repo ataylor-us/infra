@@ -7,25 +7,26 @@ Currently, I run most of my containers on one hypervisor which runs EL10. The hy
 My services are shared using Tailscale.
 
 ## Adding a new host
-
 Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
 ## Secrets
-
 Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
 
-### Tailscale
+## Manual Steps
 
+### Tailscale
 A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.
 
 ### Mail
 For notifications (mailrise), a [Pushover application key](https://pushover.net/) needs to be set for the host.  It should be set as `pushover_application_key` in the appropriate vault.
 
 ### Backups
-
 Backups use borgmatic (typically hosted on [borgbase](https://www.borgbase.com/)), use a pinned borgmatic package.  A root ssh key should be generated and propegated to the receiving server. This is not done manually.
 
 Initializing the borg repo also needs to be done automatically.  After that, populate the `{{ remote_borg_repo_path }}` and `{{ borg_passphrase }}` variables.
+
+### CalDAV/CardDAV
+Vdirsyncer setup (`yes | vdirsyncer discover') and syncing (`vdirsyncer sync;vdirsyncer metasync`) are handled manually.  Conflicts can happen, and I don't want events to be merged without my oversight.
 
 ## Usage
 

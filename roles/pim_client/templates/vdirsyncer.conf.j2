@@ -1,0 +1,59 @@
+[general]
+# A folder where vdirsyncer can store some metadata about each pair.
+status_path = "{{ vdirsyncer_directory }}/status/"
+
+# CARDDAV
+[pair contacts]
+a = "contacts_local"
+b = "contacts_remote"
+collections = ["from a", "from b"]
+metadata = ["displayname"]
+conflict_resolution = "b wins"
+[storage contacts_local]
+# A storage references actual data on a remote server or on the local disk.
+# Similar to repositories in OfflineIMAP.
+type = "filesystem"
+path = "{{ vdirsyncer_directory }}/contacts"
+fileext = ".vcf"
+
+[storage contacts_remote]
+type = "carddav"
+url = "{{ carddav_url }}"
+username = "{{ carddav_username }}"
+password.fetch = ["command", "bw", "get", "password", "88059098-4f7a-438f-b681-b34f00c0ce47"]
+
+# CALDAV
+[pair calendar]
+a = "calendar_local"
+b = "calendar_remote"
+collections = ["from a", "from b"]
+
+# Calendars also have a color property
+metadata = ["displayname", "color"]
+conflict_resolution = "b wins"
+
+[storage calendar_local]
+type = "filesystem"
+path = "{{ vdirsyncer_directory }}/calendars"
+fileext = ".ics"
+
+[storage calendar_remote]
+type = "caldav"
+url = "{{ caldav_url }}"
+username = "{{ caldav_username }}"
+password.fetch = ["command", "bw", "get", "password", "88059098-4f7a-438f-b681-b34f00c0ce47"]
+
+[pair holidays]
+a = "holidays_local"
+b = "holidays_remote"
+collections = null
+
+[storage holidays_local]
+type = "filesystem"
+path = "{{ vdirsyncer_directory }}/calendars-ro/holidays"
+fileext = ".ics"
+
+[storage holidays_remote]
+type = "http"
+url = "https://p24-calendars.icloud.com/holidays/us_en.ics"
+

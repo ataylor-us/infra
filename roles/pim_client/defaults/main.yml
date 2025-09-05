@@ -1,0 +1,6 @@
+---
+vdirsyncer_directory: "~/.local/share/vdirsyncer"
+packages:
+  - vdirsyncer
+  - khal
+  - khard
