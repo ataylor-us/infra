@@ -1,0 +1,33 @@
+---
+- name: Create config directories
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "~/.config/{{ item }}"
+    state: directory
+  loop:
+    - vdirsyncer
+    - khard
+    - khal
+- name: Configure vdirsyncer settings
+  ansible.builtin.template:
+    src: vdirsyncer.conf.j2
+    dest: "~/.config/vdirsyncer/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Configure khard settings
+  ansible.builtin.template:
+    src: khard.conf.j2
+    dest: "~/.config/khard/khard.conf"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Configure khal settings
+  ansible.builtin.template:
+    src: khal.conf.j2
+    dest: "~/.config/khal/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
