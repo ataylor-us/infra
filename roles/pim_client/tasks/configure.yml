@@ -1,9 +1,9 @@
 ---
 - name: Create config directories
   ansible.builtin.file:
-    group: 1000
+    group: "{{ ansible_env.USER }}"
     mode: "0755"
-    owner: 1000
+    owner: "{{ ansible_env.USER }}"
     path: "~/.config/{{ item }}"
     state: directory
   loop:
