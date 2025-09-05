@@ -1,0 +1,10 @@
+---
+- name: Sync all clients
+  hosts: clients
+  tasks:
+    - name: Sync bitwarden
+      ansible.builtin.command: bw sync
+    - name: Sync CalDAV & CardDAV
+      ansible.builtin.command: vdirsyncer sync
+    - name: Sync CalDAV & CardDAV metadata
+      ansible.builtin.command: vdirsyncer metasync
