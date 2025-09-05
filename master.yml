@@ -48,6 +48,7 @@
   hosts: interactive_boxes
   roles:
     - file_sync
+    - ide
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
@@ -59,7 +60,6 @@
       vars:
         flatpaks:
           - md.obsidian.Obsidian
-          - com.visualstudio.code
           - com.parsecgaming.parsec
           - net.ankiweb.Anki
           - com.discordapp.Discord

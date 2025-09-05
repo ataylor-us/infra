@@ -1,0 +1,24 @@
+---
+# I would've loved to use the flatpak, but I can't seem to integrate it with the hosts neovim binary.
+# https://code.visualstudio.com/docs/setup/linux
+- name: Import Microsoft GPG key
+  become: true
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc
+- name: Add vscode repo
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/yum.repos.d/vscode.repo
+    content: |
+      [code]
+      name=Visual Studio Code
+      baseurl=https://packages.microsoft.com/yumrepos/vscode
+      enabled=1
+      autorefresh=1
+      type=rpm-md
+      gpgcheck=1
+      gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+    owner: root
+    group: root
+    mode: "0644"
