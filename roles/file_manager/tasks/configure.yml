@@ -1,0 +1,15 @@
+---
+- name: Create config directory
+  ansible.builtin.file:
+    group: "{{ ansible_env.USER }}"
+    mode: "0755"
+    owner: "{{ ansible_env.USER }}"
+    path: "~/.config/ranger"
+    state: directory
+- name: Copy neomutt files
+  ansible.builtin.copy:
+    src: rc.conf
+    dest: ~/.config/ranger/rc.conf
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+    owner: "{{ ansible_env.USER }}"
