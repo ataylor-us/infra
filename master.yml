@@ -59,6 +59,8 @@
       vars:
         packages:
           - firefox
+          - gnome-extensions-app
+          - gnome-shell-extension-caffeine
     - name: Install flatpak packages
       ansible.builtin.import_tasks: common/tasks/install_flatpak_packages.yml
       vars:
