@@ -3,7 +3,7 @@ host {{ personal_email_imap_domain }}
 port 465
 from {{ personal_email }}
 user {{ personal_email }}
-passwordeval "bw get password e08469d2-25a9-43cc-bb8a-b205011cddf4"
+passwordeval "{{ personal_mail_pass_command }}"
 auth on
 tls on
 #tls_trust_file	/etc/ssl/cert.pem
