@@ -106,7 +106,7 @@ set postponed = "+Drafts"
 set trash = "+Trash"
 set record = "+Sent"
 set imap_user = "{{ personal_email }}"
-set imap_pass = "`bw get password e08469d2-25a9-43cc-bb8a-b205011cddf4`"
+set imap_pass = "`{{ personal_mail_pass_command }}`"
 set ssl_starttls = yes
 set ssl_force_tls = yes
 mailboxes "=INBOX" "=Drafts" "=Sent" "=Archive" "=Spam" "=Junk" "=Trash"
