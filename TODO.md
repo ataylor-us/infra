@@ -1,5 +1,3 @@
 - [ ] Clean up & comment muttrc
 - [ ] Improve update playbook
-- [ ] Add defaults
-    - [ ] Make sure that they're sane
-        - [ ] And documented
+- [ ] Document variables needed for roles
