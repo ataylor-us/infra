@@ -13,6 +13,10 @@
     - name: Update all podman images
       become: true
       ansible.builtin.command: podman auto-update
+    - name: Update snaps
+      when: "'clients' in group_names"
+      become: true
+      ansible.builtin.command: snap refresh
     - name: Update all flatpak packages
       when: "'interactive_boxes' in group_names"
       become: true
