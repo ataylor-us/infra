@@ -17,7 +17,7 @@ Vault secrets are handled by Bitwarden, typically it's best to add the key via e
 ### Tailscale
 A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.
 
-### Mail
+### System mail (Notifications)
 For notifications (mailrise), a [Pushover application key](https://pushover.net/) needs to be set for the host.  It should be set as `pushover_application_key` in the appropriate vault.
 
 ### Backups
