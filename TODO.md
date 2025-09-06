@@ -1,5 +1,4 @@
 - [ ] Clean up & comment muttrc
-- [ ] Ensure variables are used for podman containers as much as possible
 - [ ] Improve update playbook
 - [ ] Add defaults
     - [ ] Make sure that they're sane
