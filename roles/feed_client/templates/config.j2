@@ -4,7 +4,7 @@ reload-threads 100
 auto-reload yes
 freshrss-url "https://{{ freshrss_domain }}/api/greader.php"
 freshrss-login "{{ ansible_env.USER }}"
-freshrss-passwordeval "bw get password cb56dcc6-e4b8-4e26-a2fd-b33d00dad147"
+freshrss-passwordeval "{{ freshrss_pass_command }}"
 freshrss-flag-star "s"
 bind-key j down feedlist
 bind-key k up feedlist
