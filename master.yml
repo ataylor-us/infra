@@ -88,6 +88,43 @@
         fstype: auto
         opts: nofail
         state: mounted
+    - name: Check /var/lib/libvirt/images
+      become: true
+      ansible.builtin.stat:
+        path: /var/lib/libvirt/images
+        follow: false
+      register: libvirt_images_dir
+    - name: Check /var/lib/libvirt/images for existing files
+      ansible.builtin.find:
+        paths: /var/lib/libvirt/images
+        file_type: any
+        hidden: true
+        recurse: true
+      register: libvirt_images_contents
+      when: libvirt_images_dir.stat.isdir
+    - name: Abort if /var/lib/libvirt/images is not empty
+      ansible.builtin.fail:
+        msg: "Failing!  Libvirt image directory is not empty."
+      when:
+        - libvirt_images_dir.stat.isdir
+        - (libvirt_images_contents.matched | default(0)) > 0
+    # Could be overkill--but I am being incredibly careful here to not delete any vms.
+    - name: Remove /var/lib/libvirt/images (if it is an empty directory)
+      become: true
+      ansible.builtin.file:
+        path: /var/lib/libvirt/images
+        state: absent
+      when:
+        - libvirt_images_dir.stat.exists
+        - libvirt_images_dir.stat.isdir
+        - libvirt_images_dir.stat.lnk_source is not defined
+        - (libvirt_images_contents.matched | default(0)) == 0
+    - name: Link libvirt images
+      become: true
+      ansible.builtin.file:
+        src: /mnt/libvirt/images
+        dest: /var/lib/libvirt/images
+        state: link
   roles:
     - photos
     - file_sync
