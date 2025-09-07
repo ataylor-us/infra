@@ -108,12 +108,12 @@
       when:
         - libvirt_images_dir.stat.isdir
         - (libvirt_images_contents.matched | default(0)) > 0
-    # Could be overkill--but I am being incredibly careful here to not delete any vms.
     - name: Remove /var/lib/libvirt/images (if it is an empty directory)
       become: true
       ansible.builtin.file:
         path: /var/lib/libvirt/images
         state: absent
+    # Could be overkill--but I am being incredibly careful here to not delete any vms.
       when:
         - libvirt_images_dir.stat.exists
         - libvirt_images_dir.stat.isdir
