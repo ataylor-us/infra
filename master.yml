@@ -113,7 +113,7 @@
       ansible.builtin.file:
         path: /var/lib/libvirt/images
         state: absent
-    # Could be overkill--but I am being incredibly careful here to not delete any vms.
+      # Could be overkill--but I am being incredibly careful here to not delete any vms.
       when:
         - libvirt_images_dir.stat.exists
         - libvirt_images_dir.stat.isdir
