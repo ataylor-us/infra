@@ -43,14 +43,7 @@
     user: 999:999
     volumes:
       - /etc/mailrise.conf:/etc/mailrise.conf:ro
-    quadlet_options:
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for mailrise
     - Restart mailrise

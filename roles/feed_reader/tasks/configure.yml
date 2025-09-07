@@ -23,14 +23,7 @@
       PUID: 1000
       PGID: 1000
       TZ: America/New_York
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for freshrss
     - Restart freshrss

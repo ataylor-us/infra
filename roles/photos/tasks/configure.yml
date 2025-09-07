@@ -38,16 +38,7 @@
     network: podman1
     volumes:
       - "{{ podman_data_dir }}/immich-redis:/data:rw"
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich
     - Restart immich
@@ -66,16 +57,7 @@
       POSTGRES_USER: postgres
       POSTGRES_DB: immich
       POSTGRES_INITDB_ARGS: --data-checksums
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=immich-redis.service network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich
     - Restart immich
@@ -100,16 +82,7 @@
       DB_HOSTNAME: immich-postgres
       REDIS_HOSTNAME: immich-redis
       IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=immich-machine-learning.service immich-redis-container.service immich-postgres-container.service network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich
     - Restart immich
@@ -123,16 +96,7 @@
     network: podman1
     volumes:
       - "{{ podman_data_dir }}/immich-machine-learning:/cache:rw"
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich
     - Restart immich
