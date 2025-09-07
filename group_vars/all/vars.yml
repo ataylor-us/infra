@@ -3,3 +3,15 @@ first_name: "Alex"
 full_name: "Alex Taylor"
 email: "ataylor@posteo.us"
 podman_data_dir: "/var/opt"
+default_quadlet_options:
+  - AutoUpdate=registry
+  - Pull=always
+  - |
+    [Unit]
+    After=network-online.target nss-lookup.target
+
+    [Service]
+    Restart=always
+
+    [Install]
+    WantedBy=default.target

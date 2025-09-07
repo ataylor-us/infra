@@ -1,4 +1,3 @@
-- [ ] Standardized podman quadlet systemd options & turn into variables
 - [ ] Clean up & comment muttrc
 - [ ] Improve update playbook
 - [ ] Document variables needed for roles

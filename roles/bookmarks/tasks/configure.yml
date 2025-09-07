@@ -26,16 +26,7 @@
       NEXTAUTH_SECRET: "{{ karakeep_nextauth_secret }}"
       MEILI_MASTER_KEY: "{{ karakeep_meili_master_key }}"
       NEXTAUTH_URL: http://localhost:3000
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for karakeep
     - Restart karakeep
@@ -54,16 +45,7 @@
       - --remote-debugging-address=0.0.0.0
       - --remote-debugging-port=9222
       - --hide-scrollbars
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        After=network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for karakeep
     - Restart karakeep
@@ -94,17 +76,7 @@
       CRAWLER_VIDEO_DOWNLOAD: "true"
       CRAWLER_VIDEO_DOWNLOAD_MAX_SIZE: 250
       DISABLE_SIGNUPS: "true"
-    quadlet_options:
-      - AutoUpdate=registry
-      - Pull=always
-      - |
-        [Unit]
-        [Unit]
-        After=karakeep-chrome.service karakeep-meilisearch.service network-online.target nss-lookup.target
-        [Service]
-        Restart=always
-        [Install]
-        WantedBy=default.target
+    quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for karakeep
     - Restart karakeep
