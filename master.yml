@@ -137,6 +137,14 @@
 - name: Workstation specific roles
   hosts: workstation
   tasks:
+    - name: Mount internal drive
+      become: true
+      ansible.posix.mount:
+        path: /home
+        src: UUID=06a2f395-2059-4bff-b1c9-ddf5889012dc
+        fstype: auto
+        opts: defaults
+        state: mounted
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
       vars:
