@@ -1,5 +1,4 @@
-# open-webui
-https://chat.{{ domain_name }} {
+https://{{ subdomain_name }}.{{ domain_name }} {
   import cloudflare
   reverse_proxy localhost:{{ open_webui_port }}
 }

@@ -1,4 +1,3 @@
-- [ ] Make (sub)-domains default variables
 - [ ] Clean up & comment muttrc
 - [ ] Improve update playbook
 - [ ] Document variables needed for roles

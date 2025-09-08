@@ -14,7 +14,7 @@
     image: ghcr.io/open-webui/open-webui:{{ open_webui_version }}
     state: quadlet
     env:
-      WEBUI_URL: https://chat.{{ domain_name }}
+      WEBUI_URL: https://{{ subdomain_name }}.{{ domain_name }}
       WEBUI_SECRET_KEY: "{{ open_webui_secret_key }}"
       ENABLE_SIGNUP: false
       ENABLE_OLLAMA_API: false
