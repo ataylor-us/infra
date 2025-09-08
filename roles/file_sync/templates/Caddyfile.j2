@@ -1,5 +1,4 @@
-# syncthing
-sync.{{ domain_name }} {
+{{ subdomain_name }}.{{ domain_name }} {
   import cloudflare
   reverse_proxy localhost:{{ syncthing_port }}
 }
