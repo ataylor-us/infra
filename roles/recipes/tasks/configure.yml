@@ -20,7 +20,7 @@
       PUID: 1000
       PGID: 1000
       TZ: America/New_York
-      BASE_URL: https://recipes.{{ domain_name }}
+      BASE_URL: https://{{ subdomain_name }}.{{ domain_name }}
       OPENAI_API_KEY: "{{ mealie_openai_key }}"
       API_DOCS: "false"
       OPENAI_SEND_DATABASE_DATA: "false"
