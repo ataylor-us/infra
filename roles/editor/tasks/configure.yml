@@ -7,6 +7,20 @@
     mode: "0664"
     create: true
     state: present
+- name: Create neovim config directory
+  ansible.builtin.file:
+    group: "{{ ansible_env.USER }}"
+    mode: "0755"
+    owner: "{{ ansible_env.USER }}"
+    path: "~/.config/nvim"
+    state: directory
+- name: Copy neovim config
+  ansible.builtin.copy:
+    src: init.vim
+    dest: ~/.config/nvim/init.vim
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+    owner: "{{ ansible_env.USER }}"
 - name: Copy editor scripts
   become: true
   ansible.builtin.copy:
