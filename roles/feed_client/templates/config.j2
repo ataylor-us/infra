@@ -3,9 +3,10 @@ show-read-feeds no
 reload-threads 100
 auto-reload yes
 freshrss-url "https://{{ freshrss_domain }}/api/greader.php"
-freshrss-login "{{ ansible_env.USER }}"
+freshrss-login "{{ freshrss_username }}"
 freshrss-passwordeval "{{ freshrss_pass_command }}"
 freshrss-flag-star "s"
+freshrss-show-special-feeds "true"
 bind-key j down feedlist
 bind-key k up feedlist
 bind-key j next articlelist
@@ -14,3 +15,5 @@ bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
 bind-key j down article
 bind-key k up article
+# Typoe s+s+Enter to "star" an article
+bind-key s edit-flags article
