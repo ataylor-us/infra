@@ -6,7 +6,7 @@
     owner: "{{ ansible_env.USER }}"
     path: "~/.config/ranger"
     state: directory
-- name: Copy neomutt files
+- name: Copy ranger rc.conf
   ansible.builtin.copy:
     src: rc.conf
     dest: ~/.config/ranger/rc.conf
