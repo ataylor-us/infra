@@ -1,0 +1,4 @@
+https://{{ subdomain_name }}.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ memos_port }}
+}

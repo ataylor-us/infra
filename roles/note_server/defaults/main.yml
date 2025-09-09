@@ -1,0 +1,6 @@
+---
+memos_port: 5230
+memos_version: 0.25.0
+enabled_services:
+  - memos-container.service
+  - caddy-container.service
