@@ -139,6 +139,7 @@
     - audiobooks
     - version_control_server
     - ai_client
+    - note_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
