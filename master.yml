@@ -147,7 +147,3 @@
   roles:
     - recipes
     - ai_client
-- name: Client_vps specific roles
-  hosts: client_vps
-  roles:
-    - journal
