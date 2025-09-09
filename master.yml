@@ -76,6 +76,8 @@
           - com.parsecgaming.parsec
           - net.ankiweb.Anki
           - com.discordapp.Discord
+          # For Web Apps
+          - org.gnome.Epiphany
 - name: Hypervisor specific roles
   hosts: hypervisors
   roles:
