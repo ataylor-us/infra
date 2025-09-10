@@ -77,6 +77,7 @@
           - com.valvesoftware.SteamLink
           - net.ankiweb.Anki
           - com.discordapp.Discord
+          - io.gitlab.news_flash.NewsFlash
           # For Web Apps
           - org.gnome.Epiphany
 - name: Hypervisor specific roles
