@@ -3,6 +3,6 @@ packages:
   - thermald
 masked_services:
   - sleep.target
-  - suspend.target
+  - hibernate.target
 enabled_services:
   - thermald.service
