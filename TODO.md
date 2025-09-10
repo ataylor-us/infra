@@ -1,3 +1,4 @@
+- [ ] Change podman1 interface to variable
 - [ ] Clean up & comment muttrc
     - [ ] Make move shortcuts (move to inbox)
 - [ ] Improve update playbook
