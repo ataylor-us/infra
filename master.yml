@@ -74,6 +74,7 @@
         flatpaks:
           - md.obsidian.Obsidian
           - com.parsecgaming.parsec
+          - com.valvesoftware.SteamLink
           - net.ankiweb.Anki
           - com.discordapp.Discord
           # For Web Apps
