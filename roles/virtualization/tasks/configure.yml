@@ -24,7 +24,9 @@
     command: define
     xml: "{{ lookup('template', item ~ '.xml.j2') }}"
   loop: "{{ defined_vms }}"
-  when: item not in (vm_list.list_vms | default([]))
+  when:
+    - item not in (vm_list.list_vms | default([]))
+    - defined_vms is defined
 - name: Autostart vms
   become: true
   community.libvirt.virt:
@@ -32,3 +34,4 @@
     state: running
     autostart: true
   loop: "{{ defined_vms }}"
+  when: defined_vms is defined
