@@ -1,6 +1,6 @@
 ---
 open_webui_port: 8080
-open_webui_version: v0.6.26
+open_webui_version: v0.6.28
 enabled_services:
   - open-webui-container.service
   - caddy-container.service
