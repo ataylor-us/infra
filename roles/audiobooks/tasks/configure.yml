@@ -18,7 +18,7 @@
     image: ghcr.io/advplyr/audiobookshelf:{{ audiobookshelf_version }}
     state: quadlet
     quadlet_filename: audiobookshelf-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     ports:
       - 127.0.0.1:{{ audiobookshelf_port }}:80
     volumes:

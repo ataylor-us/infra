@@ -14,7 +14,7 @@
     image: codeberg.org/forgejo/forgejo:{{ forgejo_version }}
     state: quadlet
     quadlet_filename: forgejo-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     env:
       USE_UID: 1000
       USE_GID: 1000

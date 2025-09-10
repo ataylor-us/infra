@@ -14,7 +14,7 @@
     image: lscr.io/linuxserver/freshrss:{{ freshrss_version }}
     state: quadlet
     quadlet_filename: freshrss-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     ports:
       - 127.0.0.1:{{ freshrss_port }}:80
     volumes:

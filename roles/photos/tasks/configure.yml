@@ -35,7 +35,7 @@
     image: docker.io/valkey/valkey:{{ immich_redis_version }}
     state: quadlet
     quadlet_filename: immich-redis-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - "{{ podman_data_dir }}/immich-redis:/data:rw"
     quadlet_options: "{{ default_quadlet_options }}"
@@ -49,7 +49,7 @@
     image: ghcr.io/immich-app/postgres:{{ immich_postgres_version }}
     state: quadlet
     quadlet_filename: immich-postgres-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - "{{ podman_data_dir }}/immich-postgres:/var/lib/postgresql/data:rw"
     env:
@@ -70,7 +70,7 @@
     quadlet_filename: immich-server-container
     ports:
       - 127.0.0.1:{{ immich_port }}:2283
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - "{{ podman_data_dir }}/immich-server:/usr/src/app/upload:rw"
@@ -93,7 +93,7 @@
     image: ghcr.io/immich-app/immich-machine-learning:{{ immich_server_version }}
     state: quadlet
     quadlet_filename: immich-machine-learning-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - "{{ podman_data_dir }}/immich-machine-learning:/cache:rw"
     quadlet_options: "{{ default_quadlet_options }}"
