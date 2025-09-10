@@ -1,2 +1,3 @@
 ---
+default_podman_interface: "podman1"
 podman_data_dir: "/mnt/podman"

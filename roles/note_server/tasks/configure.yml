@@ -16,7 +16,7 @@
     quadlet_filename: memos-container
     ports:
       - 127.0.0.1:{{ memos_port }}:5230
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - "{{ podman_data_dir }}/memos:/var/opt/memos:rw"
     quadlet_options: "{{ default_quadlet_options }}"

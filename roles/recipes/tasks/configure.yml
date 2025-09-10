@@ -14,7 +14,7 @@
     image: ghcr.io/mealie-recipes/mealie:{{ mealie_version }}
     state: quadlet
     quadlet_filename: mealie-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     env:
       ALLOW_SIGNUP: "false"
       PUID: 1000

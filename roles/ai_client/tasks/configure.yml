@@ -19,7 +19,7 @@
       ENABLE_SIGNUP: false
       ENABLE_OLLAMA_API: false
     quadlet_filename: open-webui-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     ports:
       - 127.0.0.1:{{ open_webui_port }}:8080
     volumes:

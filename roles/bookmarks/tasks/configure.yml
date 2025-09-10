@@ -17,7 +17,7 @@
     image: docker.io/getmeili/meilisearch:{{ karakeep_meilisearch_version }}
     state: quadlet
     quadlet_filename: karakeep-meilisearch-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     volumes:
       - "{{ podman_data_dir }}/karakeep-meilisearch:/meili_data:rw"
     env:
@@ -37,7 +37,7 @@
     image: gcr.io/zenika-hub/alpine-chrome:{{ karakeep_chrome_version }}
     state: quadlet
     quadlet_filename: karakeep-chrome-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     command:
       - --no-sandbox
       - --disable-gpu
@@ -56,7 +56,7 @@
     image: ghcr.io/karakeep-app/karakeep:{{ karakeep_server_version }}
     state: quadlet
     quadlet_filename: karakeep-server-container
-    network: podman1
+    network: "{{ default_podman_interface }}"
     ports:
       - 127.0.0.1:{{ karakeep_port }}:3000
     stop_time: 30
