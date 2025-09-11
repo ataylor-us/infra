@@ -23,7 +23,9 @@ For notifications (mailrise), a [Pushover application key](https://pushover.net/
 ### Backups
 Backups use borgmatic (typically hosted on [borgbase](https://www.borgbase.com/)), use a pinned borgmatic package.  A root ssh key should be generated and propegated to the receiving server. This is not done manually.
 
-Initializing the borg repo also needs to be done automatically.  After that, populate the `{{ remote_borg_repo_path }}` and `{{ borg_passphrase }}` variables.
+Initializing the borg repo also needs to be done manually.  After that, populate the `{{ remote_borg_repo_path }}` and `{{ borg_passphrase }}` variables.
+
+Remember to connect to the target borg server at least once if you haven't before, otherwise the borg cronjob while get hung before it can run.
 
 ### CalDAV/CardDAV
 Vdirsyncer setup (`yes | vdirsyncer discover`) and syncing (`vdirsyncer sync;vdirsyncer metasync`) are handled manually.  Conflicts can happen, and events shouldn't be merged without oversight.
@@ -50,7 +52,7 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook master.yml
 ```
 
-It's also possible to run against a particular group, which can help speed things up if testing small changes
+It's also possible to run against a particular group, which can help speed things up if testing small changes.
 ```bash
 ansible-playbook master.yml --limit interactive_boxes
 ```
