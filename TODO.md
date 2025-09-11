@@ -1,3 +1,4 @@
+- [ ] Change container restart policy
 - [ ] Propagate borg ssh keys
 - [ ] Clean up & comment muttrc
     - [ ] Make move shortcuts (move to inbox)
