@@ -5,7 +5,7 @@ email: "ataylor@posteo.us"
 podman_data_dir: "/var/opt"
 default_quadlet_options:
   - AutoUpdate=registry
-  - Pull=always
+  - Pull=never
   - |
     [Unit]
     After=network-online.target nss-lookup.target
