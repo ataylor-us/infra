@@ -1,3 +1,4 @@
+- [ ] Set up moonlight
 - [ ] Change container restart policy
 - [ ] Propagate borg ssh keys
 - [ ] Clean up & comment muttrc
