@@ -1,5 +1,4 @@
 ---
-tailscale_args: "--advertise-exit-node"
 recipe_vps_name: "recipe_vps"
 recipe_vps_memory: "4194304"
 recipe_vps_vcpu: "4"
