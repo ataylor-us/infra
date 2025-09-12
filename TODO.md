@@ -1,4 +1,3 @@
-- [ ] Propagate borg ssh keys
 - [ ] Clean up & comment muttrc
     - [ ] Make move shortcuts (move to inbox)
 - [ ] Improve update playbook

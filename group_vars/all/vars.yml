@@ -3,6 +3,7 @@ first_name: "Alex"
 full_name: "Alex Taylor"
 email: "ataylor@posteo.us"
 podman_data_dir: "/var/opt"
+ssh_key_name: "id_ed25519"
 default_quadlet_options:
   - AutoUpdate=registry
   - Pull=never
