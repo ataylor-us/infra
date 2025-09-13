@@ -2,3 +2,5 @@
     - [ ] Make move shortcuts (move to inbox)
 - [ ] Improve update playbook
 - [ ] Document variables needed for roles
+- [ ] Re-implement macbook infra here
+- [ ] Implement windows pc infra here
