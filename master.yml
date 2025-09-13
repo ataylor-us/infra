@@ -79,6 +79,7 @@
           - net.ankiweb.Anki
           - com.discordapp.Discord
           - io.gitlab.news_flash.NewsFlash
+          - com.vixalien.sticky
           # Needed to set SIGNAL_PASSWORD_STORE=gnome-libsecret for Signal
           - com.github.tchx84.Flatseal
           - org.signal.Signal
