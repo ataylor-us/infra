@@ -1,0 +1,3 @@
+---
+# Point root domain to recipe server
+caddy_root_domain_block: "redir https://recipes.{{ domain_name }}/"
