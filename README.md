@@ -9,13 +9,17 @@ My services are shared using Tailscale.
 ## Adding a new host
 Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
+### Tailscale
+A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host during first setup.  This should be set in the vault, but can be set at runtime with:
+
+```bash
+ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`"
+```
+
 ## Secrets
 Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
 
 ## Manual Steps
-
-### Tailscale
-A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host.
 
 ### System mail (Notifications)
 For notifications (mailrise), a [Pushover application key](https://pushover.net/) needs to be set for the host.  It should be set as `pushover_application_key` in the appropriate vault.
