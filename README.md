@@ -10,11 +10,13 @@ My services are shared using Tailscale.
 Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
 ### Tailscale
-A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys?refreshed=true) needs to be set for the host during first setup.  This should be set in the vault, but can be set at runtime with:
+A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys) needs to be set for the host during first setup.  This should be set in the vault, but can be set at runtime with:
 
 ```bash
-ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`"
+ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`" --limit `#ansible_hostname`
 ```
+
+Once this succeeds, the DNS for the hostname will have to be updated on [Cloudflare](https://dash.cloudflare.com/) to reflect the new ip (if reinstalling.)
 
 ## Secrets
 Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
