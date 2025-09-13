@@ -15,10 +15,10 @@
     - system
     - editor
     - backups
+    - firewall
     - containers
     - terminal
     - artis3n.tailscale.machine
-    - firewall
     - notifications
 # Groups
 - name: Server base
