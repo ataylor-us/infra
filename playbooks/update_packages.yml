@@ -1,6 +1,4 @@
 ---
-# TODO Make this email or log updates.
-# You should never use this as-is.
 - name: Update all machines & containers
   hosts: all
   tasks:
