@@ -1,0 +1,7 @@
+---
+nfs_exports:
+  - "/home/{{ ansible_env.USER }}/Desktop   {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+  - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+  - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+  - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+  - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"

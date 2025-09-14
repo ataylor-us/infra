@@ -156,6 +156,8 @@
       vars:
         packages:
           - intel-media-driver
+  roles:
+    - geerlingguy.nfs
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
