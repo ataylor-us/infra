@@ -11,3 +11,5 @@ roles:
     version: "24.3.31"
   - name: geerlingguy.nfs
     version: "2.1.1"
+  - name: robertdebock.autofs
+    version: "2.1.10"
