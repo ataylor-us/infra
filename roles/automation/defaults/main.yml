@@ -2,3 +2,4 @@
 packages:
   - ansible
   - ansible-lint
+  - python3-dnspython

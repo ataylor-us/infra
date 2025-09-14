@@ -157,7 +157,8 @@
         packages:
           - intel-media-driver
   roles:
-    - geerlingguy.nfs
+    - role: geerlingguy.nfs
+      become: true
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
