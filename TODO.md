@@ -5,3 +5,4 @@
 - [ ] Document variables needed for roles
 - [ ] Re-implement macbook infra here
 - [ ] Implement windows pc infra here
+- [ ] Focus on file removing (old container units, caddyfiles, etc)
