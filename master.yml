@@ -144,7 +144,7 @@
         path: "/home/{{ nfs_home_user }}/{{ item }}"
         src: "{{ lookup('dig', hostvars['workstation']['domain_name']) }}:/home/{{ nfs_home_user }}/{{ item }}"
         fstype: nfs
-        opts: x-systemd.automount,_netdev
+        opts: x-systemd.automount,_netdev,nofail,x-systemd.device-timeout=10s
         state: mounted
       loop:
         - Desktop
