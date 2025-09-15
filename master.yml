@@ -1,4 +1,7 @@
 ---
+# This is intentionally very monolithic.
+# The aim is to have per-machine tasks variables defined here as they don't need to be repeated, as well as variables that are only used in external modules.
+#
 # Every host
 - name: Base
   hosts: all
@@ -139,12 +142,12 @@
         state: link
     - name: Mount home sub-directories
       become: true
-      ansible.builtin.mount:
+      ansible.posix.mount:
         path: "/home/{{ nfs_home_user }}/{{ item }}"
         src: "{{ lookup('dig', hostvars['workstation']['domain_name']) }}:/home/{{ nfs_home_user }}/{{ item }}"
         fstype: nfs
-        opts: x-systemd.automount,_netdev,nofail,x-systemd.device-timeout=10s
-        state: mounted
+        opts: x-systemd.automount,_netdev,nofail,x-systemd.mount-timeout=15s,x-systemd.idle-timeout=45s,soft,timeo=200,retrans=10
+        state: present
       loop:
         - Desktop
         - Documents
@@ -173,6 +176,14 @@
   roles:
     - role: geerlingguy.nfs
       become: true
+      vars:
+        nfs_exports:
+          - "/home/{{ ansible_env.USER }}/Desktop   {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Documents {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
