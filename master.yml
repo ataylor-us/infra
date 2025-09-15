@@ -53,7 +53,6 @@
 - name: Interactive box specific roles
   hosts: interactive_boxes
   roles:
-    - file_sync
     - ide
   tasks:
     - name: Install packages
