@@ -1,3 +1,5 @@
+- [ ] Export homedir folders to homedir_clients
+    - [ ] Simplify export & mount naming (should just be a single list iterated over)
 - [ ] Clean up & comment muttrc
     - [ ] Make move shortcuts (move to inbox)
 - [ ] Improve update playbook
