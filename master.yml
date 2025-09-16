@@ -155,6 +155,8 @@
         - Downloads
         - Music
         - Pictures
+        - Public
+        - Templates
         - Videos
   roles:
     - photos
@@ -184,6 +186,8 @@
           - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
           - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
           - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Public    {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
+          - "/home/{{ ansible_env.USER }}/Templates {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
           - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }}(rw,sync,no_subtree_check,no_root_squash)"
 - name: Recipe_vps specific roles
   hosts: recipe_vps
