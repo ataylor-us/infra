@@ -1,0 +1,46 @@
+---
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/pinry"
+    state: directory
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: pinry
+    image: docker.io/getpinry/pinry:{{ pinry_version }}
+    state: quadlet
+    quadlet_filename: pinry-container
+    network: "{{ default_podman_interface }}"
+    ports:
+      - 127.0.0.1:{{ pinry_port }}:80
+    volumes:
+      - "{{ podman_data_dir }}/pinry:/data:rw"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for pinry
+    - Restart pinry
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/pinry.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for pinry
+    - Restart pinry
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/pinry.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
