@@ -30,16 +30,7 @@
     <suspend-to-mem enabled='no'/>
     <suspend-to-disk enabled='no'/>
   </pm>
-  <memoryBacking>
-    <source type='memfd'/>
-    <access mode='shared'/>
-  </memoryBacking>
   <devices>
-    <filesystem type='mount' accessmode='passthrough'>
-    <driver type='virtiofs' queue='1024'/>
-    <source dir='/home/{{ ansible_env.USER }}'/>
-    <target dir='home-{{ ansible_env.USER }}'/>
-  </filesystem>
     <emulator>{{ qemu_binary }}</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' discard='unmap'/>
