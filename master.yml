@@ -28,10 +28,6 @@
   hosts: servers
   roles:
     - reverse_proxy
-- name: Guest base
-  hosts: guests
-  roles:
-    - mounts
 - name: Client base
   hosts: clients
   tasks:
