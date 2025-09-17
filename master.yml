@@ -179,14 +179,14 @@
       vars:
         nfs_opts: "rw,sync,no_subtree_check,no_root_squash"
         nfs_exports:
-          - "/home/{{ ansible_env.USER }}/Desktop   {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Documents {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Public    {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Templates {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }} ({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Desktop   {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Documents {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Public    {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Templates {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
+          - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
