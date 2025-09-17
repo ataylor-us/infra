@@ -13,6 +13,8 @@
     name: pinry
     image: docker.io/getpinry/pinry:{{ pinry_version }}
     state: quadlet
+    # Restarts will need SIGKILL otherwise and take awhile
+    init: true
     quadlet_filename: pinry-container
     network: "{{ default_podman_interface }}"
     ports:
