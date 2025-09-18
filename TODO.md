@@ -1,3 +1,4 @@
+- [ ] Write container stop & disable playbook
 - [ ] Export homedir folders to homedir_clients
     - [ ] Simplify export & mount naming (should just be a single list iterated over)
 - [ ] Clean up & comment muttrc
