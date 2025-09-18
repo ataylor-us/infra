@@ -7,6 +7,13 @@
     mode: "0664"
     create: true
     state: present
+- name: Set vi mode for bash
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    line: "set -o vi"
+    mode: "0664"
+    create: true
+    state: present
 - name: Create neovim config directory
   ansible.builtin.file:
     group: "{{ ansible_env.USER }}"
