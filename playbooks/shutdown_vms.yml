@@ -1,0 +1,11 @@
+---
+- name: Power off vms
+  hosts: hypervisors
+  tasks:
+    - name: Shutdown vms
+      become: true
+      community.libvirt.virt:
+        name: "{{ item }}"
+        state: shutdown
+      loop: "{{ defined_vms }}"
+      when: defined_vms is defined
