@@ -36,6 +36,7 @@
       vars:
         packages:
           - bash-color-prompt
+          - fd-find
   roles:
     - credentials
     - automation
