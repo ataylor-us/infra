@@ -173,6 +173,17 @@
       vars:
         packages:
           - intel-media-driver
+    # GNOME notifications wake my monitor up in the middle of the night
+    - name: Disable notifications for GNOME (Do not disturb)
+      become: false
+      ansible.builtin.cron:
+        day: "*"
+        hour: "20"
+        job: gsettings set org.gnome.desktop.notifications show-banners false
+        minute: "30"
+        month: "*"
+        name: Disable notifications (Do not disturb)
+        weekday: "*"
   roles:
     - role: geerlingguy.nfs
       become: true
