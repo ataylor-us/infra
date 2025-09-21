@@ -1,0 +1,17 @@
+---
+- name: Stop & disable all containers
+  hosts: all
+  tasks:
+    - name: Find all container systemd units
+      become: true
+      ansible.builtin.command: systemctl list-unit-files '*-container.service' --no-legend --no-pager | sed 's/\.service.*$/.service/'
+      register: container_units
+      changed_when: false
+    - name: Stop and disable all containers
+      become: true
+      ansible.builtin.systemd:
+        name: "{{ item.split()[0] }}"
+        state: stopped
+        enabled: false
+      loop: "{{ container_units.stdout_lines }}"
+      when: container_units.stdout_lines | length > 0
