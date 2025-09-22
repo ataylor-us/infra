@@ -1,0 +1,7 @@
+---
+- name: Install casks using brew
+  become: false
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ brew_casks }}"
