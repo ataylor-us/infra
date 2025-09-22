@@ -1,0 +1,30 @@
+---
+# This is separate from my main hosts as of right now, it's not online all the time and non-standard.
+- name: Set up Macbook
+  hosts: localhost
+  tasks:
+    - name: Install casks
+      ansible.builtin.import_tasks: ../common/tasks/install_brew_casks.yml
+      vars:
+        brew_casks:
+          - anki
+          - balenaetcher
+          - caffeine
+          - discord
+          - firefox@esr
+          - font-noto-sans-cjk
+          - iterm2
+          - jagex
+          - obsidian
+          - parsec
+          - pdk
+          - runelite
+          - signal
+          - steam
+          - syncthing
+          - syncthing-app
+          - tailscale
+          - tailscale-app
+          - visual-studio-code
+          - vorta
+          - webex
