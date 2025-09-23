@@ -1,7 +1,7 @@
 ---
 immich_redis_version: 8-bookworm
 immich_postgres_version: 14-vectorchord0.4.2-pgvectors0.2.0
-immich_server_version: v1.142.1
+immich_server_version: v1.143.0
 immich_port: 2283
 enabled_services:
   - immich-redis-container.service
