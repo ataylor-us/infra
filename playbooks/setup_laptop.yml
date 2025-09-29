@@ -11,6 +11,16 @@
           - ansible
           - ansible-lint
           - bitwarden-cli
+          - borgbackup
+          - lz4
+          - fd
+          - git
+          - neovim
+          - openssl@3
+          - openssh
+          - ripgrep
+          - rsync
+          - tmux
     - name: Install casks
       ansible.builtin.import_tasks: ../common/tasks/install_brew_casks.yml
       vars:
