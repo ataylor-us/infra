@@ -4,15 +4,13 @@
 - name: Set up Macbook
   hosts: localhost
   tasks:
-    - name: Tap footswitch
-      community.general.homebrew_tap:
-        name: rgerganov/footswitch
-        url: https://github.com/rgerganov/footswitch.git
-        state: present
-    - name: Install footswitch
-      community.general.homebrew:
-        name: footswitch
-        state: head
+    - name: Install formulae
+      ansible.builtin.import_tasks: ../common/tasks/install_brew_formulae.yml
+      vars:
+        brew_formulae:
+          - ansible
+          - ansible-lint
+          - bitwarden-cli
     - name: Install casks
       ansible.builtin.import_tasks: ../common/tasks/install_brew_casks.yml
       vars:
@@ -38,3 +36,12 @@
           - visual-studio-code
           - vorta
           - webex
+    - name: Tap footswitch
+      community.general.homebrew_tap:
+        name: rgerganov/footswitch
+        url: https://github.com/rgerganov/footswitch.git
+        state: present
+    - name: Install footswitch
+      community.general.homebrew:
+        name: footswitch
+        state: head
