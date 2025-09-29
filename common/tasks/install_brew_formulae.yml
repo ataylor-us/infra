@@ -1,0 +1,7 @@
+---
+- name: Install formulae using brew
+  become: false
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ brew_formulae }}"
