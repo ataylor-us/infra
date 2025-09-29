@@ -166,7 +166,6 @@
     - ebooks
     - audiobooks
     - version_control_server
-    - ai_client
     - note_server
     - idea_board
 - name: Workstation specific roles
@@ -195,4 +194,3 @@
   hosts: recipe_vps
   roles:
     - recipes
-    - ai_client
