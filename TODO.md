@@ -1,4 +1,3 @@
-- [ ] Debug hardware acceleration with emby/podman
 - [ ] Standardize database backup names
 - [ ] Name some roles better
 - [ ] Testt enforcing ipv4 forwarding on tailscale exit nodes 
