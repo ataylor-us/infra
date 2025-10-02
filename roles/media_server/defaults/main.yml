@@ -1,0 +1,7 @@
+---
+emby_version: 4.8.11
+# This was overridden internally to not conflict with a prior Jellyfin installation
+emby_port: 8097
+enabled_services:
+  - emby-container.service
+  - caddy-container.service
