@@ -1,0 +1,4 @@
+{{ subdomain_name }}.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ emby_port }}
+}

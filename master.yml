@@ -168,6 +168,7 @@
     - version_control_server
     - note_server
     - idea_board
+    - media_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
