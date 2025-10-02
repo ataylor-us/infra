@@ -1,4 +1,11 @@
 ---
+# This is a weird exception, but Oracle Linux ships without the necessary modules for hardware acceleration by default
+- name: Install uek desktop kernel modules on Oracle Linux for hardware acceleration
+  become: true
+  ansible.builtin.dnf:
+    name: kernel-uek-modules-desktop
+    state: present
+  when: ansible_distribution == "OracleLinux"
 - name: Allow Emby to local network
   become: true
   community.general.ufw:
