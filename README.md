@@ -62,3 +62,17 @@ It's also possible to run against a particular group, which can help speed thing
 ```bash
 ansible-playbook master.yml --limit interactive_boxes
 ```
+
+## wsl
+
+Been playing around with wsl.  It has its own playbook as `wsl.yml`
+
+To set up, first install the necessary packages, log in with Bitwarden, and clone the repo.  Something along the lines of:
+```bash
+sudo dnf install ansible git snapd -y
+sudo systemctl enable --now snapd.socket
+sudo snap install bw
+bw login
+git clone https://github.com/ataylor-us/infra.git
+exec bash
+```
