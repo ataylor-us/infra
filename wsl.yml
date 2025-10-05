@@ -1,0 +1,9 @@
+---
+- name: Setup wsl
+  hosts: localhost
+  roles:
+    - editor
+    - credentials
+    - automation
+    - version_control
+    - file_manager
