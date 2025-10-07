@@ -81,7 +81,7 @@
           - com.spotify.Client
           - org.gnome.gitlab.somas.Apostrophe
           - com.adamcake.Bolt
-          - io.github.celluloid_player.Celluloid
+          - io.mpv.Mpv
           - us.zoom.Zoom
           # Needed to set SIGNAL_PASSWORD_STORE=gnome-libsecret for Signal
           - com.github.tchx84.Flatseal
