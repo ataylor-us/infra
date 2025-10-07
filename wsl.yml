@@ -10,3 +10,9 @@
     - pim_client
     - email_client
     - editor
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_tasks: common/tasks/install_packages.yml
+      vars:
+        packages:
+          - yt-dlp
