@@ -2,14 +2,11 @@
 - name: Setup wsl
   hosts: localhost
   roles:
+    - editor
     - credentials
     - automation
     - version_control
     - file_manager
-    - feed_client
-    - pim_client
-    - email_client
-    - editor
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
