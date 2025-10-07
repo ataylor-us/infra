@@ -7,6 +7,7 @@
     - automation
     - version_control
     - file_manager
+    - terminal
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
