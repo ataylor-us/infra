@@ -178,6 +178,7 @@
       vars:
         packages:
           - intel-media-driver
+          - yt-dlp
   roles:
     - role: geerlingguy.nfs
       become: true
