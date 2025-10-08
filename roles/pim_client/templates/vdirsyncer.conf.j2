@@ -20,7 +20,7 @@ fileext = ".vcf"
 type = "carddav"
 url = "{{ carddav_url }}"
 username = "{{ carddav_username }}"
-password.fetch = ["command", {{ vdirsyncer_pass_command }}]
+password.fetch = ["command", {{ vdirsyncer_calendar_pass_command }}]
 
 # CALDAV
 [pair calendar]
@@ -41,7 +41,7 @@ fileext = ".ics"
 type = "caldav"
 url = "{{ caldav_url }}"
 username = "{{ caldav_username }}"
-password.fetch = ["command", {{ vdirsyncer_pass_command }}]
+password.fetch = ["command", {{ vdirsyncer_calendar_pass_command }}]
 
 [pair holidays]
 a = "holidays_local"

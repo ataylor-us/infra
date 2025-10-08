@@ -2,4 +2,4 @@
 carddav_address_book: "card"
 personal_mail_pass_command: "bw get password 84bfcfcd-f2fc-4a5d-9309-b350015c5dd0"
 freshrss_pass_command: "bw get password cb56dcc6-e4b8-4e26-a2fd-b33d00dad147"
-vdirsyncer_pass_command: "\"bw\", \"get\", \"password\", \"88059098-4f7a-438f-b681-b34f00c0ce47\""
+vdirsyncer_calendar_pass_command: "\"bw\", \"get\", \"password\", \"88059098-4f7a-438f-b681-b34f00c0ce47\""
