@@ -1,0 +1,6 @@
+---
+radicale_port: 5232
+radicale_version: 3.5.7.0
+enabled_services:
+  - radicale-container.service
+  - caddy-container.service

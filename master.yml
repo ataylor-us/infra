@@ -171,6 +171,7 @@
     - note_server
     - idea_board
     - media_server
+    - caldav_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
