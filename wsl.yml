@@ -1,6 +1,9 @@
 ---
 - name: Setup wsl
   hosts: localhost
+  vars_files:
+    - group_vars/clients/vars.yml
+    - group_vars/clients/vault.yml
   roles:
     - editor
     - credentials
@@ -8,6 +11,9 @@
     - version_control
     - file_manager
     - terminal
+    - feed_client
+    - pim_client
+    - email_client
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
