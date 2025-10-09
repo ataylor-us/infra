@@ -1,6 +1,9 @@
 ---
 vdirsyncer_directory: "~/.local/share/vdirsyncer"
+todoman_version: 4.6.0
 packages:
   - vdirsyncer
   - khal
   - khard
+pip_packages:
+  - todoman=={{ todoman_version }}
