@@ -10,6 +10,7 @@
     - vdirsyncer
     - khard
     - khal
+    - todoman
 - name: Configure vdirsyncer settings
   ansible.builtin.template:
     src: vdirsyncer.conf.j2
@@ -28,6 +29,13 @@
   ansible.builtin.template:
     src: khal.conf.j2
     dest: "~/.config/khal/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: "0644"
+- name: Copy todoman config
+  ansible.builtin.copy:
+    src: todoman.config.py
+    dest: "~/.config/todoman/config.py"
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
     mode: "0644"

@@ -1,6 +1,3 @@
-## Packages
-- [ ] Add todoman (pip)
-
 ## Naming
 - [ ] Standardize database backup names
 - [ ] Name some roles better
