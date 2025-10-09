@@ -1,15 +1,22 @@
-- [ ] Add radicale to vdirsyncer
+## Packages
 - [ ] Add todoman (pip)
+
+## Naming
 - [ ] Standardize database backup names
 - [ ] Name some roles better
-- [ ] Testt enforcing ipv4 forwarding on tailscale exit nodes 
-- [ ] Export homedir folders to homedir_clients
-    - [ ] Simplify export & mount naming (should just be a single list iterated over)
-- [ ] Clean up & comment muttrc
-    - [ ] Make move shortcuts (move to inbox)
+- [ ] Name vdirsyncer vars better
+
+## Testing
+- [ ] Test enforcing ipv4 forwarding on tailscale exit nodes 
+
+## Projects
+- [ ] Implement windows pc infra here
 - [ ] Improve update playbook
     - [ ] Make it email, output, or cleanly log updates
-- [ ] Document variables needed for roles
-- [ ] Re-implement macbook infra here
-- [ ] Implement windows pc infra here
+- [ ] Export homedir folders to homedir_clients
+    - [ ] Simplify export & mount naming (should just be a single list iterated over)
+
+## Cleanup
 - [ ] Focus on file removing (old container units, caddyfiles, etc)
+- [ ] Clean up & comment muttrc
+    - [ ] Make move shortcuts (move to inbox)
