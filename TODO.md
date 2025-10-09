@@ -6,6 +6,9 @@
 ## Testing
 - [ ] Test enforcing ipv4 forwarding on tailscale exit nodes 
 
+## Fix
+- [ ] Fix click version with todoman
+
 ## Projects
 - [ ] Implement windows pc infra here
 - [ ] Improve update playbook
