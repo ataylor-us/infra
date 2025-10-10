@@ -73,9 +73,6 @@
       vars:
         flatpaks:
           - md.obsidian.Obsidian
-          - com.parsecgaming.parsec
-          - com.moonlight_stream.Moonlight
-          - net.ankiweb.Anki
           - com.discordapp.Discord
           - io.gitlab.news_flash.NewsFlash
           - com.spotify.Client
