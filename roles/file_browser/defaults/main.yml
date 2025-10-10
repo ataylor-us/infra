@@ -1,0 +1,6 @@
+---
+filebrowser_port: 14080
+filebrowser_version: v2.44.0-s6
+enabled_services:
+  - filebrowser-container.service
+  - caddy-container.service

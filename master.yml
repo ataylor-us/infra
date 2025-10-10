@@ -172,6 +172,7 @@
     - idea_board
     - media_server
     - caldav_server
+    - file_browser
 - name: Workstation specific roles
   hosts: workstation
   tasks:
