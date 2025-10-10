@@ -23,6 +23,7 @@
     - terminal
     - artis3n.tailscale.machine
     - notifications
+    - file_manager
 # Groups
 - name: Server base
   hosts: servers
@@ -41,7 +42,6 @@
     - credentials
     - automation
     - version_control
-    - file_manager
     - feed_client
     - pim_client
     - email_client
