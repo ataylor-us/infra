@@ -1,4 +1,6 @@
 ---
+packages:
+  - git
 # bulkrename has been broken for awhile, fixed on this commit
 # https://github.com/ranger/ranger/issues/3049#issuecomment-2645256598
 pip_packages:
