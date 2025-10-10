@@ -7,6 +7,7 @@ packages:
   - tar
   - wget
   - bash-completion
+  - git
 enabled_services:
   - crond
   - sshd
