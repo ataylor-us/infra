@@ -1,6 +1,6 @@
 path = "~/.local/share/vdirsyncer/radicale/*"
 date_format = "%Y-%m-%d"
 time_format = "%H:%M"
-#default_list = "Projects"
-#default_due = 1
+default_list = "Projects"
+default_due = 0
 humanize = True
