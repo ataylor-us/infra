@@ -14,6 +14,7 @@
     - feed_client
     - pim_client
     - email_client
+    - containers
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_packages.yml
