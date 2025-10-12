@@ -10,3 +10,5 @@
         choco_packages:
           - discord
           - syncthingtray
+          - caffeine
+          - magpie
