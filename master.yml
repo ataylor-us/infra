@@ -3,8 +3,8 @@
 # The aim is to have per-machine tasks variables defined here as they don't need to be repeated, as well as variables that are only used in external modules.
 #
 # Every host
-- name: Base
-  hosts: all
+- name: Base linux host roles
+  hosts: linux_hosts
   roles:
     - role: geerlingguy.repo-epel
       become: true
