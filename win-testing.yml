@@ -1,0 +1,12 @@
+---
+# First; install chocolatey & enable ssh
+# Second: Make sure the pub key of the machine running ansible is on 'C:\ProgramData\ssh\administrators_authorized_keys' on the destination
+- name: Install packages
+  hosts: office_pc
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_tasks: common/tasks/install_choco_packages.yml
+      vars:
+        choco_packages:
+          - discord
+          - syncthingtray
