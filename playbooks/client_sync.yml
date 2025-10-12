@@ -4,6 +4,8 @@
   tasks:
     - name: Sync bitwarden
       ansible.builtin.command: bw sync
+    - name: Discover CalDAV & CardDAV collections
+      ansible.builtin.command: "bash -c 'yes | vdirsyncer discover'"
     - name: Sync CalDAV & CardDAV
       ansible.builtin.command: vdirsyncer sync
     - name: Sync CalDAV & CardDAV metadata
