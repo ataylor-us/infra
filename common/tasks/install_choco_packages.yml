@@ -3,4 +3,6 @@
   chocolatey.chocolatey.win_chocolatey:
     name: "{{ item }}"
     state: present
+    choco_args:
+      - --accept-license
   loop: "{{ choco_packages }}"
