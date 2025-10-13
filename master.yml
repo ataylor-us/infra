@@ -95,6 +95,53 @@
 - name: Nuc specific roles
   hosts: nuc
   tasks:
+    # I do not like this.
+    # 
+    # On 2025-10-13 I had my box reset while I was afk, in a way that's never happened to me before in years of having this hardware.
+    # The e1000e adapter became unresponsive, which is better than a full kernel panic, but I do not want this to happen again.
+    # Apparently this is a well documented problem (on the Proxmox forums of all places), and they have a potential fix.
+    # 
+    # The systemd unit is based on a script from there:
+    # https://git.community-scripts.org/community-scripts/ProxmoxVE/raw/branch/main/tools/pve/nic-offloading-fix.sh
+    #
+    # This is box specific so its going here.
+    - name: Check if NIC offload unit already exists
+      become: true
+      ansible.builtin.stat:
+        path: /etc/systemd/system/disable-nic-offload-eno1.service
+      register: nic_unit_before
+    - name: Create/Update systemd unit for disabling NIC offloading on eno1
+      become: true
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/disable-nic-offload-eno1.service
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          [Unit]
+          Description=Disable NIC offloading for Intel e1000e interface eno1
+          After=network.target
+
+          [Service]
+          Type=oneshot
+          # Disable all offloading features for Intel e1000e
+          ExecStart=/sbin/ethtool -K eno1 gso off gro off tso off tx off rx off rxvlan off txvlan off sg off
+          RemainAfterExit=true
+
+          [Install]
+          WantedBy=multi-user.target
+      register: nic_unit_after
+    - name: Reload systemd if needed
+      become: true
+      ansible.builtin.command: systemctl daemon-reload
+      when: nic_unit_after.changed or not nic_unit_before.stat.exists
+    - name: Enable and start disable-nic-offload-eno1 service
+      become: true
+      ansible.builtin.systemd:
+        name: disable-nic-offload-eno1.service
+        enabled: true
+        state: started
+    # Box specific drive mount
     - name: Mount internal drive
       become: true
       ansible.posix.mount:
