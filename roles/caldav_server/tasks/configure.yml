@@ -18,6 +18,8 @@
     state: quadlet
     quadlet_filename: radicale-container
     user: 1000:1000
+    env:
+      TZ: America/New_York
     ports:
       - 127.0.0.1:{{ radicale_port }}:5232
     network: "{{ default_podman_interface }}"
