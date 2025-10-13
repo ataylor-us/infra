@@ -3,7 +3,7 @@
 #
 # First; install chocolatey & enable ssh
 # Second: Make sure the pub key of the machine running ansible is on 'C:\ProgramData\ssh\administrators_authorized_keys' on the destination
-# 
+#
 # Manual packages:
 #
 # Intel XTU: Currently out of date on Chocolatey
