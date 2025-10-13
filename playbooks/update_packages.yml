@@ -1,6 +1,6 @@
 ---
 - name: Update all machines & containers
-  hosts: all
+  hosts: linux_hosts
   tasks:
     - name: Update all packages
       become: true

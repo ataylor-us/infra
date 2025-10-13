@@ -1,6 +1,6 @@
 ---
 - name: Stop & disable all containers
-  hosts: all
+  hosts: linux_hosts
   tasks:
     - name: Find all container systemd units
       become: true
