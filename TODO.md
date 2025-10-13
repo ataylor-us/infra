@@ -3,11 +3,9 @@
 - [ ] Name some roles better
 - [ ] Name vdirsyncer vars better
 
-## Testing
-- [ ] Test enforcing ipv4 forwarding on tailscale exit nodes 
-
 ## Fix
 - [ ] Fix click version with todoman
+- [ ] Fix exit node on workstation
 
 ## Projects
 - [ ] Implement windows pc infra here
