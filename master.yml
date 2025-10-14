@@ -187,23 +187,6 @@
         src: /mnt/libvirt/images
         dest: /var/lib/libvirt/images
         state: link
-    - name: Mount home sub-directories
-      become: true
-      ansible.posix.mount:
-        path: "/home/{{ nfs_home_user }}/{{ item }}"
-        src: "{{ lookup('dig', hostvars['workstation']['domain_name']) }}:/home/{{ nfs_home_user }}/{{ item }}"
-        fstype: nfs
-        opts: x-systemd.automount,_netdev,nofail,x-systemd.mount-timeout=15s,x-systemd.idle-timeout=45s,soft,timeo=200,retrans=10
-        state: present
-      loop:
-        - Desktop
-        - Documents
-        - Downloads
-        - Music
-        - Pictures
-        - Public
-        - Templates
-        - Videos
   roles:
     - photos
     - file_sync
@@ -226,20 +209,6 @@
         packages:
           - intel-media-driver
           - yt-dlp
-  roles:
-    - role: geerlingguy.nfs
-      become: true
-      vars:
-        nfs_opts: "rw,sync,no_subtree_check,no_root_squash"
-        nfs_exports:
-          - "/home/{{ ansible_env.USER }}/Desktop   {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Documents {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Downloads {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Music     {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Pictures  {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Public    {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Templates {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
-          - "/home/{{ ansible_env.USER }}/Videos    {{ lookup('dig', hostvars['nuc']['domain_name']) }}({{ nfs_opts }})"
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
