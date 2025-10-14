@@ -6,7 +6,6 @@ podman_data_dir: "/var/opt"
 ssh_key_name: "id_ed25519"
 tailscale_authkey: "dummy"
 caddy_root_domain_block:
-nfs_home_user: "alex"
 default_quadlet_options:
   - AutoUpdate=registry
   - Pull=missing
