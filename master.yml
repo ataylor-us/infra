@@ -200,6 +200,7 @@
     - media_server
     - caldav_server
     - file_browser
+    - file_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:

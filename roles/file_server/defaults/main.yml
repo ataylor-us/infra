@@ -1,0 +1,4 @@
+---
+samba_version: 4.21.4
+enabled_services:
+  - samba-container.service
