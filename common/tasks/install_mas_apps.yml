@@ -1,0 +1,12 @@
+---
+- name: Install formulae
+  ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
+  vars:
+    brew_formulae:
+      - mas
+- name: Install apps using mas
+  become: false
+  community.general.mas:
+    id: "{{ item }}"
+    state: latest
+  loop: "{{ mas_apps }}"

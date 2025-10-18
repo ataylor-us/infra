@@ -47,4 +47,14 @@
           - visual-studio-code
           - vorta
           - webex
-
+    - name: Install apps
+      ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
+      vars:
+        mas_apps:
+          - 1352778147 # Bitwarden
+          - 462058435 # Microsoft Excel
+          - 462062816 # Microsoft PowerPoint
+          - 462054704 # Microsoft Word
+          - 360593530 # Notability
+          - 375589283 # Parcel
+          - 1289583905 # Pixelmator Pro
