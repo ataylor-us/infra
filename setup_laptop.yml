@@ -37,6 +37,7 @@
           - obsidian
           - pdk
           - runelite
+          - rectangle
           - signal
           - steam
           - syncthing
@@ -46,12 +47,4 @@
           - visual-studio-code
           - vorta
           - webex
-    - name: Tap footswitch
-      community.general.homebrew_tap:
-        name: rgerganov/footswitch
-        url: https://github.com/rgerganov/footswitch.git
-        state: present
-    - name: Install footswitch
-      community.general.homebrew:
-        name: footswitch
-        state: head
+
