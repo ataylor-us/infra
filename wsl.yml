@@ -21,3 +21,4 @@
       vars:
         packages:
           - yt-dlp
+          - poppler-utils
