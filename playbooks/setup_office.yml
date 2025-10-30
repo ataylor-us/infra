@@ -24,7 +24,7 @@
   hosts: office_pc
   tasks:
     - name: Install packages
-      ansible.builtin.import_tasks: common/tasks/install_choco_packages.yml
+      ansible.builtin.import_tasks: ../common/tasks/install_choco_packages.yml
       vars:
         choco_packages:
           - vcredist140

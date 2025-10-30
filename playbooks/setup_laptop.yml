@@ -5,7 +5,7 @@
   hosts: localhost
   tasks:
     - name: Install formulae
-      ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
+      ansible.builtin.import_tasks: ../common/tasks/install_brew_formulae.yml
       vars:
         brew_formulae:
           - ansible
@@ -25,7 +25,7 @@
           - poppler
           - git-lint
     - name: Install casks
-      ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
+      ansible.builtin.import_tasks: ../common/tasks/install_brew_casks.yml
       vars:
         brew_casks:
           - anki
@@ -51,7 +51,7 @@
           - webex
           - spotify
     - name: Install apps
-      ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
+      ansible.builtin.import_tasks: ../common/tasks/install_mas_apps.yml
       vars:
         mas_apps:
           - 1352778147 # Bitwarden
