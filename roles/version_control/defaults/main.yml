@@ -1,5 +1,9 @@
 ---
+# this is the same version in debian 13
+gitlint_version: 0.19.1
 packages:
   - git
 full_name: "{{ ansible_env.USER }}"
 email: "{{ ansible_env.USER }}@localhost"
+pip_packages:
+  - gitlint=={{ gitlint_version }}

@@ -9,6 +9,7 @@
   community.general.pipx:
     name: "{{ item }}"
     global: true
+    install_deps: true
     state: install
   loop: "{{ pip_packages }}"
   # TODO: find a better solution for this
