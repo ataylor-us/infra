@@ -1,0 +1,5 @@
+[general]
+ignore=body-is-missing, B1
+contrib=contrib-title-conventional-commits
+[contrib-title-conventional-commits]
+types = fix,feat,debug,chore,config,squash
