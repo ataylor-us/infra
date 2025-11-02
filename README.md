@@ -65,7 +65,7 @@ ansible-playbook master.yml --limit interactive_boxes
 
 ## wsl
 
-Been playing around with wsl.  It has its own playbook as `wsl.yml`
+Been playing around with wsl.  It has its own playbook as `setup_wsl.yml`
 
 To set up, first install the necessary packages, log in with Bitwarden, and clone the repo.  Something along the lines of:
 ```bash
