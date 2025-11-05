@@ -50,6 +50,7 @@
           - vorta
           - webex
           - spotify
+          - logseq
     - name: Install apps
       ansible.builtin.import_tasks: ../common/tasks/install_mas_apps.yml
       vars:
