@@ -4,5 +4,4 @@
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
-    update_homebrew: true
   loop: "{{ brew_casks }}"
