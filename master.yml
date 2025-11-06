@@ -222,6 +222,13 @@
       ansible.builtin.command: "systemctl set-default multi-user.target"
       when: "'multi-user' not in systemdefault.stdout"
       changed_when: true
+    # Since machine is headless, disable bluetooth as well
+    - name: Mask bluetooth
+      ansible.builtin.import_tasks: common/tasks/mask_services.yml
+      vars:
+        masked_services:
+          - bluetooth.service
+          - bluetooth.target
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
