@@ -53,7 +53,7 @@
 - name: Interactive box specific roles
   hosts: interactive_boxes
   roles:
-    - file_sync
+    - file_sync_server
     - ide
   tasks:
     - name: Install packages
@@ -188,17 +188,17 @@
         dest: /var/lib/libvirt/images
         state: link
   roles:
-    - photos
-    - file_sync
-    - feed_reader
-    - bookmarks
+    - photo_server
+    - file_sync_server
+    - feed_server
+    - bookmark_server
     - version_control_server
     - note_server
-    - idea_board
+    - idea_board_server
     - media_server
     - caldav_server
-    - file_browser
     - file_server
+    - file_web_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
@@ -230,4 +230,4 @@
 - name: Recipe_vps specific roles
   hosts: recipe_vps
   roles:
-    - recipes
+    - recipe_server
