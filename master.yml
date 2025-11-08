@@ -192,8 +192,6 @@
     - file_sync
     - feed_reader
     - bookmarks
-    - ebooks
-    - audiobooks
     - version_control_server
     - note_server
     - idea_board
