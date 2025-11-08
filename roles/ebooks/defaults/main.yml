@@ -1,6 +1,0 @@
----
-calibre_web_version: V3.1.4
-calibre_web_port: 8083
-enabled_services:
-  - calibre-web-container.service
-  - caddy-container.service
