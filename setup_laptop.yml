@@ -24,6 +24,7 @@
           - tmux
           - poppler
           - gitlint
+          - yt-dlp
     - name: Install casks
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
@@ -51,6 +52,7 @@
           - webex
           - spotify
           - logseq
+          - iina
     - name: Install apps
       ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
       vars:
