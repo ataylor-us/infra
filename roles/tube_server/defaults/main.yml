@@ -1,0 +1,6 @@
+---
+pinchflat_version: latest
+pinchflat_port: 8945
+enabled_services:
+  - pinchflat-container.service
+  - caddy-container.service
