@@ -7,7 +7,7 @@ Currently, I run most of my containers on one hypervisor which runs EL10. The hy
 My services are shared using Tailscale.
 
 ## Adding a new host
-Typically, the hostname should be set to the `domain_name` variable, but during initial setup you won't have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
+Typically, the hostname should be set to the `domain_name` variable, but during initial setup I might not have a domain name.  Just swap it with the current (reachable) ip address, and change it to the correct one after.
 
 ### Tailscale
 A one time use [tailscale auth key](https://login.tailscale.com/admin/settings/keys) needs to be set for the host during first setup.  This should be set in the vault, but can be set at runtime with:
@@ -19,7 +19,7 @@ ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`" --limi
 Once this succeeds, the DNS for the hostname will have to be updated on [Cloudflare](https://dash.cloudflare.com/) to reflect the new ip (if reinstalling.)
 
 ## Secrets
-Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to your bashrc.  This is not automated intentionally.
+Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to the `.bashrc`.  This is not automated intentionally.
 
 ## Manual Steps
 
@@ -31,7 +31,7 @@ Backups use borgmatic (typically hosted on [borgbase](https://www.borgbase.com/)
 
 Initializing the borg repo also needs to be done manually.  After that, populate the `{{ remote_borg_repo_path }}` and `{{ borg_passphrase }}` variables.
 
-Remember to connect to the target borg server at least once if you haven't before, otherwise the borg cronjob while get hung before it can run.
+Remember to connect to the target borg server at least once if haven't before, otherwise the borg cronjob while get hung before it can run.
 
 ### CalDAV/CardDAV
 Vdirsyncer setup (`yes | vdirsyncer discover`) and syncing (`vdirsyncer sync;vdirsyncer metasync`) are handled manually.  Conflicts can happen, and events shouldn't be merged without oversight.
@@ -43,7 +43,7 @@ Ensure ssh is enabled:
 # systemctl enable --now sshd
 ```
 
-And copy your ssh key to the host:
+And copy the ssh key to the host:
 ```bash
 ssh-copy-id `#hostname or ip`
 ```
