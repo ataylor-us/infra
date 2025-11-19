@@ -67,12 +67,9 @@ ansible-playbook master.yml --limit interactive_boxes
 
 Been playing around with wsl.  It has its own playbook as `setup_wsl.yml`
 
-To set up, first install the necessary packages, log in with Bitwarden, and clone the repo.  Something along the lines of:
+To set up, first install the necessary packages, set up pass, and clone the repo.  Something along the lines of:
 ```bash
-sudo dnf install ansible git snapd -y
-sudo systemctl enable --now snapd.socket
-sudo snap install bw
-bw login
+sudo dnf install ansible git pass -y
+# Set up pass, omitted
 git clone https://github.com/ataylor-us/infra.git
-exec bash
 ```
