@@ -10,7 +10,7 @@
         brew_formulae:
           - ansible
           - ansible-lint
-          - bitwarden-cli
+          - pass
           - borgbackup
           - lz4
           - fd
