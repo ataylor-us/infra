@@ -19,7 +19,7 @@ ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`" --limi
 Once this succeeds, the DNS for the hostname will have to be updated on [Cloudflare](https://dash.cloudflare.com/) to reflect the new ip (if reinstalling.)
 
 ## Secrets
-Vault secrets are handled by Bitwarden, typically it's best to add the key via environment variable logging in (`bw login`) to the `.bashrc`.  This is not automated intentionally.
+Vault secrets are handled by pass.  Outside this package installation, this is not automated intentionally.
 
 ## Manual Steps
 
@@ -67,12 +67,9 @@ ansible-playbook master.yml --limit interactive_boxes
 
 Been playing around with wsl.  It has its own playbook as `setup_wsl.yml`
 
-To set up, first install the necessary packages, log in with Bitwarden, and clone the repo.  Something along the lines of:
+To set up, first install the necessary packages, set up pass, and clone the repo.  Something along the lines of:
 ```bash
-sudo dnf install ansible git snapd -y
-sudo systemctl enable --now snapd.socket
-sudo snap install bw
-bw login
+sudo dnf install ansible git pass -y
+# Set up pass, omitted
 git clone https://github.com/ataylor-us/infra.git
-exec bash
 ```
