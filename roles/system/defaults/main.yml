@@ -7,6 +7,8 @@ packages:
   - tar
   - wget
   - bash-completion
+  # Needed for ansible.posix.selinux
+  - python3-libselinux
 enabled_services:
   - crond
   - sshd
