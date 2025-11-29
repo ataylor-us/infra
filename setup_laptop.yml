@@ -50,7 +50,6 @@
           - visual-studio-code
           - vorta
           - spotify
-          - logseq
           - iina
     - name: Install apps
       ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
