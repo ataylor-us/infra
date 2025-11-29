@@ -90,7 +90,7 @@
   hosts: hypervisors
   roles:
     - virtualization
-    - admin_interface
+    - web_console
 # Individual machines
 - name: Nuc specific roles
   hosts: nuc
