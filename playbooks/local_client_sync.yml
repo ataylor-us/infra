@@ -1,5 +1,4 @@
 ---
-# Currently just using this for wsl
 - name: Sync all clients
   hosts: localhost
   tasks:
