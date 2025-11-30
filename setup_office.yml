@@ -27,8 +27,10 @@
           - vcredist140
           - dotnet-6.0-runtime
           - dotnet-8.0-runtime
-# Current Discord installation is broken, commenting out until I fix it.
-#         - discord
+          # Current Discord installation is broken, the following command has to be run after installation:
+          # `"C:\Users\<username>\AppData\Local\Discord\app-<version>\Discord.exe" --squirrel-firstrun`
+          # https://community.chocolatey.org/packages/discord/1.0.9184#comment-6707873963
+          - discord
           - directx
           - syncthingtray
           - caffeine
