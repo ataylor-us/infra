@@ -1,4 +1,8 @@
 ---
+# (Temporary?) fix for Fedora 43 issue spamming my Ansible log with:
+# "[WARNING]: Module invocation had junk after the JSON data:"
+# https://github.com/ansible/ansible/issues/86122
+ansible_ssh_common_args: '-o "SetEnv TERM=dumb"'
 carddav_address_book: "card"
 personal_mail_pass_command: "pass personal_mail"
 freshrss_pass_command: "pass freshrss"
