@@ -27,7 +27,8 @@
           - vcredist140
           - dotnet-6.0-runtime
           - dotnet-8.0-runtime
-          - discord
+# Current Discord installation is broken, commenting out until I fix it.
+#         - discord
           - directx
           - syncthingtray
           - caffeine
