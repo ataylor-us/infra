@@ -19,7 +19,7 @@ ansible-playbook master.yml -e "tailscale_authkey=`#insert_authkey_here`" --limi
 Once this succeeds, the DNS for the hostname will have to be updated on [Cloudflare](https://dash.cloudflare.com/) to reflect the new ip (if reinstalling.)
 
 ## Secrets
-Vault secrets are handled by pass.  Outside this package installation, this is not automated intentionally.
+Vault secrets are handled by pass.  This is not automated intentionally.
 
 ## Manual Steps
 
