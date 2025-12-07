@@ -50,6 +50,7 @@
           - visual-studio-code
           - vorta
           - spotify
+          - logseq
           - iina
           - xquartz
     - name: Install apps
