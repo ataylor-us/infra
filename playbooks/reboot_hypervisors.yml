@@ -1,0 +1,7 @@
+---
+- name: Reboot hypervisors
+  hosts: hypervisors
+  become: true
+  tasks:
+    - name: Reboot hypervisors
+      ansible.builtin.reboot:
