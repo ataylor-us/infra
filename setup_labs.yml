@@ -2,7 +2,7 @@
 - name: Set up labs
   hosts: labs
   tasks:
-   - name: Set the hostname
-     become: true
-     ansible.builtin.hostname:
-       name: "{{ inventory_hostname }}"
+    - name: Set the hostname
+      become: true
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname }}"
