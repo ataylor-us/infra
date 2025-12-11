@@ -1,0 +1,5 @@
+---
+defined_vms:
+  - "cluster1"
+  - "cluster2"
+autostart_vms: false
