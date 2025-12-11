@@ -26,7 +26,7 @@
   loop: "{{ defined_vms }}"
   when:
     - item not in (vm_list.list_vms | default([]))
-    - defined_vms is defined
+    - autostat_vms is true
 - name: Autostart vms
   become: true
   community.libvirt.virt:
@@ -34,4 +34,5 @@
     state: running
     autostart: true
   loop: "{{ defined_vms }}"
-  when: defined_vms is defined
+  when:
+    - autostart_vms is true
