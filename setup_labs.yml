@@ -6,3 +6,5 @@
       become: true
       ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
+  roles:
+    - artis3n.tailscale.machine
