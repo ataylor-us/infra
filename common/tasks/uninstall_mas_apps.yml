@@ -4,9 +4,9 @@
   vars:
     brew_formulae:
       - mas
-- name: Install apps using mas
+- name: Uninstall apps using mas
   become: true
   community.general.mas:
     id: "{{ item }}"
-    state: latest
+    state: absent
   loop: "{{ mas_apps }}"
