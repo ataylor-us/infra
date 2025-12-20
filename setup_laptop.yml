@@ -1,7 +1,5 @@
 ---
-# This is separate from my main hosts as of right now, it's not online all the time and non-standard.
-# It is very incomplete
-- name: Set up Macbook
+- name: Set up laptop
   hosts: localhost
   tasks:
     - name: Install formulae
@@ -26,6 +24,7 @@
           - gitlint
           - yt-dlp
           - ffmpeg
+          - nnn
     - name: Install casks
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
