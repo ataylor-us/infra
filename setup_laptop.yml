@@ -30,28 +30,19 @@
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
         brew_casks:
-          - balenaetcher
           - caffeine
           - discord
           - firefox
-          - font-noto-sans-cjk
-          - iterm2
           - jagex
           - obsidian
           - runelite
-          - rectangle
           - signal
-          - steam
-          - syncthing
           - syncthing-app
-          - tailscale
           - tailscale-app
           - visual-studio-code
           - vorta
-          - spotify
           - logseq
           - iina
-          - xquartz
     - name: Install apps
       ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
       vars:
@@ -59,3 +50,13 @@
           - 360593530 # Notability
           - 375589283 # Parcel
           - 1289583905 # Pixelmator Pro
+    - name: Uninstall apps
+      ansible.builtin.import_tasks: common/tasks/uninstall_mas_apps.yml
+      vars:
+        mas_apps:
+          - 682658836 # Garageband
+          - 408981434 # iMovie
+          - 409183694 # Keynote
+          - 360593530 # Notability
+          - 409203825 # Numbers
+          - 409201541 # Pages
