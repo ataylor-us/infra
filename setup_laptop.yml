@@ -26,6 +26,8 @@
           - ffmpeg
           - nnn
           - zsh-completion
+          - fzf
+          - zsh-autosuggestions
     - name: Install casks
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
