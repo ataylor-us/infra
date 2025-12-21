@@ -25,6 +25,7 @@
           - yt-dlp
           - ffmpeg
           - nnn
+          - zsh-completion
     - name: Install casks
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
