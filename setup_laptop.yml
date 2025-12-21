@@ -26,7 +26,6 @@
           - poppler
           - yt-dlp
           - ffmpeg
-          - nnn
           - zsh-completion
           - fzf
           - zsh-autosuggestions
@@ -67,3 +66,5 @@
     - pim_client
     - ide
     - file_sync_client
+    - file_manager
+    - feed_client

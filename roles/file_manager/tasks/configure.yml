@@ -1,15 +1,15 @@
 ---
 - name: Create config directory
   ansible.builtin.file:
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0755"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
     path: "~/.config/ranger"
     state: directory
 - name: Copy ranger rc.conf
   ansible.builtin.copy:
     src: rc.conf
     dest: ~/.config/ranger/rc.conf
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0644"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"

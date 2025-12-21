@@ -5,3 +5,5 @@ packages:
 # https://github.com/ranger/ranger/issues/3049#issuecomment-2645256598
 pip_packages:
   - git+https://github.com/ranger/ranger.git@c6465887bf77b9077e48805e2e548c01b54087fd
+brew_formulae:
+  - ranger
