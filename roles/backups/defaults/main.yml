@@ -7,3 +7,8 @@ packages:
   - sqlite
 pip_packages:
   - borgmatic=={{ borgmatic_version }}
+brew_formulae:
+  - borgbackup
+  - lz4
+brew_casks:
+  - vorta

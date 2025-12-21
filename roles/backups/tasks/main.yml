@@ -3,5 +3,9 @@
   ansible.builtin.import_tasks: common/tasks/install_packages.yml
 - name: Install pip package
   ansible.builtin.import_tasks: common/tasks/install_pip_packages.yml
+- name: Install brew formulae
+  ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
+- name: Install brew casks
+  ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
 - name: Write configuration
   ansible.builtin.include_tasks: configure.yml

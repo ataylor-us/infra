@@ -1,5 +1,6 @@
 ---
 - name: Create borgmatic directory
+  when: ansible_facts['os_family'] == 'RedHat'
   become: true
   ansible.builtin.file:
     group: root
@@ -8,6 +9,7 @@
     path: /etc/borgmatic.d
     state: directory
 - name: Copy borgmatic config
+  when: ansible_facts['os_family'] == 'RedHat'
   become: true
   ansible.builtin.template:
     dest: /etc/borgmatic.d/config.yaml
@@ -16,6 +18,7 @@
     owner: root
     src: config.yaml.j2
 - name: Add borgmatic backup & prune job
+  when: ansible_facts['os_family'] == 'RedHat'
   become: true
   ansible.builtin.cron:
     day: "*"
