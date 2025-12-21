@@ -1,9 +1,9 @@
 ---
 - name: Create config directories
   ansible.builtin.file:
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0755"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
     path: "~/.config/{{ item }}"
     state: directory
   loop:
@@ -11,39 +11,39 @@
     - msmtp
 - name: Create cache directory
   ansible.builtin.file:
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0755"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
     path: "~/.cache/mutt"
     state: directory
 - name: Configure neomutt settings
   ansible.builtin.template:
     src: muttrc.j2
     dest: "~/.config/mutt/muttrc"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Configure neomutt settings
   ansible.builtin.template:
     src: signature.j2
     dest: "~/.config/mutt/signature"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Configure neomutt settings
   ansible.builtin.template:
     src: msmtprc.j2
     dest: "~/.config/msmtp/config"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Copy neomutt files
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: ~/.config/mutt/
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0644"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
   loop:
     - vimrc
     - mailcap
