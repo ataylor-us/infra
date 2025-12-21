@@ -3,3 +3,6 @@ packages:
   - ansible
   - ansible-lint
   - python3-dnspython
+brew_formulae:
+  - ansible
+  - ansible-lint
