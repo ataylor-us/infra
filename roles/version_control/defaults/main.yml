@@ -6,7 +6,7 @@ packages:
 brew_formulae:
   - git
   - gitlint
-full_name: "{{ ansible_env.USER }}"
-email: "{{ ansible_env.USER }}@localhost"
+full_name: "{{ username }}"
+email: "{{ username }}@localhost"
 pip_packages:
   - gitlint=={{ gitlint_version }}
