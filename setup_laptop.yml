@@ -43,7 +43,6 @@
           - signal
           - syncthing-app
           - tailscale-app
-          - visual-studio-code
           - vorta
           - logseq
           - iina
@@ -67,3 +66,4 @@
     - version_control
     - terminal
     - pim_client
+    - ide
