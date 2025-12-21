@@ -17,7 +17,6 @@
           - borgbackup
           - lz4
           - fd
-          - neovim
           - openssl@3
           - openssh
           - ripgrep
@@ -69,3 +68,4 @@
     - file_manager
     - feed_client
     - email_client
+    - editor
