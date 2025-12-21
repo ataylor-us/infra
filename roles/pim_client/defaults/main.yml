@@ -5,5 +5,10 @@ packages:
   - vdirsyncer
   - khal
   - khard
+brew_formulae:
+  - vdirsyncer
+  - khal
+  - khard
+  - todoman
 pip_packages:
   - todoman=={{ todoman_version }}

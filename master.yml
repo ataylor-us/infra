@@ -1,7 +1,7 @@
 ---
 # This is intentionally very monolithic.
 # The aim is to have per-machine tasks variables defined here as they don't need to be repeated, as well as variables that are only used in external modules.
-#
+# 
 # Every host
 - name: Base linux host roles
   hosts: linux_hosts
@@ -96,14 +96,14 @@
   hosts: nuc
   tasks:
     # I do not like this solution, but it will do.
-    #
+    # 
     # On 2025-10-13 I had my box reset while I was afk, in a way that's never happened to me before in years of having this hardware.
     # The e1000e adapter became unresponsive, which is better than a full kernel panic, but I do not want this to happen again.
     # Apparently this is a well documented problem (on the Proxmox forums of all places), and they have a potential fix.
-    #
+    # 
     # The systemd unit is based on a script from there:
     # https://git.community-scripts.org/community-scripts/ProxmoxVE/raw/branch/main/tools/pve/nic-offloading-fix.sh
-    #
+    # 
     # This is box specific so its going here.
     - name: Check if NIC offload unit already exists
       become: true

@@ -1,5 +1,6 @@
 ---
 - name: Install formulae using brew
+  when: ansible_os_family == 'Darwin'
   become: false
   community.general.homebrew:
     name: "{{ item }}"
