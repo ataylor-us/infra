@@ -11,8 +11,6 @@
       ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
       vars:
         brew_formulae:
-          - borgbackup
-          - lz4
           - fd
           - openssl@3
           - openssh
@@ -68,3 +66,4 @@
     - editor
     - credentials
     - automation
+    - backup
