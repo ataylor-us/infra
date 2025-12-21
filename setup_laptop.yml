@@ -11,9 +11,6 @@
       ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
       vars:
         brew_formulae:
-          - ansible
-          - ansible-lint
-          - pass
           - borgbackup
           - lz4
           - fd
@@ -69,3 +66,5 @@
     - feed_client
     - email_client
     - editor
+    - credentials
+    - automation
