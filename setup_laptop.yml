@@ -41,7 +41,6 @@
           - obsidian
           - runelite
           - signal
-          - syncthing-app
           - tailscale-app
           - vorta
           - logseq
@@ -67,3 +66,4 @@
     - terminal
     - pim_client
     - ide
+    - file_sync_client
