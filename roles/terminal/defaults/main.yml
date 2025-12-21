@@ -2,3 +2,6 @@
 packages:
   - tmux
   - screen
+brew_formulae:
+  - tmux
+  - screen

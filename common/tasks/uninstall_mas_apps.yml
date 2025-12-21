@@ -1,10 +1,12 @@
 ---
 - name: Install formulae
+  when: ansible_os_family == 'Darwin'
   ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
   vars:
     brew_formulae:
       - mas
 - name: Uninstall apps using mas
+  when: ansible_os_family == 'Darwin'
   become: true
   community.general.mas:
     id: "{{ item }}"

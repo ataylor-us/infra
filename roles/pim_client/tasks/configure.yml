@@ -1,9 +1,9 @@
 ---
 - name: Create config directories
   ansible.builtin.file:
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0755"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
     path: "~/.config/{{ item }}"
     state: directory
   loop:
@@ -15,35 +15,35 @@
   ansible.builtin.template:
     src: vdirsyncer.conf.j2
     dest: "~/.config/vdirsyncer/config"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Configure khard settings
   ansible.builtin.template:
     src: khard.conf.j2
     dest: "~/.config/khard/khard.conf"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Configure khal settings
   ansible.builtin.template:
     src: khal.conf.j2
     dest: "~/.config/khal/config"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 - name: Copy todoman config
   ansible.builtin.copy:
     src: todoman.config.py
     dest: "~/.config/todoman/config.py"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
     mode: "0644"
 # Temporary workaround for:
 # https://github.com/pimutils/todoman/issues/596
 - name: Add todoman alias
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
+    path: "~/.bashrc"
     line: "alias 2do=\"todo list\""
     mode: "0664"
     create: true

@@ -1,20 +1,20 @@
 ---
 # THIS IS A WORK IN PROGRESS
-#
+# 
 # First; install chocolatey & enable ssh
 # Second: Make sure the pub key of the machine running ansible is on 'C:\ProgramData\ssh\administrators_authorized_keys' on the destination
-#
+# 
 # Manual packages:
-#
+# 
 # Intel XTU: Currently out of date on Chocolatey
 # https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html
-#
+# 
 # Jagex Launcher: No package
 # https://www.jagex.com/launcher
-#
+# 
 # AmazonGames: Package is out of date/not working on Chocolatey
 # https://www.amazon.com/gp/help/customer/display.html?nodeId=TQ1wROUN7BTxoTBbAk
-#
+# 
 # iCloud: Package is weird on Chocolatey.  Installs Bonjour and other unneeded things
 # https://apps.microsoft.com/detail/9pktq5699m62?hl=en-US&gl=US
 - name: Install packages

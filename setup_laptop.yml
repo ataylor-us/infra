@@ -1,6 +1,11 @@
 ---
 - name: Set up laptop
   hosts: localhost
+  vars_files:
+    - group_vars/clients/vars.yml
+    - group_vars/clients/vault.yml
+  vars:
+    group: staff
   tasks:
     - name: Install formulae
       ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
@@ -12,16 +17,13 @@
           - borgbackup
           - lz4
           - fd
-          - git
           - neovim
           - openssl@3
           - openssh
           - ripgrep
           - rsync
           - shellcheck
-          - tmux
           - poppler
-          - gitlint
           - yt-dlp
           - ffmpeg
           - nnn
@@ -61,3 +63,7 @@
           - 409183694 # Keynote
           - 409203825 # Numbers
           - 409201541 # Pages
+  roles:
+    - version_control
+    - terminal
+    - pim_client

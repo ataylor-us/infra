@@ -3,6 +3,9 @@
 gitlint_version: 0.19.1
 packages:
   - git
+brew_formulae:
+  - git
+  - gitlint
 full_name: "{{ ansible_env.USER }}"
 email: "{{ ansible_env.USER }}@localhost"
 pip_packages:
