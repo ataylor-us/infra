@@ -1,3 +1,5 @@
 ---
 packages:
   - neovim
+brew_formulae:
+  - neovim

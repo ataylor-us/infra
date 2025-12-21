@@ -1,7 +1,7 @@
 ---
 - name: Ensure Neovim is the default editor
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
+    path: "~/.bashrc"
     regexp: "^export EDITOR="
     line: 'export EDITOR="nvim"'
     mode: "0664"
@@ -9,26 +9,27 @@
     state: present
 - name: Set vi mode for bash
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
+    path: "~/.bashrc"
     line: "set -o vi"
     mode: "0664"
     create: true
     state: present
 - name: Create neovim config directory
   ansible.builtin.file:
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0755"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
     path: "~/.config/nvim"
     state: directory
 - name: Copy neovim config
   ansible.builtin.copy:
     src: init.vim
     dest: ~/.config/nvim/init.vim
-    group: "{{ ansible_env.USER }}"
+    group: "{{ group }}"
     mode: "0644"
-    owner: "{{ ansible_env.USER }}"
+    owner: "{{ username }}"
 - name: Copy editor scripts
+  when: ansible_facts['os_family'] == 'RedHat'
   become: true
   ansible.builtin.copy:
     src: "{{ item }}"
