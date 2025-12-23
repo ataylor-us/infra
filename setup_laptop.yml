@@ -12,14 +12,9 @@
       vars:
         brew_formulae:
           - fd
-          - openssl@3
-          - openssh
           - ripgrep
           - rsync
           - shellcheck
-          - poppler
-          - yt-dlp
-          - ffmpeg
           - zsh-completion
           - fzf
           - zsh-autosuggestions
@@ -67,3 +62,4 @@
     - credentials
     - automation
     - backups
+    - containers
