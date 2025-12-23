@@ -6,6 +6,8 @@ collections:
     version: "1.1.0"
   - name: chocolatey.chocolatey
     version: "1.5.3"
+  - name: containers.podman
+    version: "1.18.0"
 roles:
   - name: geerlingguy.repo-epel
     version: "3.1.1"

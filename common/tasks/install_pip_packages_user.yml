@@ -1,0 +1,36 @@
+---
+- name: Install packages
+  ansible.builtin.import_tasks: common/tasks/install_packages.yml
+  when: ansible_os_family != 'Darwin'
+  vars:
+    packages:
+      - pipx
+- name: Install brew formulae
+  ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
+  when: ansible_os_family == 'Darwin'
+  vars:
+    brew_formulae:
+      - pipx
+- name: Install package using pipx
+  when: ansible_os_family != 'Darwin'
+  become: false
+  community.general.pipx:
+    name: "{{ item }}"
+    global: false
+    install_deps: true
+    state: install
+  loop: "{{ pip_packages }}"
+  # TODO: find a better solution for this
+  changed_when: false
+- name: Install package using pipx
+  when: ansible_os_family == 'Darwin'
+  become: false
+  community.general.pipx:
+    name: "{{ item }}"
+    global: false
+    install_deps: true
+    state: install
+    executable: /opt/homebrew/bin/pipx
+  loop: "{{ pip_packages }}"
+  # TODO: find a better solution for this
+  changed_when: false

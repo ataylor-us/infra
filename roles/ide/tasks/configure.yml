@@ -3,13 +3,13 @@
 # https://code.visualstudio.com/docs/setup/linux
 - name: Import Microsoft GPG key
   become: true
-  when: ansible_facts['os_family'] != 'Darwin'
+  when: ansible_os_family != 'Darwin'
   ansible.builtin.rpm_key:
     state: present
     key: https://packages.microsoft.com/keys/microsoft.asc
 - name: Add vscode repo
   become: true
-  when: ansible_facts['os_family'] != 'Darwin'
+  when: ansible_os_family != 'Darwin'
   ansible.builtin.copy:
     dest: /etc/yum.repos.d/vscode.repo
     content: |

@@ -1,12 +1,12 @@
 ---
 - name: Install packages
   ansible.builtin.import_tasks: common/tasks/install_packages.yml
-  when: ansible_facts['os_family'] != 'Darwin'
+  when: ansible_os_family != 'Darwin'
   vars:
     packages:
       - pipx
 - name: Install package using pipx
-  when: ansible_facts['os_family'] != 'Darwin'
+  when: ansible_os_family != 'Darwin'
   become: true
   community.general.pipx:
     name: "{{ item }}"

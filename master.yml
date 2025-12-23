@@ -75,7 +75,6 @@
           - md.obsidian.Obsidian
           - com.discordapp.Discord
           - io.gitlab.news_flash.NewsFlash
-#         - com.spotify.Client
           - org.gnome.gitlab.somas.Apostrophe
           - com.adamcake.Bolt
           - io.github.celluloid_player.Celluloid
