@@ -4,9 +4,9 @@
 # TODO: Possibly make this betters, its not particularly elegant
 - name: Install pip packages (system)
   ansible.builtin.import_tasks: common/tasks/install_pip_packages.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_facts['os_family'] == 'RedHat'
 - name: Install pip packages (user)
   ansible.builtin.import_tasks: common/tasks/install_pip_packages_user.yml
-  when: ansible_os_family == 'Darwin'
+  when: ansible_facts['os_family'] == 'Darwin'
 - name: Install brew formulae
   ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml
