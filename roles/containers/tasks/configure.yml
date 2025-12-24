@@ -1,6 +1,6 @@
 ---
 - name: Create podman data directory
-  when: ansible_os_family != 'Darwin'
+  when: ansible_facts['os_family'] != 'Darwin'
   become: true
   ansible.builtin.file:
     group: root
@@ -13,14 +13,14 @@
   when:
     # You don't need to make firewall rules if podman is only being used for testing/dev purposes
     - "'container_hosts' in group_names"
-    - ansible_os_family != 'Darwin'
+    - ansible_facts['os_family'] != 'Darwin'
   become: true
   containers.podman.podman_network:
     name: "{{ default_podman_interface }}"
     state: present
 - name: Allow all traffic on default interface
   when:
-    - ansible_os_family != 'Darwin'
+    - ansible_facts['os_family'] != 'Darwin'
     - "'container_hosts' in group_names"
   become: true
   community.general.ufw:
@@ -28,7 +28,7 @@
     interface_in: "{{ default_podman_interface }}"
 - name: Allow forwarding to default interface
   when:
-    - ansible_os_family != 'Darwin'
+    - ansible_facts['os_family'] != 'Darwin'
     - "'container_hosts' in group_names"
   become: true
   community.general.ufw:

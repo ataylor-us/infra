@@ -1,6 +1,6 @@
 ---
 - name: Install casks using brew
-  when: ansible_os_family == 'Darwin'
+  when: ansible_facts['os_family'] == 'Darwin'
   become: false
   community.general.homebrew_cask:
     name: "{{ item }}"
