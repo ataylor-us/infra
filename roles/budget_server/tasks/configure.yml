@@ -1,0 +1,49 @@
+---
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/actual"
+    state: directory
+- name: Create a Quadlet file for actual
+  become: true
+  containers.podman.podman_container:
+    name: actual
+    image: docker.io/actualbudget/actual-server:{{ actual_version }}
+    state: quadlet
+    quadlet_filename: actual-container
+    user: 1000:1000
+    env:
+      TZ: America/New_York
+    ports:
+      - 127.0.0.1:{{ actual_port }}:5006
+    network: "{{ default_podman_interface }}"
+    volumes:
+      - "{{ podman_data_dir }}/actual:/data:rw"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for actual
+    - Restart actual
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/actual.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for actual
+    - Restart actual
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/actual.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2

@@ -1,0 +1,12 @@
+---
+- name: Reload systemd for actual
+  ansible.builtin.systemd:
+    daemon_reload: true
+  become: true
+  changed_when: true
+- name: Restart actual
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state: restarted
+  become: true
+  loop: "{{ enabled_services }}"
