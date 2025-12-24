@@ -38,7 +38,19 @@
     group: root
     mode: "0755"
   loop:
-    # These are taken from Debian, just scripts to run neovim
+    - vi
+    - view
+    - vim
+- name: Copy editor scripts
+  when: ansible_os_family == 'Darwin'
+  become: false
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "~/.local/bin/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: "0755"
+  loop:
     - vi
     - view
     - vim
