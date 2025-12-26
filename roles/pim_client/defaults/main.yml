@@ -2,11 +2,10 @@
 vdirsyncer_directory: "~/.local/share/vdirsyncer"
 packages:
   - vdirsyncer
-  - khal
   - khard
 brew_formulae:
   - vdirsyncer
-  - khal
   - khard
 pip_packages:
   - git+https://github.com/pimutils/todoman.git@25ab0db921a690ef20ac12bec794a1b23518ed98
+  - khal
