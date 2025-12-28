@@ -192,8 +192,6 @@
     - feed_server
     - bookmark_server
     - version_control_server
-    - note_server
-    - idea_board_server
     - media_server
     - tube_server
     - caldav_server
