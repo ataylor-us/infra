@@ -78,3 +78,10 @@
     sysctl_file: /etc/sysctl.d/99-tailscale.conf
     state: present
     reload: true
+- name: Create /var/log/journal directory for persistent journal
+  become: true
+  ansible.builtin.file:
+    path: /var/log/journal
+    state: directory
+    mode: "0755"
+  notify: Flush journal
