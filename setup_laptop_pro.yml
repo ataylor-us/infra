@@ -49,6 +49,16 @@
           - 409183694 # Keynote
           - 409203825 # Numbers
           - 409201541 # Pages
+    - name: Adding pwfeedback
+      become: true
+      ansible.builtin.copy:
+        content: |
+          Defaults        pwfeedback
+        dest: /etc/sudoers.d/02-pwfeedback
+        group: wheel
+        mode: "0440"
+        owner: root
+        validate: /usr/sbin/visudo -cf %s
   roles:
     - version_control
     - terminal
