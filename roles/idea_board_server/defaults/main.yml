@@ -1,6 +1,0 @@
----
-pinry_version: 2.1.13
-pinry_port: 13080
-enabled_services:
-  - pinry-container.service
-  - caddy-container.service
