@@ -39,12 +39,3 @@
     owner: "{{ username }}"
     group: "{{ group }}"
     mode: "0644"
-# Temporary workaround for:
-# https://github.com/pimutils/todoman/issues/596
-- name: Add todoman alias
-  ansible.builtin.lineinfile:
-    path: "~/.bashrc"
-    line: "alias 2do=\"todo list\""
-    mode: "0664"
-    create: true
-    state: present
