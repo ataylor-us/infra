@@ -1,0 +1,6 @@
+---
+wishlist_port: 3280
+wishlist_version: v0.58.0
+enabled_services:
+  - wishlist-container.service
+  - caddy-container.service
