@@ -1,6 +1,6 @@
 ---
 mealie_port: 9000
-mealie_version: v3.9.0
+mealie_version: v3.9.1
 enabled_services:
   - mealie-container.service
   - caddy-container.service
