@@ -197,6 +197,7 @@
     - caldav_server
     - file_server
     - file_web_server
+    - budget_server
     - wishlist_server
 - name: Workstation specific roles
   hosts: workstation
