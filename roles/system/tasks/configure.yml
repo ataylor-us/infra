@@ -82,6 +82,7 @@
 - name: >-
     Ensure that the directory where the systemd-journald drop-in will
     live actually exists
+  become: true
   ansible.builtin.file:
     group: root
     mode: u=rwx,g=rx,o=rx
@@ -89,6 +90,7 @@
     path: /etc/systemd/journald.conf.d
     state: directory
 - name: Configure systemd-journald to persist storage
+  become: true
   community.general.ini_file:
     group: root
     mode: u=rw,g=r,o=r
