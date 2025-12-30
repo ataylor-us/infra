@@ -78,3 +78,27 @@
     sysctl_file: /etc/sysctl.d/99-tailscale.conf
     state: present
     reload: true
+# Taken from https://github.com/cisagov/ansible-role-persist-journald
+- name: >-
+    Ensure that the directory where the systemd-journald drop-in will
+    live actually exists
+  ansible.builtin.file:
+    group: root
+    mode: u=rwx,g=rx,o=rx
+    owner: root
+    path: /etc/systemd/journald.conf.d
+    state: directory
+- name: Configure systemd-journald to persist storage
+  community.general.ini_file:
+    group: root
+    mode: u=rw,g=r,o=r
+    # This is just to maintain the look and feel of the
+    # /etc/systemd/journald.conf file as provided by systemd-journald.
+    no_extra_spaces: true
+    option: Storage
+    owner: root
+    path: /etc/systemd/journald.conf.d/99-ansible-role-persist-journald.conf
+    section: Journal
+    value: persistent
+  notify:
+    - Restart systemd-journald
