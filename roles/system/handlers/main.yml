@@ -1,4 +1,0 @@
----
-- name: Flush journal
-  become: true
-  ansible.builtin.command: journalctl --flush
