@@ -2,6 +2,7 @@
 packages:
   - libvirt
   - virtiofsd
+  - cockpit-machines
 enabled_sockets:
   - libvirtd.socket
 qemu_machine: "q35"

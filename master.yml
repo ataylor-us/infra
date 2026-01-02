@@ -24,11 +24,8 @@
     - artis3n.tailscale.machine
     - notifications
     - file_manager
-# Groups
-- name: Server base
-  hosts: servers
-  roles:
     - reverse_proxy
+    - web_console
 - name: Client base
   hosts: clients
   tasks:
@@ -89,7 +86,6 @@
   hosts: hypervisors
   roles:
     - virtualization
-    - web_console
 # Individual machines
 - name: Nuc specific roles
   hosts: nuc
