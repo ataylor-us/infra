@@ -199,6 +199,7 @@
     - file_web_server
     - budget_server
     - wishlist_server
+    - recipe_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
@@ -227,7 +228,3 @@
         masked_services:
           - bluetooth.service
           - bluetooth.target
-- name: Recipe_vps specific roles
-  hosts: recipe_vps
-  roles:
-    - recipe_server

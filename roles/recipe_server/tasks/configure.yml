@@ -24,13 +24,6 @@
       OPENAI_API_KEY: "{{ mealie_openai_key }}"
       API_DOCS: "false"
       OPENAI_SEND_DATABASE_DATA: "false"
-      SMTP_HOST: "{{ mealie_smtp_host }}"
-      SMTP_PORT: "{{ mealie_smtp_port }}"
-      SMTP_FROM_NAME: Mealie
-      SMTP_AUTH_STRATEGY: TLS
-      SMTP_FROM_EMAIL: mealie@{{ domain_name }}
-      SMTP_USER: mealie@{{ domain_name }}
-      SMTP_PASSWORD: "{{ mealie_smtp_password }}"
     ports:
       - 127.0.0.1:{{ mealie_port }}:9000
     volumes:
