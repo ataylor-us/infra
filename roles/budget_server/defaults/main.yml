@@ -1,6 +1,6 @@
 ---
 actual_port: 5006
-actual_version: latest
+actual_version: 26.1.0
 enabled_services:
   - actual-container.service
   - caddy-container.service
