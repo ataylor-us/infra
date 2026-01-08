@@ -16,7 +16,11 @@
 # https://apps.microsoft.com/detail/9pktq5699m62?hl=en-US&gl=US
 #
 # TopNotify: No Chocolatey package
-# https://github.com/SamsidParty/TopNotify/releases/download/3.1.0/Install.TopNotify.exe
+# https://apps.microsoft.com/detail/9pfmdk0qhkqj
+# 
+# Apple TV: No Chocolatey pacage
+# https://apps.microsoft.com/detail/9nm4t8b9jqz1
+#
 - name: Install packages
   hosts: office_pc
   tasks:
