@@ -14,6 +14,9 @@
 # 
 # iCloud: Package is weird on Chocolatey.  Installs Bonjour and other unneeded things
 # https://apps.microsoft.com/detail/9pktq5699m62?hl=en-US&gl=US
+#
+# TopNotify: No Chocolatey package
+# https://github.com/SamsidParty/TopNotify/releases/download/3.1.0/Install.TopNotify.exe
 - name: Install packages
   hosts: office_pc
   tasks:
