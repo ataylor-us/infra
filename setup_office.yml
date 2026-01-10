@@ -18,9 +18,6 @@
 # TopNotify: No Chocolatey package
 # https://apps.microsoft.com/detail/9pfmdk0qhkqj
 # 
-# Apple TV: No Chocolatey pacage
-# https://apps.microsoft.com/detail/9nm4t8b9jqz1
-#
 - name: Install packages
   hosts: office_pc
   tasks:
