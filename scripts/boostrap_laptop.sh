@@ -1,5 +1,5 @@
 #!/bin/bash
-HOSTNAME=laptop-pro
+HOSTNAME=laptop
 FORMULAE="ansible pass git"
 setupHombrew () {
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -13,11 +13,7 @@ setupRosetta () {
 setupHostname () {
 	sudo scutil --set HostName "$HOSTNAME"
 }
-setupOmz () {
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-}
 setupHombrew
 setupAnsible
 setupRosetta
 setupHostname
-setupOmz
