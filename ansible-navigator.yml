@@ -1,6 +1,10 @@
 # # cspell:ignore cmdline, workdir
 ---
 ansible-navigator:
+  ansible:
+    inventory:
+      entries:
+        - hosts.yml
   execution-environment:
      enabled: false
   playbook-artifact:
