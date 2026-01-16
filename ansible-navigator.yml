@@ -4,7 +4,7 @@ ansible-navigator:
   ansible:
     inventory:
       entries:
-        - hosts.yml
+        - hosts.ini
   execution-environment:
      enabled: false
   playbook-artifact:
