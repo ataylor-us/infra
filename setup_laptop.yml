@@ -43,12 +43,8 @@
       changed_when: true
   handlers:
     - name: Kill (and restart) the Dock
-      become: true
       changed_when: true
-      ansible.builtin.command:
-        cmd: killall Dock
+      ansible.builtin.command: killall Dock
     - name: Kill (and restart) Finder
-      become: true
       changed_when: true
-      ansible.builtin.command:
-        cmd: killall Finder
+      ansible.builtin.command: killall Finder
