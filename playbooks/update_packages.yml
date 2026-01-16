@@ -1,6 +1,7 @@
 ---
 - name: Update all machines & containers
   hosts: linux_hosts
+  gather_facts: false
   tasks:
     - name: Update all packages
       become: true
@@ -8,10 +9,25 @@
         name: "*"
         state: latest
         update_cache: true
+      register: dnf_register
+    - name: DNF update Results
+      ansible.builtin.debug:
+        var: dnf_register.results
     - name: Update all podman images
       become: true
       ansible.builtin.command: podman auto-update
+      register: podman_register
+      changed_when: "'true' in podman_register.stdout_lines"
+    - name: Podman update Results
+      ansible.builtin.debug:
+        var: podman_register.stdout_lines
     - name: Update all flatpak packages
       when: "'interactive_boxes' in group_names"
       become: true
       ansible.builtin.command: flatpak update -y
+      register: flatpak_register
+      changed_when: "'Nothing to do.' not in flatpak_register.stdout"
+    - name: Flatpak update results
+      when: "'interactive_boxes' in group_names"
+      ansible.builtin.debug:
+        var: flatpak_register.stdout
