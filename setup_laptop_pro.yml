@@ -85,6 +85,17 @@
       when: tlcorner.stdout != "2"
       notify: Kill (and restart) Finder
       changed_when: true
+    - name: Ensure omz custom functions directory exists
+      ansible.builtin.file:
+        path: "~/.oh-my-zsh/custom/functions"
+        state: directory
+        mode: '0755'
+    - name: Download todoman zsh completion file
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/pimutils/todoman/refs/heads/main/contrib/completion/zsh/_todo
+        dest: "~/.oh-my-zsh/custom/functions/_todo"
+        mode: '0644'
+        force: false
   roles:
     - version_control
     - terminal
