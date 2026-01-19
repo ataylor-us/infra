@@ -12,8 +12,7 @@
 - name: Install packages using flatpak
   become: true
   community.general.flatpak:
-    name: "{{ item }}"
+    name: "{{ flatpaks }}"
     state: present
     # Unless things have changed in the past couple years, *most* flatpaks just come from flathub
     remote: flathub
-  loop: "{{ flatpaks }}"
