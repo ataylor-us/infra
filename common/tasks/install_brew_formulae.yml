@@ -3,6 +3,5 @@
   when: ansible_facts['os_family'] == 'Darwin'
   become: false
   community.general.homebrew:
-    name: "{{ item }}"
+    name: "{{ brew_formulae }}"
     state: latest
-  loop: "{{ brew_formulae }}"
