@@ -1,9 +1,7 @@
 ---
 ansible_dev_tools_version: 25.12.0
 packages:
-  - ansible
   - ansible-lint
-  - python3-dnspython
 brew_formulae:
   - ansible-lint
 pip_packages:
