@@ -15,7 +15,7 @@ keep_weekly: 4
 keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
-  - name: karakeep-db
+  - name: karakeep-server-db.db
     path: "{{ podman_data_dir }}/karakeep-server/db.db"
-  - name: karakeep-queue
+  - name: karakeep-server-queue.db
     path: "{{ podman_data_dir }}/karakeep-server/queue.db"

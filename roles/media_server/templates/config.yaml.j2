@@ -15,11 +15,11 @@ keep_weekly: 4
 keep_monthly: 3
 keep_yearly: 2
 sqlite_databases:
-  - name: activitylog
+  - name: emby-config-data-activitylog.db
     path: "{{ podman_data_dir }}/emby/config/data/activitylog.db"
-  - name: users
+  - name: emby-config-data-users.db
     path: "{{ podman_data_dir }}/emby/config/data/users.db"
-  - name: authentication
+  - name: emby-config-data-authentication.db
     path: "{{ podman_data_dir }}/emby/config/data/authentication.db"
-  - name: library
+  - name: emby-config-data-library.db
     path: "{{ podman_data_dir }}/emby/config/data/library.db"
