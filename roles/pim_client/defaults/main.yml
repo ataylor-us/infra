@@ -7,5 +7,4 @@ brew_formulae:
   - vdirsyncer
   - khard
 pip_packages:
-  - git+https://github.com/pimutils/todoman.git@25ab0db921a690ef20ac12bec794a1b23518ed98
   - khal
