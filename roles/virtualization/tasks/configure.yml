@@ -10,7 +10,7 @@
     rule: allow
     route: true
     interface_in: virbr0
-    interface_out: "{{ ansible_default_ipv4.interface }}"
+    interface_out: "{{ ansible_facts['default_ipv4']['interface'] }}"
 - name: List existing libvirt domains
   become: true
   community.libvirt.virt:
