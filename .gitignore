@@ -4,3 +4,4 @@ roles/private
 .ansible
 .vscode
 ansible-navigator.log
+ansible.log
