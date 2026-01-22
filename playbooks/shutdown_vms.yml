@@ -1,6 +1,7 @@
 ---
 - name: Power off vms
   hosts: hypervisors
+  gather_facts: false
   tasks:
     - name: Shutdown vms
       become: true

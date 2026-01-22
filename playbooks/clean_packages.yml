@@ -1,6 +1,7 @@
 ---
 - name: Clean all machines
   hosts: linux_hosts
+  gather_facts: false
   tasks:
     - name: Autoremove unneeded packages installed as dependencies
       become: true
