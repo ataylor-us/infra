@@ -5,7 +5,7 @@
   ansible.builtin.dnf:
     name: kernel-uek-modules-desktop
     state: present
-  when: ansible_distribution == "OracleLinux"
+  when: ansible_facts["distribution"] == "OracleLinux"
 - name: Allow Emby to local network
   become: true
   community.general.ufw:
