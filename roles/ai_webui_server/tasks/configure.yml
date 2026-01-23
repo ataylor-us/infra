@@ -20,6 +20,7 @@
       ENABLE_OLLAMA_API: false
       ENABLE_OPENAI_API: true
       OPENAI_API_KEY: "{{ open_webui_openai_key }}"
+      ENABLE_FOLLOW_UP_GENERATION: false
     quadlet_filename: open-webui-container
     network: "{{ default_podman_interface }}"
     ports:
