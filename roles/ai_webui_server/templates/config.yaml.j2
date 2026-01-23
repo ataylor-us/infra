@@ -1,0 +1,21 @@
+source_directories:
+  - "{{ podman_data_dir }}/open-webui*"
+repositories:
+    - path: '{{ remote_borg_repo_path }}'
+      label: "remote"
+compression: lz4
+encryption_passphrase: '{{ borg_passphrase }}'
+archive_name_format: 'open_webui-{hostname}-{now:%Y-%m-%d-%H%M%S}'
+read_special: true
+retries: 5
+retry_wait: 5
+keep_within: 10d
+keep_daily: 5
+keep_weekly: 4
+keep_monthly: 3
+keep_yearly: 2
+sqlite_databases:
+    - name: open-webui-webui.db
+      path: "{{ podman_data_dir }}/open-webui/webui.db"
+    - name: open-webui-vector_db-chroma.sqlite3
+      path: "{{ podman_data_dir }}/open-webui/vector_db/chroma.sqlite3"
