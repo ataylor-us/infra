@@ -24,6 +24,7 @@
   loop:
     - emby/config
     - emby/data
+    - emby/recordings
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
@@ -37,6 +38,7 @@
     volumes:
       - "{{ podman_data_dir }}/emby/config:/config:rw"
       - "{{ podman_data_dir }}/emby/data:/mnt:ro"
+      - "{{ podman_data_dir }}/emby/recordings:/recordings:rw"
       # For pinchflat downloads, needs rw to delete
       - "{{ podman_data_dir }}/pinchflat/data:/pinchflat:rw"
     env:
