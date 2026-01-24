@@ -1,5 +1,5 @@
 ---
-emby_version: 4.9.1
+emby_version: 4.9.3
 # This was overridden internally to not conflict with a prior Jellyfin installation
 emby_port: 8097
 enabled_services:
