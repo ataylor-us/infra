@@ -6,6 +6,7 @@
     - group_vars/clients/vault.yml
   vars:
     group: staff
+    neomutt_theme: "https://raw.githubusercontent.com/marcothms/mutt-nord/refs/heads/master/nord.theme"
   tasks:
     - name: Install formulae
       ansible.builtin.import_tasks: common/tasks/install_brew_formulae.yml

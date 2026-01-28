@@ -6,7 +6,12 @@ user {{ personal_email }}
 passwordeval "{{ personal_mail_pass_command }}"
 auth on
 tls on
-#tls_trust_file	/etc/ssl/cert.pem
 tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+{% if ansible_facts['os_family'] == 'Darwin' %}
+tls_trust_file /opt/homebrew/opt/ca-certificates/share/ca-certificates/cacert.pem
+{% endif %}
+{% if ansible_facts['os_family'] != 'Darwin' %}
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+{% endif %}
 logfile ~/.local/state/msmtp/msmtp.log
 tls_starttls off
