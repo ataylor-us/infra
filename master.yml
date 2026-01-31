@@ -35,6 +35,7 @@
         packages:
           - bash-color-prompt
           - fd-find
+          - unzip
   roles:
     - credentials
     - automation
