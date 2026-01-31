@@ -17,22 +17,24 @@
     command: list_vms
   register: vm_list
   changed_when: false
-- name: Define vms
-  become: true
-  community.libvirt.virt:
-    name: "{{ item }}"
-    command: define
-    xml: "{{ lookup('template', item ~ '.xml.j2') }}"
-  loop: "{{ defined_vms }}"
+- name: Autostart & define vms
   when:
-    - item not in (vm_list.list_vms | default([]))
-    - autostat_vms is true
-- name: Autostart vms
-  become: true
-  community.libvirt.virt:
-    name: "{{ item }}"
-    state: running
-    autostart: true
-  loop: "{{ defined_vms }}"
-  when:
+    - defined_vms is defined
     - autostart_vms is true
+  block:
+    - name: Define vms
+      become: true
+      community.libvirt.virt:
+        name: "{{ item }}"
+        command: define
+        xml: "{{ lookup('template', item ~ '.xml.j2') }}"
+      loop: "{{ defined_vms }}"
+    - name: Autostart vms
+      become: true
+      community.libvirt.virt:
+        name: "{{ item }}"
+        state: running
+        autostart: true
+      loop: "{{ defined_vms }}"
+      when:
+        - autostart_vms is true
