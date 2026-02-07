@@ -3,6 +3,16 @@
   become: true
   ansible.builtin.hostname:
     name: "{{ domain_name }}"
+- name: Install epel
+  become: true
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  register: epel_status
+  when:
+    - ansible_facts["os_family"] == "RedHat"
+    - ansible_facts["distribution"] != "Fedora"
+  notify: Refresh dnf cache
 - name: Set timezone to America/New_York
   become: true
   community.general.timezone:

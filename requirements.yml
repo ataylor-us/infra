@@ -15,7 +15,5 @@ collections:
   - name: ansible.windows
     version: "3.3.0"
 roles:
-  - name: geerlingguy.repo-epel
-    version: "3.1.1"
   - name: buluma.rpmfusion
     version: "24.3.31"
