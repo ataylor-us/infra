@@ -4,4 +4,4 @@
   become: true
   ansible.builtin.dnf:
     name: "{{ packages }}"
-    state: latest
+    state: present
