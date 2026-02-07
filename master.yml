@@ -43,37 +43,6 @@
   hosts: interactive_boxes
   roles:
     - file_sync_server
-    - ide
-  tasks:
-    - name: Install packages
-      ansible.builtin.import_tasks: common/tasks/install_packages.yml
-      vars:
-        packages:
-          # I also use Firefox, GNOME pim apps, etc,
-          # but (as of right now) I standardized on GNOME and this software comes shipped with Fedora Workstation--so there's no use in automating it.
-          - geary
-          - gnome-extensions-app
-          - gnome-shell-extension-caffeine
-          # This is needed to have Adwaita Dark on gtk3 applications in recent GNOME.
-          - adw-gtk3-theme
-          - gnome-tweaks
-    - name: Install flatpak packages
-      ansible.builtin.import_tasks: common/tasks/install_flatpak_packages.yml
-      vars:
-        flatpaks:
-          - md.obsidian.Obsidian
-          - com.discordapp.Discord
-          - io.gitlab.news_flash.NewsFlash
-          - org.gnome.gitlab.somas.Apostrophe
-          - com.adamcake.Bolt
-          - io.github.celluloid_player.Celluloid
-          - us.zoom.Zoom
-          - org.gnome.Solanum
-          # Needed to set SIGNAL_PASSWORD_STORE=gnome-libsecret for Signal
-          - com.github.tchx84.Flatseal
-          - org.signal.Signal
-          # For Web Apps
-          - org.gnome.Epiphany
 - name: Hypervisor specific roles
   hosts: hypervisors
   roles:
