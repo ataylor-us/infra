@@ -3,20 +3,49 @@
   become: true
   ansible.builtin.hostname:
     name: "{{ domain_name }}"
+- name: Install distribution-gpg-keys
+  become: true
+  ansible.builtin.dnf:
+    name: distribution-gpg-keys
+    state: present
+  when:
+    - ansible_facts["os_family"] == "RedHat"
+  notify: Refresh dnf cache
 - name: Install epel
   become: true
   ansible.builtin.dnf:
     name: epel-release
     state: present
-  register: epel_status
   when:
     - ansible_facts["os_family"] == "RedHat"
     - ansible_facts["distribution"] != "Fedora"
   notify: Refresh dnf cache
+- name: Import RPM Fusion GPG keys
+  become: true
+  ansible.builtin.rpm_key:
+    key: "/usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-{{ item }}-{{ 'fedora' if ansible_facts['distribution'] == 'Fedora' else 'el' }}-{{ ansible_facts['distribution_major_version']
+      }}"
+    state: present
+  loop:
+    - free
+    - nonfree
+  when: ansible_facts["os_family"] == "RedHat"
+- name: Install RPM Fusion repositories
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - "https://download1.rpmfusion.org/free/{{ 'fedora' if ansible_facts['distribution'] == 'Fedora' else 'el' }}/rpmfusion-free-release-{{ ansible_facts['distribution_major_version']
+        }}.noarch.rpm"
+      - "https://download1.rpmfusion.org/nonfree/{{ 'fedora' if ansible_facts['distribution'] == 'Fedora' else 'el' }}/rpmfusion-nonfree-release-{{ ansible_facts['distribution_major_version']
+        }}.noarch.rpm"
+    state: present
+    disable_gpg_check: false
+  notify: Refresh dnf cache
+  when: ansible_facts["os_family"] == "RedHat"
 # Refresh package cache immediately
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
-# This is called from here rather than main.yml as the packages need epel
+# This is called from here rather than main.yml as the packages need the repos
 - name: Install packages
   ansible.builtin.import_tasks: common/tasks/install_packages.yml
 - name: Set timezone to America/New_York
