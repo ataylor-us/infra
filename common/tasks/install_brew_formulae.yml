@@ -4,4 +4,4 @@
   become: false
   community.general.homebrew:
     name: "{{ brew_formulae }}"
-    state: latest
+    state: present

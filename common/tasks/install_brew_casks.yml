@@ -4,4 +4,4 @@
   become: false
   community.general.homebrew_cask:
     name: "{{ brew_casks }}"
-    state: latest
+    state: installed
