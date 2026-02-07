@@ -6,11 +6,6 @@
 - name: Base linux host roles
   hosts: linux_hosts
   roles:
-    - role: geerlingguy.repo-epel
-      become: true
-      when:
-        - ansible_facts["os_family"] == "RedHat"
-        - ansible_facts["distribution"] != "Fedora"
     - role: buluma.rpmfusion
       become: true
       when:

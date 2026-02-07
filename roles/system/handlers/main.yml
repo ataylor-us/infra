@@ -4,3 +4,7 @@
   ansible.builtin.service:
     name: systemd-journald.service
     state: restarted
+- name: Refresh dnf cache
+  become: true
+  ansible.builtin.dnf:
+    update_cache: true
