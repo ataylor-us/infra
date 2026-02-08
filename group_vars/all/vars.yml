@@ -20,3 +20,4 @@ default_quadlet_options:
 
     [Install]
     WantedBy=default.target
+sedisable: true
