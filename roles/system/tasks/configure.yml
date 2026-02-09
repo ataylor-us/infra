@@ -3,6 +3,17 @@
   become: true
   ansible.builtin.hostname:
     name: "{{ domain_name }}"
+- name: Install epel & gnupg2
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - epel-release
+      - gnupg2
+    state: present
+  when:
+    - ansible_facts["os_family"] == "RedHat"
+    - ansible_facts["distribution"] != "Fedora"
+  notify: Refresh dnf cache
 - name: Install distribution-gpg-keys
   become: true
   ansible.builtin.dnf:
@@ -10,15 +21,6 @@
     state: present
   when:
     - ansible_facts["os_family"] == "RedHat"
-  notify: Refresh dnf cache
-- name: Install epel
-  become: true
-  ansible.builtin.dnf:
-    name: epel-release
-    state: present
-  when:
-    - ansible_facts["os_family"] == "RedHat"
-    - ansible_facts["distribution"] != "Fedora"
   notify: Refresh dnf cache
 - name: Import RPM Fusion GPG keys
   become: true
@@ -94,6 +96,7 @@
     mode: "0700"
 - name: Copy root private key
   become: true
+  ignore_errors: true
   ansible.builtin.copy:
     src: "{{ inventory_hostname }}/vault_{{ ssh_key_name }}"
     dest: "/root/.ssh/{{ ssh_key_name }}"
@@ -102,6 +105,7 @@
     mode: "0600"
 - name: Copy root public key
   become: true
+  ignore_errors: true
   ansible.builtin.template:
     src: "{{ inventory_hostname }}/{{ ssh_key_name }}.pub.j2"
     dest: "/root/.ssh/{{ ssh_key_name }}.pub"
