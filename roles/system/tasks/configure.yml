@@ -55,7 +55,7 @@
   community.general.timezone:
     name: America/New_York
 - name: Conditionally disable selinux
-  when: sedisable | bool
+  when: sedisable
   block:
     - name: Detect SELinux
       ansible.builtin.stat:
