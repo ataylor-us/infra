@@ -21,7 +21,7 @@
     src: msmtprc.j2
     dest: /etc/msmtprc
     group: root
-    mode: "0644"
+    mode: "0600"
     owner: root
 - name: Mailrise config
   become: true
