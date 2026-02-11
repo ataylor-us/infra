@@ -1,8 +1,7 @@
 ---
 - name: Install packages using chocolatey
   chocolatey.chocolatey.win_chocolatey:
-    name: "{{ item }}"
+    name: "{{ choco_packages }}"
     state: present
     choco_args:
       - --accept-license
-  loop: "{{ choco_packages }}"
