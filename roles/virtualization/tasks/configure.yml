@@ -1,4 +1,10 @@
 ---
+- name: Add user to libvirt group
+  become: true
+  ansible.builtin.user:
+    name: "{{ username }}"
+    groups: libvirt
+    append: true
 - name: Allow all traffic on virbr0
   become: true
   community.general.ufw:
