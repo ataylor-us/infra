@@ -18,7 +18,7 @@
     ports:
       - 127.0.0.1:{{ freshrss_port }}:80
     volumes:
-      - "{{ podman_data_dir }}/freshrss:/config:rw"
+      - "{{ podman_data_dir }}/freshrss:/config:rw,z"
     env:
       PUID: 1000
       PGID: 1000

@@ -22,9 +22,9 @@
     ports:
       - 127.0.0.1:{{ filebrowser_port }}:80
     volumes:
-      - "{{ podman_data_dir }}/filebrowser/config:/config:rw"
-      - "{{ podman_data_dir }}/filebrowser/database:/database:rw"
-      - "{{ podman_data_dir }}/filebrowser/srv:/srv:rw"
+      - "{{ podman_data_dir }}/filebrowser/config:/config:rw,z"
+      - "{{ podman_data_dir }}/filebrowser/database:/database:rw,z"
+      - "{{ podman_data_dir }}/filebrowser/srv:/srv:rw,z"
     env:
       PUID: 1000
       PGID: 1000

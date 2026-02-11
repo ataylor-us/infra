@@ -36,11 +36,11 @@
       - /dev/dri:/dev/dri
     network: host
     volumes:
-      - "{{ podman_data_dir }}/emby/config:/config:rw"
-      - "{{ podman_data_dir }}/emby/data:/mnt:ro"
-      - "{{ podman_data_dir }}/emby/recordings:/recordings:rw"
+      - "{{ podman_data_dir }}/emby/config:/config:rw,z"
+      - "{{ podman_data_dir }}/emby/data:/mnt:ro,z"
+      - "{{ podman_data_dir }}/emby/recordings:/recordings:rw,z"
       # For pinchflat downloads, needs rw to delete
-      - "{{ podman_data_dir }}/pinchflat/data:/pinchflat:rw"
+      - "{{ podman_data_dir }}/pinchflat/data:/pinchflat:rw,z"
     env:
       PUID: 1000
       PGID: 1000

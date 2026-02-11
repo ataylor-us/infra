@@ -19,9 +19,9 @@
     quadlet_filename: samba-container
     network: host
     volumes:
-      - "{{ podman_data_dir }}/samba/data:/srv:rw"
+      - "{{ podman_data_dir }}/samba/data:/srv:rw,z"
       # I know this seems wrong but the config file lives here
-      - "{{ podman_data_dir }}/samba/config:/data:rw"
+      - "{{ podman_data_dir }}/samba/config:/data:rw,z"
     env:
       PUID: 1000
       PGID: 1000
