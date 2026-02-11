@@ -25,7 +25,6 @@
         brew_casks:
           - caffeine
           - discord
-          - firefox
           - jagex
           - obsidian
           - runelite
@@ -40,6 +39,11 @@
           - 360593530 # Notability
           - 375589283 # Parcel
           - 1289583905 # Pixelmator Pro
+          - 6443941139 # 2FAS Auth Browser Extension
+          - 1352778147 # Bitwarden
+          - 6746722790 # karakeeper
+          - 1584519802 # Vimari
+          - 6745342698 # uBlock Origin Lite
     - name: Uninstall apps
       ansible.builtin.import_tasks: common/tasks/uninstall_mas_apps.yml
       vars:
