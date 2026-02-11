@@ -44,6 +44,7 @@
     - Restart immich
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: immich-postgres
     image: ghcr.io/immich-app/postgres:{{ immich_postgres_version }}
@@ -63,6 +64,7 @@
     - Restart immich
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: immich-server
     image: ghcr.io/immich-app/immich-server:{{ immich_server_version }}

@@ -12,6 +12,7 @@
     - karakeep-server
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: karakeep-meilisearch
     image: docker.io/getmeili/meilisearch:{{ karakeep_meilisearch_version }}
@@ -51,6 +52,7 @@
     - Restart karakeep
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: karakeep-server
     image: ghcr.io/karakeep-app/karakeep:{{ karakeep_server_version }}

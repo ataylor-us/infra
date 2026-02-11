@@ -9,6 +9,7 @@
     state: directory
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: mealie
     image: ghcr.io/mealie-recipes/mealie:{{ mealie_version }}
