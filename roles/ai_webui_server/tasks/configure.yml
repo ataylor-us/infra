@@ -9,6 +9,7 @@
     state: directory
 - name: Create a Quadlet file
   become: true
+  no_log: true
   containers.podman.podman_container:
     name: open-webui
     image: ghcr.io/open-webui/open-webui:{{ open_webui_version }}
