@@ -42,7 +42,7 @@
     network: host
     user: 999:999
     volumes:
-      - /etc/mailrise.conf:/etc/mailrise.conf:ro
+      - /etc/mailrise.conf:/etc/mailrise.conf:ro,z
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for mailrise

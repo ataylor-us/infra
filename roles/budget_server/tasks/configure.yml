@@ -21,7 +21,7 @@
       - 127.0.0.1:{{ actual_port }}:5006
     network: "{{ default_podman_interface }}"
     volumes:
-      - "{{ podman_data_dir }}/actual:/data:rw"
+      - "{{ podman_data_dir }}/actual:/data:rw,z"
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for actual

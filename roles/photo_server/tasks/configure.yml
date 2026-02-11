@@ -37,7 +37,7 @@
     quadlet_filename: immich-redis-container
     network: "{{ default_podman_interface }}"
     volumes:
-      - "{{ podman_data_dir }}/immich-redis:/data:rw"
+      - "{{ podman_data_dir }}/immich-redis:/data:rw,z"
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich
@@ -51,7 +51,7 @@
     quadlet_filename: immich-postgres-container
     network: "{{ default_podman_interface }}"
     volumes:
-      - "{{ podman_data_dir }}/immich-postgres:/var/lib/postgresql/data:rw"
+      - "{{ podman_data_dir }}/immich-postgres:/var/lib/postgresql/data:rw,z"
     env:
       POSTGRES_PASSWORD: "{{ immich_database_password }}"
       POSTGRES_USER: postgres
@@ -72,8 +72,8 @@
       - 127.0.0.1:{{ immich_port }}:2283
     network: "{{ default_podman_interface }}"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - "{{ podman_data_dir }}/immich-server:/usr/src/app/upload:rw"
+      - /etc/localtime:/etc/localtime:ro,z
+      - "{{ podman_data_dir }}/immich-server:/usr/src/app/upload:rw,z"
     env:
       TZ: America/New_York
       DB_PASSWORD: "{{ immich_database_password }}"
@@ -95,7 +95,7 @@
     quadlet_filename: immich-machine-learning-container
     network: "{{ default_podman_interface }}"
     volumes:
-      - "{{ podman_data_dir }}/immich-machine-learning:/cache:rw"
+      - "{{ podman_data_dir }}/immich-machine-learning:/cache:rw,z"
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for immich

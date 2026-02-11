@@ -19,7 +19,7 @@
     quadlet_filename: karakeep-meilisearch-container
     network: "{{ default_podman_interface }}"
     volumes:
-      - "{{ podman_data_dir }}/karakeep-meilisearch:/meili_data:rw"
+      - "{{ podman_data_dir }}/karakeep-meilisearch:/meili_data:rw,z"
     env:
       MEILI_NO_ANALYTICS: "true"
       HOARDER_VERSION: release
@@ -61,7 +61,7 @@
       - 127.0.0.1:{{ karakeep_port }}:3000
     stop_time: 30
     volumes:
-      - "{{ podman_data_dir }}/karakeep-server:/data"
+      - "{{ podman_data_dir }}/karakeep-server:/data:z"
     env:
       HOARDER_VERSION: release
       NEXTAUTH_SECRET: "{{ karakeep_nextauth_secret }}"

@@ -22,8 +22,8 @@
       - 127.0.0.1:{{ pinchflat_port }}:8945
     user: 1000:1000
     volumes:
-      - "{{ podman_data_dir }}/pinchflat/config:/config:rw"
-      - "{{ podman_data_dir }}/pinchflat/data:/downloads:rw"
+      - "{{ podman_data_dir }}/pinchflat/config:/config:rw,z"
+      - "{{ podman_data_dir }}/pinchflat/data:/downloads:rw,z"
     env:
       TZ: America/New_York
       YT_DLP_WORKER_CONCURRENCY: 1

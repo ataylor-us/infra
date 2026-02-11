@@ -60,9 +60,9 @@
     dns:
       - "{{ local_gateway }}"
     volumes:
-      - /etc/caddy:/etc/caddy:ro
-      - "{{ podman_data_dir }}/caddy/config:/config:rw"
-      - "{{ podman_data_dir }}/caddy/data:/data:rw"
+      - /etc/caddy:/etc/caddy:ro,z
+      - "{{ podman_data_dir }}/caddy/config:/config:rw,z"
+      - "{{ podman_data_dir }}/caddy/data:/data:rw,z"
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for caddy

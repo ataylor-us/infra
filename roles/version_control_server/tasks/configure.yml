@@ -21,8 +21,8 @@
     ports:
       - 127.0.0.1:{{ forgejo_port }}:3000
     volumes:
-      - "{{ podman_data_dir }}/forgejo:/data:rw"
-      - /etc/localtime:/etc/localtime:ro
+      - "{{ podman_data_dir }}/forgejo:/data:rw,z"
+      - /etc/localtime:/etc/localtime:ro,z
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for forgejo
