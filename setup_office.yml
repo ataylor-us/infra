@@ -20,6 +20,7 @@
 #
 - name: Install packages
   hosts: office_pc
+  gather_facts: false
   tasks:
     - name: Install packages
       ansible.builtin.import_tasks: common/tasks/install_choco_packages.yml
