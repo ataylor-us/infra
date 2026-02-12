@@ -1,0 +1,13 @@
+---
+- name: Add OpenTofu repository
+  become: true
+  ansible.builtin.yum_repository:
+    name: opentofu
+    description: "OpenTofu - $basearch"
+    baseurl: "https://packages.opentofu.org/opentofu/tofu/rpm_any/rpm_any/$basearch"
+    gpgcheck: true
+    gpgkey: "https://get.opentofu.org/opentofu.gpg"
+    enabled: true
+    sslverify: true
+    sslcacert: "/etc/pki/tls/certs/ca-bundle.crt"
+    metadata_expire: 300

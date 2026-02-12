@@ -47,6 +47,10 @@
   hosts: hypervisors
   roles:
     - virtualization
+- name: Provisioner specific roles
+  hosts: provisioners
+  roles:
+    - provisioning_client
 # Individual machines
 - name: Nuc specific roles
   hosts: nuc
