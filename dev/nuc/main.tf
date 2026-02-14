@@ -33,7 +33,7 @@ resource "libvirt_cloudinit_disk" "cloudinit" {
   })
 }
 
-resource "libvirt_domain" "workstation_staging" {
+resource "libvirt_domain" "nuc_staging" {
   name       = var.vm_name
   memory     = var.vm_memory
   vcpu       = var.vm_vcpu

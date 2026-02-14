@@ -1,0 +1,10 @@
+libvirt_uri     = "qemu:///system"
+vm_name         = "nuc-staging"
+vm_vcpu         = 4
+vm_memory       = 8192
+vm_disk_size    = 42949672960
+volume_pool     = "images"
+subnet          = "192.168.122"
+vm_ip_suffix    = 12
+os_image_source = "https://repo.almalinux.org/almalinux/10/cloud/x86_64/images/AlmaLinux-10-GenericCloud-latest.x86_64.qcow2"
+ssh_public_key  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa9PeXQYJnNGZLjLchVvjfUmp7MVowFutbQO1PjPhl8 alex@workstation"
