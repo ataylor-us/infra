@@ -1,5 +1,6 @@
 ---
 - name: Set the hostname
+  when: domain_name is defined
   become: true
   ansible.builtin.hostname:
     name: "{{ domain_name }}"
@@ -94,24 +95,31 @@
     owner: root
     group: root
     mode: "0700"
-- name: Copy root private key
+- name: Set up root SSH key
   become: true
-  ignore_errors: true
-  ansible.builtin.copy:
-    src: "{{ inventory_hostname }}/vault_{{ ssh_key_name }}"
-    dest: "/root/.ssh/{{ ssh_key_name }}"
-    owner: root
-    group: root
-    mode: "0600"
-- name: Copy root public key
-  become: true
-  ignore_errors: true
-  ansible.builtin.template:
-    src: "{{ inventory_hostname }}/{{ ssh_key_name }}.pub.j2"
-    dest: "/root/.ssh/{{ ssh_key_name }}.pub"
-    owner: root
-    group: root
-    mode: "0644"
+  block:
+    - name: Copy root private key
+      ansible.builtin.copy:
+        src: "{{ inventory_hostname }}/vault_{{ ssh_key_name }}"
+        dest: "/root/.ssh/{{ ssh_key_name }}"
+        owner: root
+        group: root
+        mode: "0600"
+    - name: Copy root public key
+      ansible.builtin.template:
+        src: "{{ inventory_hostname }}/{{ ssh_key_name }}.pub.j2"
+        dest: "/root/.ssh/{{ ssh_key_name }}.pub"
+        owner: root
+        group: root
+        mode: "0644"
+  rescue:
+    - name: Generate root keys
+      community.crypto.openssh_keypair:
+        path: "/root/.ssh/{{ ssh_key_name }}"
+        type: ed25519
+        owner: root
+        group: root
+        comment: "root@{{ inventory_hostname }}"
 - name: Ensure IPv4 forwarding is enabled
   become: true
   when: "'exit_nodes' in group_names"

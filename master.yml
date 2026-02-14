@@ -12,7 +12,8 @@
     - firewall
     - containers
     - terminal
-    - artis3n.tailscale.machine
+    - role: artis3n.tailscale.machine
+      when: "'staging' not in group_names"
     - notifications
     - file_manager
     - reverse_proxy
