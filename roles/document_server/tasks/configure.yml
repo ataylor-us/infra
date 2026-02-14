@@ -18,7 +18,8 @@
   ansible.builtin.file:
     group: 1000
     mode: "0755"
-    owner: 1000
+    # The container enforces this gid
+    owner: 999
     path: "{{ podman_data_dir }}/paperless-redis"
     state: directory
 - name: Create a Quadlet file
