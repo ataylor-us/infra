@@ -1,0 +1,116 @@
+---
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/{{ item }}"
+    state: directory
+  loop:
+    - paperless-server
+    - paperless-server/data
+    - paperless-server/media
+    - paperless-server/export
+    - paperless-server/consume
+- name: Create config directories
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/paperless-redis"
+    state: directory
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: paperless-redis
+    image: docker.io/library/redis:{{ paperless_redis_version }}
+    state: quadlet
+    quadlet_filename: paperless-redis-container
+    network: "{{ default_podman_interface }}"
+    volumes:
+      - "{{ podman_data_dir }}/paperless-redis:/data:rw,z"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for paperless
+    - Restart paperless
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: paperless-gotenberg
+    image: docker.io/gotenberg/gotenberg:{{ paperless_gotenberg_version }}
+    state: quadlet
+    quadlet_filename: paperless-gotenberg-container
+    network: "{{ default_podman_interface }}"
+    command:
+      - gotenberg
+      - --chromium-disable-javascript=true
+      - --chromium-allow-list=file:///tmp/.*
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for paperless
+    - Restart paperless
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: paperless-tika
+    image: docker.io/apache/tika:latest
+    state: quadlet
+    quadlet_filename: paperless-tika-container
+    network: "{{ default_podman_interface }}"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for paperless
+    - Restart paperless
+- name: Create a Quadlet file
+  become: true
+  no_log: true
+  containers.podman.podman_container:
+    name: paperless-server
+    image: ghcr.io/paperless-ngx/paperless-ngx:{{ paperless_server_version }}
+    state: quadlet
+    quadlet_filename: paperless-server-container
+    ports:
+      - 127.0.0.1:{{ paperless_port }}:8000
+    network: "{{ default_podman_interface }}"
+    volumes:
+      - "{{ podman_data_dir }}/paperless-server/data:/usr/src/paperless/data:rw,z"
+      - "{{ podman_data_dir }}/paperless-server/media:/usr/src/paperless/media:rw,z"
+      - "{{ podman_data_dir }}/paperless-server/export:/usr/src/paperless/export:rw,z"
+      - "{{ podman_data_dir }}/paperless-server/consume:/usr/src/paperless/consume:rw,z"
+    env:
+      PAPERLESS_REDIS: redis://paperless-redis:6379
+      PAPERLESS_SECRET_KEY: "{{ paperless_secret_key }}"
+      PAPERLESS_URL: https://{{ subdomain_name }}.{{ domain_name }}
+      PAPERLESS_TIME_ZONE: America/New_York
+      PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_OCR_LANGUAGES: jpn
+      PAPERLESS_TIKA_ENABLED: "1"
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
+      PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for paperless
+    - Restart paperless
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/paperless.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for paperless
+    - Restart paperless
+- name: Copy borgmatic config
+  become: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/paperless.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
