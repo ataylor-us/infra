@@ -6,5 +6,5 @@ vm_disk_size        = 21474836480
 volume_pool         = "images"
 subnet              = "192.168.122"
 vm_ip_suffix        = 11
-fedora_image_source = "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2"
+os_image_source     ="https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/x86_64/images/Fedora-Cloud-Base-Generic-43-1.6.x86_64.qcow2"
 ssh_public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa9PeXQYJnNGZLjLchVvjfUmp7MVowFutbQO1PjPhl8 alex@workstation"
