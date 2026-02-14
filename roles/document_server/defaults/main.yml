@@ -1,0 +1,11 @@
+---
+paperless_redis_version: 8
+paperless_server_version: 2.14.7
+paperless_gotenberg_version: 8.25
+paperless_port: 8000
+enabled_services:
+  - paperless-redis-container.service
+  - paperless-gotenberg-container.service
+  - paperless-tika-container.service
+  - paperless-server-container.service
+  - caddy-container.service

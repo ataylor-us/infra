@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+{{ subdomain_name }}.{{ domain_name }} {
+  import cloudflare
+  reverse_proxy localhost:{{ paperless_port }}
+}

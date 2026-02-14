@@ -161,6 +161,7 @@
     - budget_server
     - recipe_server
     - ai_webui_server
+    - document_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:
