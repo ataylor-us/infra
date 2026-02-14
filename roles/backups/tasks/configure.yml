@@ -11,9 +11,8 @@
 - name: Copy borgmatic config
   when: ansible_facts['os_family'] != 'Darwin'
   become: true
-  # The config should continue without the right vars set
-  # The cronjob will still get added, but it'll send errors daily
   ignore_errors: true
+  register: borgmatic_config
   ansible.builtin.template:
     dest: /etc/borgmatic.d/config.yaml
     group: root
@@ -21,7 +20,9 @@
     owner: root
     src: config.yaml.j2
 - name: Add borgmatic backup & prune job
-  when: ansible_facts['os_family'] != 'Darwin'
+  when:
+    - ansible_facts['os_family'] != 'Darwin'
+    - borgmatic_config is not failed
   become: true
   ansible.builtin.cron:
     day: "*"
