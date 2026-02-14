@@ -45,6 +45,7 @@
     - Restart open-webui
 - name: Copy borgmatic config
   become: true
+  ignore_errors: true
   ansible.builtin.template:
     dest: /etc/borgmatic.d/open_webui.yaml
     group: root

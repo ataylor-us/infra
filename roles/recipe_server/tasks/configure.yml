@@ -48,6 +48,7 @@
     - Restart mealie
 - name: Copy borgmatic config
   become: true
+  ignore_errors: true
   ansible.builtin.template:
     dest: /etc/borgmatic.d/mealie.yaml
     group: root
