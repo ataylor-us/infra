@@ -12,7 +12,7 @@
 - name: Ensure podman network is created
   when:
     # You don't need to make firewall rules if podman is only being used for testing/dev purposes
-    - "'container_hosts' in group_names"
+    - "'webservers' in group_names"
     - ansible_facts['os_family'] != 'Darwin'
   become: true
   containers.podman.podman_network:
@@ -21,7 +21,7 @@
 - name: Allow all traffic on default interface
   when:
     - ansible_facts['os_family'] != 'Darwin'
-    - "'container_hosts' in group_names"
+    - "'webservers' in group_names"
   become: true
   community.general.ufw:
     rule: allow
@@ -29,7 +29,7 @@
 - name: Allow forwarding to default interface
   when:
     - ansible_facts['os_family'] != 'Darwin'
-    - "'container_hosts' in group_names"
+    - "'webservers' in group_names"
   become: true
   community.general.ufw:
     rule: allow

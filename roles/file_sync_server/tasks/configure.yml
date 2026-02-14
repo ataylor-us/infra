@@ -49,7 +49,7 @@
     - Reload systemd for syncthing
     - Restart syncthing
 - name: Generate Caddyfile
-  when: "'container_hosts' in group_names"
+  when: "'webservers' in group_names"
   become: true
   ansible.builtin.template:
     src: Caddyfile.j2
