@@ -95,6 +95,7 @@
     - Restart karakeep
 - name: Copy borgmatic config
   become: true
+  ignore_errors: true
   ansible.builtin.template:
     dest: /etc/borgmatic.d/karakeep.yaml
     group: root

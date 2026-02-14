@@ -51,6 +51,7 @@
     - Restart emby
 - name: Copy borgmatic config
   become: true
+  ignore_errors: true
   ansible.builtin.template:
     dest: /etc/borgmatic.d/emby.yaml
     group: root
