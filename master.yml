@@ -16,6 +16,9 @@
       when: "'staging' not in group_names"
     - notifications
     - file_manager
+- name: Webserver specific roles
+  hosts: webservers
+  roles:
     - reverse_proxy
     - web_console
 - name: Client base
