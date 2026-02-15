@@ -57,7 +57,7 @@
     - provisioning_client
 # Individual machines
 - name: Nuc specific roles
-  hosts: nuc
+  hosts: nuc:!staging
   tasks:
     # I do not like this solution, but it will do.
     # 
