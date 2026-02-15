@@ -11,3 +11,11 @@
     sslverify: true
     sslcacert: "/etc/pki/tls/certs/ca-bundle.crt"
     metadata_expire: 300
+- name: Alias tofu
+  ansible.builtin.lineinfile:
+    path: "~/.bashrc"
+    regexp: "^alias terraform="
+    line: 'alias terraform=tofu'
+    mode: "0664"
+    create: true
+    state: present
