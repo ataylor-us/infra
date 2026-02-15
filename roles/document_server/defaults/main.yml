@@ -3,9 +3,14 @@ paperless_redis_version: 8
 paperless_server_version: 2.14.7
 paperless_gotenberg_version: 8.25
 paperless_port: 8000
+ftps_control_port: 21
+ftps_implicit_tls_port: 990
+ftps_min_port: 18700
+ftps_max_port: 18710
 enabled_services:
   - paperless-redis-container.service
   - paperless-gotenberg-container.service
   - paperless-tika-container.service
   - paperless-server-container.service
+  - paperless-ftps-container.service
   - caddy-container.service
