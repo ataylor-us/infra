@@ -7,4 +7,5 @@ brew_formulae:
   - vdirsyncer
   - khard
 pip_packages:
-  - khal
+  - name: khal
+    install: khal
