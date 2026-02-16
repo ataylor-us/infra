@@ -1,12 +1,12 @@
 ---
 # this is the same version in debian 13
-borgmatic_version: 1.9.14
 packages:
   - borgbackup
   - lz4
   - sqlite
 pip_packages:
-  - borgmatic=={{ borgmatic_version }}
+  - name: borgmatic
+    install: borgmatic==1.9.14
 brew_formulae:
   - borgbackup
   - lz4

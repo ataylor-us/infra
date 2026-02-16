@@ -1,8 +1,8 @@
 ---
-ansible_dev_tools_version: 25.12.0
 packages:
   - ansible-lint
 brew_formulae:
   - ansible-lint
 pip_packages:
-  - ansible-dev-tools=={{ ansible_dev_tools_version }}
+  - name: ansible-dev-tools
+    install: ansible-dev-tools==25.12.0

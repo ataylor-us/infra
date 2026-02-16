@@ -9,10 +9,22 @@
   when: ansible_facts['os_family'] != 'Darwin'
   become: true
   community.general.pipx:
-    name: "{{ item }}"
+    name: "{{ item.install }}"
     global: true
     install_deps: true
     state: install
   loop: "{{ pip_packages }}"
   # TODO: find a better solution for this
+  changed_when: false
+- name: Inject packages into pipx environment
+  when:
+    - ansible_facts['os_family'] != 'Darwin'
+    - pip_injected_packages is defined
+  become: true
+  community.general.pipx:
+    name: "{{ item.name }}"
+    global: true
+    state: inject
+    inject_packages: "{{ pip_injected_packages }}"
+  loop: "{{ pip_packages }}"
   changed_when: false
