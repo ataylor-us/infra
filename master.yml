@@ -193,3 +193,17 @@
         masked_services:
           - bluetooth.service
           - bluetooth.target
+    - name: Ensure ~/.ssh directory exists
+      ansible.builtin.file:
+        path: "~/.ssh"
+        state: directory
+        mode: "0700"
+    - name: Exclude dev vms
+      ansible.builtin.copy:
+        dest: "~/.ssh/config"
+        mode: "0600"
+        content: |
+          # Ansible managed
+          Host 192.168.122.*
+            StrictHostKeyChecking no
+            UserKnownHostsFile /dev/null
