@@ -15,7 +15,7 @@
   ansible.builtin.lineinfile:
     path: "~/.bashrc"
     regexp: "^alias terraform="
-    line: 'alias terraform=tofu'
+    line: "alias terraform=tofu"
     mode: "0664"
     create: true
     state: present
