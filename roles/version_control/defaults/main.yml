@@ -1,5 +1,6 @@
 ---
 # this is the same version in debian 13
+gitlint_version: "0.19.1"
 packages:
   - git
 brew_formulae:
@@ -9,4 +10,4 @@ full_name: "{{ username }}"
 email: "{{ username }}@localhost"
 pip_packages:
   - name: gitlint
-    install: gitlint==0.19.1
+    install: "gitlint=={{ gitlint_version }}"
