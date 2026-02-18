@@ -1,9 +1,12 @@
 ---
+ansible_dev_tools_version: "25.12.0"
+passlib_version: "1.7.4"
 packages:
   - ansible-lint
 brew_formulae:
   - ansible-lint
 pip_packages:
   - name: ansible-dev-tools
-    install: ansible-dev-tools==25.12.0
-pip_injected_packages: passlib==1.7.4
+    install: "ansible-dev-tools=={{ ansible_dev_tools_version }}"
+    inject:
+      - "passlib=={{ passlib_version }}"
