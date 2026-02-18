@@ -6,3 +6,4 @@ brew_formulae:
 pip_packages:
   - name: ansible-dev-tools
     install: ansible-dev-tools==25.12.0
+pip_injected_packages: passlib==1.7.4
