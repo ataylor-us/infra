@@ -13,8 +13,6 @@
     - paperless-server/media
     - paperless-server/export
     - paperless-server/consume
-    - paperless-ftps
-    - paperless-ftps/ssl
 - name: Create config directories
   become: true
   ansible.builtin.file:
@@ -24,27 +22,6 @@
     owner: 999
     path: "{{ podman_data_dir }}/paperless-redis"
     state: directory
-- name: Allow FTPS
-  become: true
-  community.general.ufw:
-    rule: allow
-    proto: tcp
-    port: "{{ ftps_control_port }}"
-    comment: FTPS
-- name: Allow FTPS TLS
-  become: true
-  community.general.ufw:
-    rule: allow
-    proto: tcp
-    port: "{{ ftps_implicit_tls_port }}"
-    comment: FTPS TLS
-- name: Allow FTPS passive
-  become: true
-  community.general.ufw:
-    rule: allow
-    proto: tcp
-    port: "{{ ftps_min_port }}:{{ ftps_max_port }}"
-    comment: FTPS passive
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
@@ -113,29 +90,6 @@
       PAPERLESS_TIKA_ENABLED: "1"
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
-    quadlet_options: "{{ default_quadlet_options }}"
-  notify:
-    - Reload systemd for paperless
-    - Restart paperless
-- name: Create a Quadlet file
-  become: true
-  no_log: true
-  containers.podman.podman_container:
-    name: paperless-ftps
-    image: docker.io/bfren/ftps:latest
-    state: quadlet
-    quadlet_filename: paperless-ftps-container
-    network: host
-    volumes:
-      - "{{ podman_data_dir }}/paperless-server/consume:/files:rw,z"
-      - "{{ podman_data_dir }}/paperless-ftps/ssl:/ssl:rw,z"
-    env:
-      BF_FTPS_EXTERNAL_IP: "{{ ansible_facts['default_ipv4']['address'] }}"
-      BF_FTPS_VSFTPD_USER: "{{ username }}"
-      BF_FTPS_VSFTPD_PASS: "{{ ftps_pass }}"
-      BF_FTPS_VSFTPD_UID: "1000"
-      BF_FTPS_VSFTPD_MIN_PORT: "{{ ftps_min_port }}"
-      BF_FTPS_VSFTPD_MAX_PORT: "{{ ftps_max_port }}"
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for paperless
