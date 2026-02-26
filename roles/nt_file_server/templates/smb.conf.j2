@@ -14,8 +14,8 @@
 [Paperless]
         path = {{ podman_data_dir }}/paperless-server/consume
         comment = Paperless
-        valid users = @smb
-        browseable = yes
+        valid users = epson
+        browseable = no
         writable = yes
         read only = no
         force user = root
@@ -24,8 +24,8 @@
 [Ludusavi]
         path = /samba/srv/ludusavi
         comment = Ludusavi
-        valid users = @smb
-        browseable = yes
+        valid users = ludusavi
+        browseable = no
         writable = yes
         read only = no
         force user = root
