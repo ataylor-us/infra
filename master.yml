@@ -159,6 +159,7 @@
     - version_control_server
     - media_server
     - tube_server
+    - nt_file_server
     - budget_server
     - recipe_server
     - ai_webui_server
