@@ -1,12 +1,14 @@
 ---
-- name: Create data directory
+- name: Create data directories
   become: true
   ansible.builtin.file:
     group: 1000
     mode: "0755"
     owner: 1000
-    path: "{{ podman_data_dir }}/samba"
+    path: "{{ podman_data_dir }}/{{ item }}"
     state: directory
+  loop:
+    - samba/srv/ludusavi
 - name: Generate smb.conf
   become: true
   ansible.builtin.template:
@@ -47,6 +49,7 @@
     network: host
     volumes:
       - "{{ podman_data_dir }}/paperless-server/consume:{{ podman_data_dir }}/paperless-server/consume:rw,z"
+      - "{{ podman_data_dir }}/samba/srv:/samba/srv:rw,z"
       - "{{ podman_data_dir }}/samba/smb.conf:/etc/samba/smb.conf:ro,z"
       - "{{ podman_data_dir }}/samba/users.conf:/etc/samba/users.conf:ro,z"
     quadlet_options: "{{ default_quadlet_options }}"
