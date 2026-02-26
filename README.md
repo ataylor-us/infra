@@ -63,13 +63,3 @@ It's also possible to run against a particular group, which can help speed thing
 ansible-playbook master.yml --limit interactive_boxes
 ```
 
-## wsl
-
-Been playing around with wsl.  It has its own playbook as `setup_wsl.yml`
-
-To set up, first install the necessary packages, set up pass, and clone the repo.  Something along the lines of:
-```bash
-sudo dnf install ansible git pass -y
-# Set up pass, omitted
-git clone https://github.com/ataylor-us/infra.git
-```
