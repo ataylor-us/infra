@@ -1,0 +1,4 @@
+---
+samba_version: latest
+enabled_services:
+  - samba-container.service
