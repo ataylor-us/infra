@@ -1,0 +1,107 @@
+---
+- name: Create config directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0755"
+    owner: 1000
+    path: "{{ podman_data_dir }}/adventurelog-backend"
+    state: directory
+- name: Create postgres data directory
+  become: true
+  ansible.builtin.file:
+    group: 1000
+    mode: "0700"
+    owner: 999
+    path: "{{ podman_data_dir }}/adventurelog-postgres"
+    state: directory
+- name: Create a Quadlet file
+  become: true
+  no_log: true
+  containers.podman.podman_container:
+    name: adventurelog-postgres
+    image: docker.io/postgis/postgis:{{ adventurelog_postgres_version }}
+    state: quadlet
+    quadlet_filename: adventurelog-postgres-container
+    network: "{{ default_podman_interface }}"
+    volumes:
+      - "{{ podman_data_dir }}/adventurelog-postgres:/var/lib/postgresql/data:rw,z"
+    env:
+      POSTGRES_USER: adventurelog
+      POSTGRES_DB: adventurelog
+      POSTGRES_PASSWORD: "{{ adventurelog_db_password }}"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for adventurelog
+    - Restart adventurelog
+- name: Create a Quadlet file
+  become: true
+  no_log: true
+  containers.podman.podman_container:
+    name: adventurelog-backend
+    image: ghcr.io/seanmorley15/adventurelog-backend:{{ adventurelog_backend_version }}
+    state: quadlet
+    quadlet_filename: adventurelog-backend-container
+    network: "{{ default_podman_interface }}"
+    ports:
+      - 127.0.0.1:{{ adventurelog_backend_port }}:80
+    volumes:
+      - "{{ podman_data_dir }}/adventurelog-backend:/code/media:rw,z"
+    env:
+      PGHOST: adventurelog-postgres
+      POSTGRES_USER: adventurelog
+      POSTGRES_DB: adventurelog
+      POSTGRES_PASSWORD: "{{ adventurelog_db_password }}"
+      SECRET_KEY: "{{ adventurelog_secret_key }}"
+      DJANGO_ADMIN_USERNAME: "{{ adventurelog_admin_username }}"
+      DJANGO_ADMIN_PASSWORD: "{{ adventurelog_admin_password }}"
+      DJANGO_ADMIN_EMAIL: "{{ adventurelog_admin_email }}"
+      PUBLIC_URL: https://{{ subdomain_name }}.{{ domain_name }}
+      CSRF_TRUSTED_ORIGINS: https://{{ subdomain_name }}.{{ domain_name }}
+      FRONTEND_URL: https://{{ subdomain_name }}.{{ domain_name }}
+      DEBUG: "False"
+      DISABLE_REGISTRATION: "{{ adventurelog_disable_registration }}"
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for adventurelog
+    - Restart adventurelog
+- name: Create a Quadlet file
+  become: true
+  containers.podman.podman_container:
+    name: adventurelog-frontend
+    image: ghcr.io/seanmorley15/adventurelog-frontend:{{ adventurelog_frontend_version }}
+    state: quadlet
+    quadlet_filename: adventurelog-frontend-container
+    network: "{{ default_podman_interface }}"
+    ports:
+      - 127.0.0.1:{{ adventurelog_frontend_port }}:3000
+    env:
+      PUBLIC_SERVER_URL: http://adventurelog-backend:80
+      ORIGIN: https://{{ subdomain_name }}.{{ domain_name }}
+      BODY_SIZE_LIMIT: Infinity
+    quadlet_options: "{{ default_quadlet_options }}"
+  notify:
+    - Reload systemd for adventurelog
+    - Restart adventurelog
+- name: Copy borgmatic config
+  become: true
+  ignore_errors: true
+  ansible.builtin.template:
+    dest: /etc/borgmatic.d/adventurelog.yaml
+    group: root
+    mode: "0600"
+    owner: root
+    src: config.yaml.j2
+- name: Generate Caddyfile
+  become: true
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/sites-enabled/adventurelog.Caddyfile
+    group: 1000
+    mode: "0644"
+    owner: 1000
+  notify:
+    - Reload systemd for adventurelog
+    - Restart adventurelog
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

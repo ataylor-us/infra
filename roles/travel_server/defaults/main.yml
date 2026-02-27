@@ -1,0 +1,14 @@
+---
+adventurelog_frontend_version: latest
+adventurelog_backend_version: latest
+adventurelog_postgres_version: 16-3.5
+adventurelog_frontend_port: 8015
+adventurelog_backend_port: 8016
+adventurelog_admin_username: admin
+adventurelog_admin_email: "{{ personal_email }}"
+adventurelog_disable_registration: "true"
+enabled_services:
+  - adventurelog-postgres-container.service
+  - adventurelog-backend-container.service
+  - adventurelog-frontend-container.service
+  - caddy-container.service
