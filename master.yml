@@ -164,6 +164,7 @@
     - recipe_server
     - ai_webui_server
     - document_server
+    - travel_server
 - name: Workstation specific roles
   hosts: workstation
   tasks:

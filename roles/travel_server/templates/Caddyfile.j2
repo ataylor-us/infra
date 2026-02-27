@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+{{ subdomain_name }}.{{ domain_name }} {
+  import cloudflare
+
+  @frontend {
+    not path /media* /admin* /static* /accounts*
+  }
+  reverse_proxy @frontend localhost:{{ adventurelog_frontend_port }}
+  reverse_proxy localhost:{{ adventurelog_backend_port }}
+}
