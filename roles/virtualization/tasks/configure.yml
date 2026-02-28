@@ -17,30 +17,3 @@
     route: true
     interface_in: virbr0
     interface_out: "{{ ansible_facts['default_ipv4']['interface'] }}"
-- name: List existing libvirt domains
-  become: true
-  community.libvirt.virt:
-    command: list_vms
-  register: vm_list
-  changed_when: false
-- name: Autostart & define vms
-  when:
-    - defined_vms is defined
-    - autostart_vms is true
-  block:
-    - name: Define vms
-      become: true
-      community.libvirt.virt:
-        name: "{{ item }}"
-        command: define
-        xml: "{{ lookup('template', item ~ '.xml.j2') }}"
-      loop: "{{ defined_vms }}"
-    - name: Autostart vms
-      become: true
-      community.libvirt.virt:
-        name: "{{ item }}"
-        state: running
-        autostart: true
-      loop: "{{ defined_vms }}"
-      when:
-        - autostart_vms is true
