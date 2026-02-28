@@ -1,7 +1,0 @@
----
-client_vps_name: "client_vps"
-client_vps_memory: "4194304"
-client_vps_vcpu: "4"
-defined_vms:
-  - "{{ client_vps_name }}"
-autostart_vms: true
