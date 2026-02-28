@@ -10,3 +10,8 @@
     state: restarted
   become: true
   loop: "{{ enabled_services }}"
+- name: Test notifications
+  ansible.builtin.shell:
+    cmd: 'sleep 5s;echo "Testing notifications on {{ inventory_hostname }}!" | msmtp root'
+  become: true
+  changed_when: true

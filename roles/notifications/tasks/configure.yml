@@ -7,6 +7,7 @@
     group: root
     mode: "0644"
     owner: root
+  notify: Test notifications
 - name: Generate Aliases
   become: true
   ansible.builtin.template:
@@ -15,6 +16,7 @@
     group: root
     mode: "0644"
     owner: root
+  notify: Test notifications
 - name: Generate msmtprc
   become: true
   ansible.builtin.template:
@@ -23,6 +25,7 @@
     group: root
     mode: "0600"
     owner: root
+  notify: Test notifications
 - name: Mailrise config
   become: true
   ansible.builtin.template:
@@ -31,7 +34,9 @@
     mode: "0640"
     owner: 999
     src: mailrise.conf.j2
-  notify: Restart mailrise
+  notify:
+    - Restart mailrise
+    - Test notifications
 - name: Create a Quadlet file
   become: true
   containers.podman.podman_container:
