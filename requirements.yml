@@ -4,8 +4,6 @@ collections:
     version: "12.2.0"
   - name: artis3n.tailscale
     version: "1.2.0"
-  - name: chocolatey.chocolatey
-    version: "1.5.3"
   - name: containers.podman
     version: "1.18.1"
   - name: community.crypto
@@ -14,5 +12,3 @@ collections:
     version: "2.1.0"
   - name: community.libvirt
     version: "2.0.0"
-  - name: ansible.windows
-    version: "3.3.0"
