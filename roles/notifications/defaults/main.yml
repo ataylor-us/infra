@@ -5,5 +5,5 @@ packages:
 enabled_services:
   - mailrise-container.service
 mailrise_domain: mailrise
-mailrise_version: latest
+mailrise_version: sha256:7d153e58db4038527e5c61e0e4afca9a70e398622f1b54debf57161268d78476
 mailrise_port: 8025
