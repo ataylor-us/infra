@@ -44,7 +44,9 @@
     image: ghcr.io/yoryan/mailrise@{{ mailrise_version }}
     state: quadlet
     quadlet_filename: mailrise-container
-    network: host
+    network: "{{ default_podman_interface }}"
+    ports:
+      - "{{ mailrise_port }}:{{ mailrise_port }}"
     user: 999:999
     volumes:
       - /etc/mailrise.conf:/etc/mailrise.conf:ro,z
