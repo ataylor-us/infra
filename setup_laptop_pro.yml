@@ -36,6 +36,19 @@
           - spotify
           - steam
           - logi-options+
+    - name: Ensure ~/.claude directory exists
+      ansible.builtin.file:
+        path: "~/.claude"
+        state: directory
+        mode: "0755"
+    - name: Configure Claude Code settings
+      ansible.builtin.copy:
+        content: |
+          {
+            "autoUpdatesChannel": "stable"
+          }
+        dest: "~/.claude/settings.json"
+        mode: "0644"
     - name: Install apps
       ansible.builtin.import_tasks: common/tasks/install_mas_apps.yml
       vars:
