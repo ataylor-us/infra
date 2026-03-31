@@ -115,6 +115,7 @@
         opts: nofail
         state: mounted
   roles:
+    - mounts
     - photo_server
     - file_sync_server
     - feed_server
