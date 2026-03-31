@@ -1,6 +1,7 @@
 ---
 packages:
   - nfs-utils
+  - cifs-utils
   - autofs
 enabled_services:
   - autofs
