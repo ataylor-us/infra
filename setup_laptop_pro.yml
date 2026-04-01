@@ -31,7 +31,6 @@
           - runelite
           - signal
           - tailscale-app
-          - vorta
           - iina
           - claude-code
           - spotify
@@ -126,7 +125,6 @@
     - editor
     - credentials
     - automation
-    - backups
     - containers
   handlers:
     - name: Kill (and restart) the Dock
