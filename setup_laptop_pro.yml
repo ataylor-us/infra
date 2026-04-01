@@ -19,6 +19,7 @@
           - zsh-completion
           - fzf
           - zsh-autosuggestions
+          - poppler
     - name: Install casks
       ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml
       vars:
@@ -36,6 +37,7 @@
           - spotify
           - steam
           - logi-options+
+          - onlyoffice
     - name: Ensure ~/.claude directory exists
       ansible.builtin.file:
         path: "~/.claude"
