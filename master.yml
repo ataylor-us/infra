@@ -121,8 +121,6 @@
     - feed_server
     - bookmark_server
     - version_control_server
-    - media_server
-    - tube_server
     - nt_file_server
     - budget_server
     - recipe_server
