@@ -63,7 +63,8 @@
       - 127.0.0.1:{{ karakeep_port }}:3000
     stop_time: 30
     volumes:
-      - "{{ podman_data_dir }}/karakeep-server:/data:z"
+      - "{{ podman_data_dir }}/karakeep-server:/data:rw,z"
+      - /misc/karakeep:/data/assets:rw,z,slave
     env:
       HOARDER_VERSION: release
       NEXTAUTH_SECRET: "{{ karakeep_nextauth_secret }}"
