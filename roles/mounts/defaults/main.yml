@@ -5,3 +5,4 @@ packages:
   - autofs
 enabled_services:
   - autofs
+autofs_mounts: []
