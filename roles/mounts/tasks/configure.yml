@@ -17,3 +17,5 @@
     mode: "0644"
     owner: root
   notify: Restart autofs
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
