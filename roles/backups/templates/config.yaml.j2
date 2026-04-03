@@ -12,6 +12,7 @@ exclude_if_present:
   - .nobackup
 exclude_patterns:
   - 'sh:**/.local/share/containers'
+  - /root/.cache/borg
 compression: lz4
 encryption_passphrase: '{{ borg_passphrase }}'
 archive_name_format: '{hostname}-{now:%Y-%m-%d-%H%M%S}'
