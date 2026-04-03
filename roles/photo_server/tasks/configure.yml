@@ -76,7 +76,8 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro,z
       - "{{ podman_data_dir }}/immich-server:/usr/src/app/upload:rw,z"
-      - /misc/immich:/usr/src/app/upload/upload:rw,z,slave
+      - /misc/immich_upload:/usr/src/app/upload/upload:rw,z,slave
+      - /misc/immich_encoded_video:/usr/src/app/upload/encoded-video:rw,z,slave
     env:
       TZ: America/New_York
       DB_PASSWORD: "{{ immich_database_password }}"

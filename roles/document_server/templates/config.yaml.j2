@@ -1,6 +1,7 @@
 # {{ ansible_managed }}
 source_directories:
   - "{{ podman_data_dir }}/paperless*"
+  - /misc/paperless*
 repositories:
     - path: '{{ remote_borg_repo_path }}'
       label: "remote"

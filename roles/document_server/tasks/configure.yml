@@ -12,7 +12,6 @@
     - paperless-server/data
     - paperless-server/media
     - paperless-server/export
-    - paperless-server/consume
 - name: Create config directories
   become: true
   ansible.builtin.file:
@@ -79,7 +78,7 @@
       - "{{ podman_data_dir }}/paperless-server/data:/usr/src/paperless/data:rw,z"
       - "{{ podman_data_dir }}/paperless-server/media:/usr/src/paperless/media:rw,z"
       - "{{ podman_data_dir }}/paperless-server/export:/usr/src/paperless/export:rw,z"
-      - "{{ podman_data_dir }}/paperless-server/consume:/usr/src/paperless/consume:rw,z"
+      - /misc/paperless_consume:/usr/src/paperless/consume:rw,z,slave
     env:
       PAPERLESS_REDIS: redis://paperless-redis:6379
       PAPERLESS_SECRET_KEY: "{{ paperless_secret_key }}"
