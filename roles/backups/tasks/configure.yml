@@ -22,7 +22,7 @@
   become: true
   ansible.builtin.cron:
     day: "*"
-    hour: "*/6"
+    hour: "3"
     job: /usr/local/bin/borgmatic -C -p
     minute: "15"
     month: "*"
