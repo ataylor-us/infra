@@ -37,6 +37,7 @@
           - steam
           - logi-options+
           - onlyoffice
+          - iterm2
     - name: Ensure ~/.claude directory exists
       ansible.builtin.file:
         path: "~/.claude"
