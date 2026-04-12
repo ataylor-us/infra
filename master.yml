@@ -20,7 +20,6 @@
   hosts: webservers
   roles:
     - reverse_proxy
-    - web_console
 - name: Client base
   hosts: clients
   tasks:
@@ -47,10 +46,6 @@
   hosts: interactive_boxes
   roles:
     - file_sync_server
-- name: Hypervisor specific roles
-  hosts: hypervisors
-  roles:
-    - virtualization
 - name: Provisioner specific roles
   hosts: provisioners
   roles:

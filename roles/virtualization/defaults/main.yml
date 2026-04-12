@@ -1,9 +1,0 @@
----
-packages:
-  - libvirt
-  - virtiofsd
-  - cockpit-machines
-enabled_sockets:
-  - libvirtd.socket
-qemu_machine: "q35"
-qemu_binary: "/usr/libexec/qemu-kvm"
