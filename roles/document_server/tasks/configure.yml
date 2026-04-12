@@ -91,7 +91,7 @@
       PAPERLESS_TIKA_ENDPOINT: http://paperless-tika:9998
       PAPERLESS_CONSUMER_POLLING: 60
       PAPERLESS_CONSUMER_POLLING_RETRY_COUNT: 5
-      PAPERLESS_CONSUMER_POLLING_DELAY: 5
+      PAPERLESS_CONSUMER_POLLING_DELAY: 30
     quadlet_options: "{{ default_quadlet_options }}"
   notify:
     - Reload systemd for paperless
