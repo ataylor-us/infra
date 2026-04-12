@@ -20,36 +20,11 @@
   hosts: webservers
   roles:
     - reverse_proxy
-- name: Client base
-  hosts: clients
-  tasks:
-    - name: Install packages
-      ansible.builtin.import_tasks: common/tasks/install_packages.yml
-      vars:
-        packages:
-          - bash-color-prompt
-          - fd-find
-          - unzip
-  roles:
-    - credentials
-    - automation
-    - version_control
-    - feed_client
-    - pim_client
-    - email_client
 - name: Physical box specific roles
   hosts: boxes
   roles:
     - hardware
     - disks
-- name: Interactive box specific roles
-  hosts: interactive_boxes
-  roles:
-    - file_sync_server
-- name: Provisioner specific roles
-  hosts: provisioners
-  roles:
-    - provisioning_client
 # Individual machines
 - name: Nuc specific roles
   hosts: nuc:!staging
