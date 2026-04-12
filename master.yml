@@ -12,8 +12,7 @@
     - firewall
     - containers
     - terminal
-    - role: artis3n.tailscale.machine
-      when: "'staging' not in group_names"
+    - artis3n.tailscale.machine
     - notifications
     - file_manager
 - name: Webserver specific roles
@@ -27,7 +26,7 @@
     - disks
 # Individual machines
 - name: Nuc specific roles
-  hosts: nuc:!staging
+  hosts: nuc
   tasks:
     # I do not like this solution, but it will do.
     #
