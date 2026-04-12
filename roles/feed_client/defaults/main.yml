@@ -1,7 +1,0 @@
----
-packages:
-  - newsboat
-  - lynx
-brew_formulae:
-  - newsboat
-  - lynx

@@ -1,3 +1,0 @@
----
-- name: Install brew casks
-  ansible.builtin.import_tasks: common/tasks/install_brew_casks.yml

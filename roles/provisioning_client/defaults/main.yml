@@ -1,7 +1,0 @@
----
-packages:
-  - tofu
-  - genisoimage
-brew_formulae:
-  - opentofu
-  - cdrtools
