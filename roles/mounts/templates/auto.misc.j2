@@ -1,3 +1,0 @@
-{% for mount in autofs_mounts %}
-{{ mount.name }} -fstype={{ mount.fstype }},{{ mount.options }} {{ mount.remote }}
-{% endfor %}
