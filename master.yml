@@ -89,6 +89,4 @@
     - feed_server
     - bookmark_server
     - version_control_server
-    - budget_server
-    - recipe_server
     - document_server
