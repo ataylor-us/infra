@@ -15,10 +15,6 @@
     - artis3n.tailscale.machine
     - notifications
     - file_manager
-- name: Webserver specific roles
-  hosts: webservers
-  roles:
-    - reverse_proxy
 - name: Physical box specific roles
   hosts: boxes
   roles:
@@ -74,18 +70,3 @@
         name: disable-nic-offload-eno1.service
         enabled: true
         state: started
-    # Box specific drive mount
-    - name: Mount internal drive
-      become: true
-      ansible.posix.mount:
-        path: /mnt
-        src: UUID=920c3284-0edc-485a-9fe8-7eb9b646a7f7
-        fstype: auto
-        opts: nofail
-        state: mounted
-  roles:
-    - mounts
-    - photo_server
-    - bookmark_server
-    - version_control_server
-    - document_server
