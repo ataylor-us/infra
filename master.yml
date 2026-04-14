@@ -86,7 +86,6 @@
   roles:
     - mounts
     - photo_server
-    - feed_server
     - bookmark_server
     - version_control_server
     - document_server
