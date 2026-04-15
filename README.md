@@ -1,5 +1,8 @@
 # infra
 
+> [!WARNING]
+> This repo is retired.  I've migrated it out to [client-infra](https://github.com/ataylor-us/client-infra) & [frontend-infra](https://github.com/ataylor-us/frontend-infra).
+
 This is my current iteration of my home infrastructure, automated using Ansible.
 
 Currently, I run most of my containers on one hypervisor which runs EL10. The hypervisor currently has 2 vms, one with Fedora that I use as a client (for keeping a recent Ansible version + other tools), and another with EL10 that runs additional services separate from the host.  I also have a workstation box separate from the main hypervisor.
